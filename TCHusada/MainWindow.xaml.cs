@@ -39,8 +39,7 @@ namespace TCHusada
          timer.Tick += new EventHandler(delegate(object s, EventArgs a)
                            {
                               label6.Content = "" + DateTime.Now.Hour.ToString("d2") + ":"
-                              + DateTime.Now.Minute.ToString("d2");// +":"
-                             // + DateTime.Now.Second;
+                              + DateTime.Now.Minute.ToString("d2");
                            });
       }
 
@@ -49,7 +48,6 @@ namespace TCHusada
          //login
          if (!(txtUserName.Text == "" || passwordBox1.Password == ""))
          {
-            //MessageBox.Show("Username : " + txtUserName.Text + "\nPassword :" + passwordBox1.Password);
             if (checkPass(txtUserName.Text, passwordBox1.Password))
             {
                //do something
@@ -132,7 +130,6 @@ namespace TCHusada
             cek = reader.GetString(0);
          reader.Close();
          cn.Close();
-         //MessageBox.Show(cek + " oksip");
          if (HashCode(pass) == cek)
             return true;
          return false;
@@ -214,20 +211,17 @@ namespace TCHusada
 
       private void FormFadeOut_Completed(object sender, EventArgs e)
       {
-         //this.Close();
          Application.Current.Shutdown();
       }
 
       private void label2_MouseDown(object sender, MouseButtonEventArgs e)
       {
-         //Close();
          //Application.Current.Shutdown();
          FormFadeOut.Begin();
       }
 
       private void image1_MouseDown(object sender, MouseButtonEventArgs e)
       {
-         //Close();
          //Application.Current.Shutdown();
          FormFadeOut.Begin();
       }

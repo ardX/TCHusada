@@ -35,7 +35,6 @@ namespace TCHusada
       bool boleh = true;
       int pilih = 0;
       
-
       public Karyawan()
       {
          InitializeComponent();
@@ -117,7 +116,6 @@ namespace TCHusada
          textBox2.IsEnabled = status;
          textBox3.IsEnabled = status;
          textBox4.IsEnabled = status;
-         //textBox5.IsReadOnly = status;
          datePicker1.IsEnabled = status;
       }
 
@@ -137,7 +135,6 @@ namespace TCHusada
          textBox2.Text = "";
          textBox3.Text = "";
          textBox4.Text = "";
-         //textBox5.Text = "";
          datePicker1.Text = "";
       }
 
@@ -154,7 +151,6 @@ namespace TCHusada
 
       private void image1_MouseDown(object sender, MouseButtonEventArgs e)
       {
-         //Close();
          Application.Current.Shutdown();
       }
 
@@ -174,8 +170,7 @@ namespace TCHusada
       {
          int ind = -1;
          bool error= false;
-         //method setelah simpan ds.AcceptChanges();
-         if (pilih == 1)//tambah
+         if (pilih == 1)
          {
             error = false;
             string sql = "insert into KARYAWAN values ("
@@ -183,7 +178,6 @@ namespace TCHusada
                           + "'" + textBox2.Text + "',"
                           + "'" + textBox3.Text + "',"
                           + "'" + textBox4.Text + "',"
-                          //+ "'" + textBox5.Text + "')";
                           +"'" + datePicker1.Text + "')";
             if (Execute(sql))
             {
@@ -192,7 +186,7 @@ namespace TCHusada
             }
             else error = true;
             
-         }//insert
+         }
 
          else if (pilih == 2)
          {
@@ -201,7 +195,6 @@ namespace TCHusada
                          + " NAMA_KARYAWAN = '" + textBox2.Text + "',"
                          + " ALAMAT_KARYAWAN= '" + textBox3.Text + "',"
                          + " NO_TELP_KARYAWAN = '" + textBox4.Text + "',"
-                         //+ " TGL_MASUK_KARYAWAN = '" + textBox5.Text + "'"
                          + " TGL_MASUK_KARYAWAN = '" + datePicker1.Text + "'"
                          + " where NIP_KARYAWAN = '" + textBox1.Text + "'";
             if (Execute(sql))
@@ -210,7 +203,7 @@ namespace TCHusada
                ind = dataGrid1.SelectedIndex;
             }
             else error = true;
-         }//update
+         }
          if (!error)
          {
             status_box(false);
@@ -231,7 +224,6 @@ namespace TCHusada
       private void batalbtn_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGrid1.SelectedIndex;
-         //method
          dataview(update_data());
          status_box(false);
          tombol_e(true);
@@ -243,8 +235,7 @@ namespace TCHusada
       private void tambahbtn_Click(object sender, RoutedEventArgs e)
       {
          boleh = false;
-         dataGrid1.UnselectAll();//tambhain gak boleh ngubah2 tabel dgn jika SelectionChanged make unselect
-         //dataGrid1.SelectedIndex = -1;
+         dataGrid1.UnselectAll();
          clear_box();
          status_box(true);
          tombol_e(false);
@@ -266,7 +257,6 @@ namespace TCHusada
 
       private void hapusbtn_Click(object sender, RoutedEventArgs e)
       {
-         //method
          if (textBox1.Text != "")
          {
             if (MessageBox.Show("Hapus entry \"" + textBox1.Text + "\" dari tabel ?", "Delete " + textBox1.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
@@ -275,7 +265,7 @@ namespace TCHusada
                if (Execute(sql))
                   MessageBox.Show("Data telah dihapus");
                dataview(update_data());
-               dataGrid1.UnselectAll();//dataGrid1.SelectedIndex = -1;
+               dataGrid1.UnselectAll();
             }
          }
          else MessageBox.Show("Tidak ada data yang dipilih", "Perhatian", MessageBoxButton.OK, MessageBoxImage.Warning);

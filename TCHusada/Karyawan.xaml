@@ -18,7 +18,6 @@
             </Storyboard>
          </BeginStoryboard>
       </EventTrigger>
-      
    </Window.Triggers>
    
    <Grid>
@@ -51,7 +50,6 @@
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textBox2" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_KARYAWAN}" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textBox3" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_KARYAWAN}" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" Text="{Binding Path=NO_TELP_KARYAWAN}" />
-
                      <DatePicker Height="25" HorizontalAlignment="Left" Margin="160,20,0,0" Name="datePicker1" VerticalAlignment="Top" Width="120" SelectedDate="{Binding Path=TGL_MASUK_KARYAWAN}" />
                   </StackPanel>
                </StackPanel>
@@ -76,5 +74,4 @@
          <TabItem Header="Data4" Height="30" Width="80" />
       </TabControl>
          </Grid>
-
 </Window>
