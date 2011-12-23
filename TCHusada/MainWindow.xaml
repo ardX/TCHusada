@@ -1,0 +1,66 @@
+﻿<Window x:Class="TCHusada.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Name="utama"
+        Title="MainWindow" Height="620" Width="341"
+        Background="Transparent" WindowStyle="None" OpacityMask="White"
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" Icon="/TCHusada;component/DB.ico">
+   <Window.Triggers>
+      <EventTrigger RoutedEvent="Window.Loaded">
+         <BeginStoryboard>
+            <Storyboard Name="FormFade">
+               <DoubleAnimation  Name="FormFadeAnimation"
+                                            Storyboard.TargetName="utama"
+                                            Storyboard.TargetProperty="(Window.Opacity)"
+                                            From="0.0" To="1.0" Duration="0:0:1"
+                                            AutoReverse="False" RepeatBehavior="1x"
+                                         />
+            </Storyboard>
+         </BeginStoryboard>
+      </EventTrigger>
+      <EventTrigger RoutedEvent="Window.Unloaded">
+         <BeginStoryboard>
+            <Storyboard Name="FormFadeOut" Completed="FormFadeOut_Completed">
+               <DoubleAnimation  Name="FormFadeOutAnimation"
+                                            Storyboard.TargetName="utama"
+                                            Storyboard.TargetProperty="(Window.Opacity)"
+                                            From="1.0" To="0.0" Duration="0:0:1"
+                                            AutoReverse="False" RepeatBehavior="1x"
+                                         />
+            </Storyboard>
+         </BeginStoryboard>
+      </EventTrigger>
+   </Window.Triggers>
+   
+   <Grid>
+      <Image Name="imgBackground" Stretch="Fill" Source="iponkecil.png" Margin="0,0,0,0" />
+      <Label Height="34" Margin="0,103,76,0" Name="lblUserName" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="18" Content="Sistem Informasi" HorizontalAlignment="Right" Width="151">
+         <Label.BitmapEffect>
+            <OuterGlowBitmapEffect GlowColor="Black" GlowSize="30" Noise="1" Opacity="0.4" />
+         </Label.BitmapEffect>
+      </Label>
+      <Label Content="Rumah Sakit TC Husada" FontSize="18" FontWeight="Bold" Foreground="Black" Height="34" Margin="43,153,38,0" Name="label1" VerticalAlignment="Top" HorizontalContentAlignment="Center" MouseDown="label1_MouseDown" Cursor="Help" ToolTip="Tentang aplikasi ini">
+         <Label.BitmapEffect>
+            <OuterGlowBitmapEffect GlowColor="Azure" GlowSize="30" Noise="1" Opacity="0.4" />
+         </Label.BitmapEffect>
+      </Label>
+      <Label Content="Exit" FontSize="13" FontWeight="Bold" Foreground="White" Height="29" Margin="43,108,0,0" Name="label2" VerticalAlignment="Top" Cursor="Hand" MouseDown="label2_MouseDown" HorizontalAlignment="Left" Width="53" ToolTip="Keluar dari aplikasi">
+         <Label.BitmapEffect>
+            <OuterGlowBitmapEffect GlowColor="Black" GlowSize="30" Noise="1" Opacity="0.5" />
+         </Label.BitmapEffect>
+      </Label>
+      <TextBox Height="37" HorizontalAlignment="Right" Margin="0,262,45,0" Name="txtUserName" VerticalAlignment="Top" Width="252" FontSize="18" Text="Username" GotFocus="txtUserName_GotFocus" GotMouseCapture="txtUserName_GotMouseCapture" KeyDown="txtUserName_KeyDown" ToolTip="Masukkan username anda" />
+      <Image Height="60" HorizontalAlignment="Left" Margin="144,537,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="60" Source="/TCHusada;component/tomb.png" MouseDown="image1_MouseDown" Cursor="Hand" ToolTip="Keluar dari aplikasi" />
+      <Label Content="Username" Height="30" HorizontalAlignment="Left" Margin="36,226,0,0" Name="label3" VerticalAlignment="Top" FontSize="18" />
+      <Label Content="Password" Height="30" HorizontalAlignment="Left" Margin="36,317,0,0" Name="label4" VerticalAlignment="Top" FontSize="18" />
+      <PasswordBox Height="37" HorizontalAlignment="Right" Margin="0,353,45,0" Name="passwordBox1" VerticalAlignment="Top" Width="252" FontSize="18" Password="Password" GotFocus="passwordBox1_GotFocus" GotMouseCapture="passwordBox1_GotMouseCapture" KeyDown="passwordBox1_KeyDown" ToolTip="Masukkan password anda" />
+      <Label Content="Login" FontSize="18" FontWeight="Bold" Foreground="White" Height="45" HorizontalContentAlignment="Center" Margin="43,470,38,0" Name="label5" VerticalAlignment="Top" Cursor="Hand" MouseDown="label5_MouseDown" ToolTip="Masuk">
+         <Label.BitmapEffect>
+            <OuterGlowBitmapEffect GlowColor="Azure" GlowSize="30" Noise="1" Opacity="0.4" />
+         </Label.BitmapEffect>
+      </Label>
+      <Button Content="Add" Height="23" HorizontalAlignment="Right" Margin="0,226,45,0" Name="button1" VerticalAlignment="Top" Width="38" ClickMode="Press" Click="button1_Click" />
+      <Label Content="00:00" Height="28" HorizontalAlignment="Left" Margin="150,80,0,0" Name="label6" VerticalAlignment="Top" FontWeight="Bold" />
+      <Button Content="tes" Height="23" HorizontalAlignment="Left" Margin="191,226,0,0" Name="button2" VerticalAlignment="Top" Width="39" Click="button2_Click" />
+   </Grid>
+</Window>
