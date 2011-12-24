@@ -28,29 +28,24 @@
       <Label Content="Karyawan" Height="28" HorizontalAlignment="Left" Margin="505,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" />
       <Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
       <TabControl Height="509" HorizontalAlignment="Left" Margin="58,92,0,0" Name="tabControl1" VerticalAlignment="Top" Width="966" TabStripPlacement="Left">
-         <TabItem Header="Karyawan" Name="tabItem1" Height="30" Width="80">
+         <TabItem Header="Karyawan" Name="tabItemK" Height="30" Width="80">
             <Grid>
-               <StackPanel Name="spMain" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGrid1, Path=SelectedItem}">
-                  <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGrid1" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGrid1_SelectionChanged">
-                  <DataGrid.Columns>
-                        <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}">
-                     </DataGridTextColumn>
-                        <DataGridTextColumn Header="Nama Karyawan" Width="120" Binding="{Binding Path=NAMA_KARYAWAN}">
-                     </DataGridTextColumn>
-                        <DataGridTextColumn Header="Alamat Karyawan" Width="120" Binding="{Binding Path=ALAMAT_KARYAWAN}">
-                     </DataGridTextColumn>
-                        <DataGridTextColumn Header="Telepon Karyawan" Width="120" Binding="{Binding Path=NO_TELP_KARYAWAN}">
-                     </DataGridTextColumn>
-                        <DataGridTextColumn Header="Tanggal Masuk" Width="100" Binding="{Binding Path=TGL_MASUK_KARYAWAN, StringFormat=dd/MM/yyyy}">
-                     </DataGridTextColumn>
-                  </DataGrid.Columns>
+               <StackPanel Name="spMain" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridK, Path=SelectedItem}">
+                  <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridK" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridK_SelectionChanged">
+                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}" />
+                        <DataGridTextColumn Header="Nama Karyawan" Width="120" Binding="{Binding Path=NAMA_KARYAWAN}" />
+                        <DataGridTextColumn Header="Alamat Karyawan" Width="120" Binding="{Binding Path=ALAMAT_KARYAWAN}" />
+                        <DataGridTextColumn Header="Telepon Karyawan" Width="120" Binding="{Binding Path=NO_TELP_KARYAWAN}" />
+                        <DataGridTextColumn Header="Tanggal Masuk" Width="100" Binding="{Binding Path=TGL_MASUK_KARYAWAN, StringFormat=dd/MM/yyyy}" />
+                     </DataGrid.Columns>
                </DataGrid>
-                     <StackPanel>
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,40,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" Text="{Binding Path=NIP_KARYAWAN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textBox2" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_KARYAWAN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textBox3" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_KARYAWAN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" Text="{Binding Path=NO_TELP_KARYAWAN}" />
-                     <DatePicker Height="25" HorizontalAlignment="Left" Margin="160,20,0,0" Name="datePicker1" VerticalAlignment="Top" Width="120" SelectedDate="{Binding Path=TGL_MASUK_KARYAWAN}" />
+                   <StackPanel>
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,40,0,0" Name="textnipk" VerticalAlignment="Top" Width="120" Text="{Binding Path=NIP_KARYAWAN}" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textnamk" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_KARYAWAN}" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textalmtk" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_KARYAWAN}" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="texttelpk" VerticalAlignment="Top" Width="120" Text="{Binding Path=NO_TELP_KARYAWAN}" />
+                     <DatePicker Height="25" HorizontalAlignment="Left" Margin="160,20,0,0" Name="datemskk" VerticalAlignment="Top" Width="120" SelectedDate="{Binding Path=TGL_MASUK_KARYAWAN}" />
                   </StackPanel>
                </StackPanel>
                <Label Content="NIP Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,40,0,0" Name="label1" VerticalAlignment="Top" />
@@ -58,12 +53,12 @@
                <Label Content="Alamat Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,122,0,0" Name="label3" VerticalAlignment="Top" />
                <Label Content="Telepon Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,164,0,0" Name="label4" VerticalAlignment="Top" />
                <Label Content="Tanggal Masuk" Height="28" HorizontalAlignment="Left" Margin="600,209,0,0" Name="label5" VerticalAlignment="Top" />
-               <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="590,260,0,0" Name="simpanbtn" VerticalAlignment="Top" Width="75" Click="simpanbtn_Click" />
-               <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="680,260,0,0" Name="bersihbtn" VerticalAlignment="Top" Width="75" Click="bersihbtn_Click" />
-               <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="770,260,0,0" Name="batalbtn" VerticalAlignment="Top" Width="75" Click="batalbtn_Click" />
-               <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="590,320,0,0" Name="tambahbtn" VerticalAlignment="Top" Width="75" Click="tambahbtn_Click" />
-               <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="680,320,0,0" Name="ubahbtn" VerticalAlignment="Top" Width="75" Click="ubahbtn_Click" />
-               <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="770,320,0,0" Name="hapusbtn" VerticalAlignment="Top" Width="75" Click="hapusbtn_Click" />
+               <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="590,260,0,0" Name="simpanbtnk" VerticalAlignment="Top" Width="75" Click="simpanbtnk_Click" />
+               <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="680,260,0,0" Name="bersihbtnk" VerticalAlignment="Top" Width="75" Click="bersihbtnk_Click" />
+               <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="770,260,0,0" Name="batalbtnk" VerticalAlignment="Top" Width="75" Click="batalbtnk_Click" />
+               <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="590,320,0,0" Name="tambahbtnk" VerticalAlignment="Top" Width="75" Click="tambahbtnk_Click" />
+               <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="680,320,0,0" Name="ubahbtnk" VerticalAlignment="Top" Width="75" Click="ubahbtnk_Click" />
+               <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="770,320,0,0" Name="hapusbtnk" VerticalAlignment="Top" Width="75" Click="hapusbtnk_Click" />
                <Button Height="22" HorizontalAlignment="Left" Margin="556,14,0,0" Name="refreshbtn" VerticalAlignment="Top" Width="22" Click="refreshbtn_Click" >
                   <Image Source="refresh.png" />
                </Button>

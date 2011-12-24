@@ -29,7 +29,6 @@ namespace TCHusada
              + "User Id=basdat; Password=basdat;");
       OracleDataAdapter dr = new OracleDataAdapter();
       OracleCommandBuilder cmd = new OracleCommandBuilder();
-      DataSet ds = new DataSet();
 
       DispatcherTimer timer;
       bool boleh = true;
@@ -48,9 +47,20 @@ namespace TCHusada
             + DateTime.Now.Minute.ToString("d2");
          });
 
-         dataview(load_data());
-         status_box(false);
-         tombol_e(true);
+         dataview(load_data("karyawan"), dataGridK);
+         status_boxk(false);
+         tombol_ek(true);
+      }
+
+      protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+      {
+         base.OnMouseLeftButtonDown(e);
+         try
+         {
+            DragMove();
+         }
+         catch
+         { }
       }
 
       public int ExecuteNonQuery(string sql)
@@ -86,67 +96,60 @@ namespace TCHusada
          return false;
       }
 
-      private DataSet load_data()
+      private DataSet load_data(string tbl)//fungsi modif global
       {
-         DataSet sd = new DataSet();
-         dr = new OracleDataAdapter("select * from KARYAWAN", cn);
+         DataSet ds = new DataSet();
+         dr = new OracleDataAdapter("select * from " + tbl, cn);
          cmd = new OracleCommandBuilder(dr);
-         dr.Fill(sd);
-         return sd;
+         dr.Fill(ds);
+         return ds;
       }
 
-      private DataSet update_data()
+      private DataSet update_data(string tbl)//fungsi modif global
       {
-         DataSet sd = new DataSet();
-         dr = new OracleDataAdapter("select * from KARYAWAN", cn);
+         DataSet ds = new DataSet();
+         dr = new OracleDataAdapter("select * from " + tbl, cn);
          cmd = new OracleCommandBuilder(dr);
-         dr.Fill(sd);
-         return sd;
+         dr.Fill(ds);
+         return ds;
       }
 
-      private void dataview(DataSet sd)
+      private void dataview(DataSet sd, DataGrid dg)//fungsi modif global
       {
-         dataGrid1.ItemsSource = sd.Tables[0].DefaultView;
-         dataGrid1.ColumnWidth = DataGridLength.Auto;
+         dg.ItemsSource = sd.Tables[0].DefaultView;
+         dg.ColumnWidth = DataGridLength.Auto;
       }
 
-      private void status_box(bool status)
+      /// <summary>
+      /// batas bawah fungsi global
+      /// </summary>
+
+      private void status_boxk(bool status)//fungsi kopas global
       {
-         textBox1.IsEnabled = status;
-         textBox2.IsEnabled = status;
-         textBox3.IsEnabled = status;
-         textBox4.IsEnabled = status;
-         datePicker1.IsEnabled = status;
+         textnipk.IsEnabled = status;
+         textnamk.IsEnabled = status;
+         textalmtk.IsEnabled = status;
+         texttelpk.IsEnabled = status;
+         datemskk.IsEnabled = status;
       }
 
-      private void tombol_e(bool status)
+      private void tombol_ek(bool status)//fungsi kopas global
       {
-         tambahbtn.IsEnabled = status;
-         ubahbtn.IsEnabled = status;
-         hapusbtn.IsEnabled = status;
-         simpanbtn.IsEnabled = !(status);
-         bersihbtn.IsEnabled = !(status);
-         batalbtn.IsEnabled = !(status);
+         tambahbtnk.IsEnabled = status;
+         ubahbtnk.IsEnabled = status;
+         hapusbtnk.IsEnabled = status;
+         simpanbtnk.IsEnabled = !(status);
+         bersihbtnk.IsEnabled = !(status);
+         batalbtnk.IsEnabled = !(status);
       }
 
-      private void clear_box()
+      private void clear_boxk()//fungsi kopas global
       {
-         textBox1.Text = "";
-         textBox2.Text = "";
-         textBox3.Text = "";
-         textBox4.Text = "";
-         datePicker1.Text = "";
-      }
-
-      protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-      {
-         base.OnMouseLeftButtonDown(e);
-         try
-         {
-            DragMove();
-         }
-         catch
-         { }
+         textnipk.Text = "";
+         textnamk.Text = "";
+         textalmtk.Text = "";
+         texttelpk.Text = "";
+         datemskk.Text = "";
       }
 
       private void image1_MouseDown(object sender, MouseButtonEventArgs e)
@@ -166,7 +169,7 @@ namespace TCHusada
          this.Close();
       }
 
-      private void simpanbtn_Click(object sender, RoutedEventArgs e)
+      private void simpanbtnk_Click(object sender, RoutedEventArgs e)
       {
          int ind = -1;
          bool error= false;
@@ -174,15 +177,15 @@ namespace TCHusada
          {
             error = false;
             string sql = "insert into KARYAWAN values ("
-                          + "'" + textBox1.Text + "',"
-                          + "'" + textBox2.Text + "',"
-                          + "'" + textBox3.Text + "',"
-                          + "'" + textBox4.Text + "',"
-                          +"'" + datePicker1.Text + "')";
+                          + "'" + textnipk.Text + "',"
+                          + "'" + textnamk.Text + "',"
+                          + "'" + textalmtk.Text + "',"
+                          + "'" + texttelpk.Text + "',"
+                          + "'" + datemskk.Text + "')";
             if (Execute(sql))
             {
                MessageBox.Show("Data telah ditambahkan");
-               ind = dataGrid1.Items.Count;
+               ind = dataGridK.Items.Count;
             }
             else error = true;
             
@@ -192,80 +195,80 @@ namespace TCHusada
          {
             error = false;
             string sql = "update KARYAWAN set "
-                         + " NAMA_KARYAWAN = '" + textBox2.Text + "',"
-                         + " ALAMAT_KARYAWAN= '" + textBox3.Text + "',"
-                         + " NO_TELP_KARYAWAN = '" + textBox4.Text + "',"
-                         + " TGL_MASUK_KARYAWAN = '" + datePicker1.Text + "'"
-                         + " where NIP_KARYAWAN = '" + textBox1.Text + "'";
+                         + " NAMA_KARYAWAN = '" + textnamk.Text + "',"
+                         + " ALAMAT_KARYAWAN= '" + textalmtk.Text + "',"
+                         + " NO_TELP_KARYAWAN = '" + texttelpk.Text + "',"
+                         + " TGL_MASUK_KARYAWAN = '" + datemskk.Text + "'"
+                         + " where NIP_KARYAWAN = '" + textnipk.Text + "'";
             if (Execute(sql))
             {
                MessageBox.Show("Data telah diupdate");
-               ind = dataGrid1.SelectedIndex;
+               ind = dataGridK.SelectedIndex;
             }
             else error = true;
          }
          if (!error)
          {
-            status_box(false);
-            tombol_e(true);
+            status_boxk(false);
+            tombol_ek(true);
             boleh = true;
             pilih = 0;
-            dataview(update_data());
-            dataGrid1.SelectedIndex = ind;
+            dataview(update_data("karyawan"), dataGridK);
+            dataGridK.SelectedIndex = ind;
          }
       }
 
-      private void bersihbtn_Click(object sender, RoutedEventArgs e)
+      private void bersihbtnk_Click(object sender, RoutedEventArgs e)
       {
-         clear_box();
+         clear_boxk();
          boleh = true;
       }
 
-      private void batalbtn_Click(object sender, RoutedEventArgs e)
+      private void batalbtnk_Click(object sender, RoutedEventArgs e)
       {
-         int ind = dataGrid1.SelectedIndex;
-         dataview(update_data());
-         status_box(false);
-         tombol_e(true);
+         int ind = dataGridK.SelectedIndex;
+         dataview(update_data("karyawan"), dataGridK);
+         status_boxk(false);
+         tombol_ek(true);
          boleh = true;
          pilih = 0;
-         dataGrid1.SelectedIndex = ind;
+         dataGridK.SelectedIndex = ind;
       }
 
-      private void tambahbtn_Click(object sender, RoutedEventArgs e)
+      private void tambahbtnk_Click(object sender, RoutedEventArgs e)
       {
          boleh = false;
-         dataGrid1.UnselectAll();
-         clear_box();
-         status_box(true);
-         tombol_e(false);
+         dataGridK.UnselectAll();
+         clear_boxk();
+         status_boxk(true);
+         tombol_ek(false);
          pilih = 1;
       }
 
-      private void ubahbtn_Click(object sender, RoutedEventArgs e)
+      private void ubahbtnk_Click(object sender, RoutedEventArgs e)
       {
-         if (textBox1.Text != "")
+         if (textnipk.Text != "")
          {
             boleh = false;
-            status_box(true);
-            tombol_e(false);
+            status_boxk(true);
+            tombol_ek(false);
             pilih = 2;
-            textBox1.IsEnabled = false;
+            textnipk.IsEnabled = false;
          }
          else MessageBox.Show("Tidak ada data yang dipilih", "Perhatian", MessageBoxButton.OK, MessageBoxImage.Warning);
       }
 
-      private void hapusbtn_Click(object sender, RoutedEventArgs e)
+      private void hapusbtnk_Click(object sender, RoutedEventArgs e)
       {
-         if (textBox1.Text != "")
+         if (textnipk.Text != "")
          {
-            if (MessageBox.Show("Hapus entry \"" + textBox1.Text + "\" dari tabel ?", "Delete " + textBox1.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Hapus entry \"" + textnipk.Text + "\" dari tabel ?", "Delete " + textnipk.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-               string sql = "delete from petugasadm where NIP_KARYAWAN = " + textBox1.Text;
+               string sql = "delete from petugasadm where NIP_KARYAWAN = " + textnipk.Text;
                if (Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(update_data());
-               dataGrid1.UnselectAll();
+               dataview(update_data("karyawan"), dataGridK);
+               dataGridK.UnselectAll();
             }
          }
          else MessageBox.Show("Tidak ada data yang dipilih", "Perhatian", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -273,16 +276,19 @@ namespace TCHusada
 
       private void refreshbtn_Click(object sender, RoutedEventArgs e)
       {
-         int ind = dataGrid1.SelectedIndex;
-         dataview(update_data());
-         dataGrid1.SelectedIndex = ind;
+         int ind = dataGridK.SelectedIndex;
+         dataview(update_data("karyawan"), dataGridK);
+         dataGridK.SelectedIndex = ind;
       }
 
-      private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      private void dataGridK_SelectionChanged(object sender, SelectionChangedEventArgs e)
       {
          if(!boleh)
-            dataGrid1.UnselectAll();
+            dataGridK.UnselectAll();
       }
 
+      /// <summary>
+      /// batas bawah tab karyawan
+      /// </summary>
    }
 }
