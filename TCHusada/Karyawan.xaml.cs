@@ -145,15 +145,6 @@ namespace TCHusada
          return ds;
       }
 
-      private DataSet update_data(string tbl)//fungsi modif global
-      {
-         DataSet ds = new DataSet();
-         dr = new OracleDataAdapter("select * from " + tbl, cn);
-         cmd = new OracleCommandBuilder(dr);
-         dr.Fill(ds);
-         return ds;
-      }
-
       private void dataview(DataSet sd, DataGrid dg)//fungsi modif global
       {
          dg.ItemsSource = sd.Tables[0].DefaultView;
@@ -236,7 +227,7 @@ namespace TCHusada
             tombol_ek(true);
             bolehK = true;
             pilihK = 0;
-            dataview(update_data("karyawan"), dataGridK);
+            dataview(load_data("karyawan"), dataGridK);
             dataGridK.SelectedIndex = ind;
          }
       }
@@ -250,7 +241,7 @@ namespace TCHusada
       private void batalbtnk_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridK.SelectedIndex;
-         dataview(update_data("karyawan"), dataGridK);
+         dataview(load_data("karyawan"), dataGridK);
          status_boxk(false);
          tombol_ek(true);
          bolehK = true;
@@ -290,7 +281,7 @@ namespace TCHusada
                string sql = "delete from KARYAWAN where NIP_KARYAWAN = " + textnipk.Text;
                if (Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(update_data("karyawan"), dataGridK);
+               dataview(load_data("karyawan"), dataGridK);
                dataGridK.UnselectAll();
             }
          }
@@ -300,7 +291,7 @@ namespace TCHusada
       private void refreshbtnk_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridK.SelectedIndex;
-         dataview(update_data("karyawan"), dataGridK);
+         dataview(load_data("karyawan"), dataGridK);
          dataGridK.SelectedIndex = ind;
       }
 
@@ -386,7 +377,7 @@ namespace TCHusada
             tombol_ed(true);
             bolehD = true;
             pilihD = 0;
-            dataview(update_data("dokter"), dataGridD);
+            dataview(load_data("dokter"), dataGridD);
             dataGridD.SelectedIndex = ind;
          }
       }
@@ -400,7 +391,7 @@ namespace TCHusada
       private void batalbtnd_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridD.SelectedIndex;
-         dataview(update_data("dokter"), dataGridD);
+         dataview(load_data("dokter"), dataGridD);
          status_boxd(false);
          tombol_ed(true);
          bolehD = true;
@@ -440,7 +431,7 @@ namespace TCHusada
                string sql = "delete from dokter where NIP_DOKTER = " + textnipd.Text;
                if (Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(update_data("dokter"), dataGridD);
+               dataview(load_data("dokter"), dataGridD);
                dataGridD.UnselectAll();
             }
          }
@@ -450,7 +441,7 @@ namespace TCHusada
       private void refreshbtnd_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridD.SelectedIndex;
-         dataview(update_data("dokter"), dataGridD);
+         dataview(load_data("dokter"), dataGridD);
          dataGridD.SelectedIndex = ind;
       }
 
@@ -537,7 +528,7 @@ namespace TCHusada
             tombol_ep(true);
             bolehP = true;
             pilihP = 0;
-            dataview(update_data("PERAWAT"), dataGridP);
+            dataview(load_data("PERAWAT"), dataGridP);
             dataGridP.SelectedIndex = ind;
          }
       }
@@ -551,7 +542,7 @@ namespace TCHusada
       private void batalbtnp_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridP.SelectedIndex;
-         dataview(update_data("PERAWAT"), dataGridP);
+         dataview(load_data("PERAWAT"), dataGridP);
          status_boxp(false);
          tombol_ep(true);
          bolehP = true;
@@ -591,7 +582,7 @@ namespace TCHusada
                string sql = "delete from PERAWAT where NIP_PERAWAT = " + textnipp.Text;
                if (Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(update_data("PERAWAT"), dataGridP);
+               dataview(load_data("PERAWAT"), dataGridP);
                dataGridP.UnselectAll();
             }
          }
@@ -601,7 +592,7 @@ namespace TCHusada
       private void refreshbtnp_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridP.SelectedIndex;
-         dataview(update_data("PERAWAT"), dataGridP);
+         dataview(load_data("PERAWAT"), dataGridP);
          dataGridP.SelectedIndex = ind;
       }
 
@@ -692,7 +683,7 @@ namespace TCHusada
             tombol_es(true);
             bolehS = true;
             pilihS = 0;
-            dataview(update_data("PASIEN"), dataGridS);
+            dataview(load_data("PASIEN"), dataGridS);
             dataGridS.SelectedIndex = ind;
          }
       }
@@ -706,7 +697,7 @@ namespace TCHusada
       private void batalbtns_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridS.SelectedIndex;
-         dataview(update_data("PASIEN"), dataGridS);
+         dataview(load_data("PASIEN"), dataGridS);
          status_boxs(false);
          tombol_es(true);
          bolehS = true;
@@ -746,7 +737,7 @@ namespace TCHusada
                string sql = "delete from PASIEN where NO_PASIEN = " + textnos.Text;
                if (Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(update_data("PASIEN"), dataGridS);
+               dataview(load_data("PASIEN"), dataGridS);
                dataGridS.UnselectAll();
             }
          }
@@ -756,7 +747,7 @@ namespace TCHusada
       private void refreshbtns_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridS.SelectedIndex;
-         dataview(update_data("PASIEN"), dataGridS);
+         dataview(load_data("PASIEN"), dataGridS);
          dataGridS.SelectedIndex = ind;
       }
 

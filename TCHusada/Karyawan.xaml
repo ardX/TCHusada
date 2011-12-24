@@ -23,14 +23,37 @@
    
    <Grid>
       <Image Name="imgBackground" Stretch="Fill" Source="ipatkecil.png" Margin="0,0,0,0" />
-      <Label Content="00:00" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="514,21,0,0" Name="label6" VerticalAlignment="Top" />
+      <Label Content="00:00" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="520,21,0,0" Name="label6" VerticalAlignment="Top" />
       <Image Height="31" HorizontalAlignment="Left" Margin="1031,54,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="30" Source="/TCHusada;component/bol.png" MouseDown="image1_MouseDown" Cursor="Hand" ToolTip="Keluar dari aplikasi" />
       <Label Content="Logout" Height="28" HorizontalAlignment="Left" Margin="67,53,0,0" Name="tblogout" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Kembali ke menu login" MouseDown="tblogout_MouseDown" />
       <Label Content="Karyawan" Height="28" HorizontalAlignment="Left" Margin="505,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" />
       <Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
       <TabControl Height="509" HorizontalAlignment="Left" Margin="58,92,0,0" Name="tabControl1" VerticalAlignment="Top" Width="966" TabStripPlacement="Left">
+         <TabItem Header="Saya" Name="tabItemSaya" Height="30" Width="80">
+            <Grid>
+               <GroupBox Header="Tentang Saya" Height="478" HorizontalAlignment="Left" Margin="28,0,0,0" Name="groupBoxTT" VerticalAlignment="Top" Width="429">
+                  <Grid>
+                     <Label Content="NIP Karyawan" Height="28" HorizontalAlignment="Left" Margin="20,30,0,0" Name="labelniptt" VerticalAlignment="Top" />
+                     <Label Content="Nama Karyawan" Height="28" HorizontalAlignment="Left" Margin="20,65,0,0" Name="labelnamtt" VerticalAlignment="Top" />
+                     <Label Content="Alamat Karyawan" Height="28" HorizontalAlignment="Left" Margin="20,105,0,0" Name="labelalatt" VerticalAlignment="Top" />
+                     <Label Content="Telepon Karyawan" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labeltlptt" VerticalAlignment="Top" />
+                     <Label Content="Tanggal Masuk" Height="28" HorizontalAlignment="Left" Margin="20,185,0,0" Name="labeltgltt" VerticalAlignment="Top" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxniptt" VerticalAlignment="Top" Width="200" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,70,0,0" Name="textBoxnamtt" VerticalAlignment="Top" Width="200" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,110,0,0" Name="textBoxalatt" VerticalAlignment="Top" Width="200" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,150,0,0" Name="textBoxtlptt" VerticalAlignment="Top" Width="200" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,190,0,0" Name="textBoxtgltt" VerticalAlignment="Top" Width="200" />
+                     <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="6,278,0,0" Name="ubahbtntt" VerticalAlignment="Top" Width="75" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="101,278,0,0" Name="simpanbtntt" VerticalAlignment="Top" Width="75" />
+                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="200,278,0,0" Name="bersihbtntt" VerticalAlignment="Top" Width="75" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="298,278,0,0" Name="batalbtntt" VerticalAlignment="Top" Width="75" />
+                  </Grid>
+               </GroupBox>
+            </Grid>
+         </TabItem>
          <TabItem Header="Karyawan" Name="tabItemK" Height="30" Width="80">
             <Grid>
+               <Label Content="Tabel Data Karyawan" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labeltblk" VerticalAlignment="Top" FontSize="14" />
                <StackPanel Name="spMainK" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridK, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridK" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridK_SelectionChanged">
                      <DataGrid.Columns>
@@ -42,24 +65,28 @@
                      </DataGrid.Columns>
                </DataGrid>
                    <StackPanel>
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,40,0,0" Name="textnipk" VerticalAlignment="Top" Width="120" Text="{Binding Path=NIP_KARYAWAN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textnamk" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_KARYAWAN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textalmtk" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_KARYAWAN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="texttelpk" VerticalAlignment="Top" Width="120" Text="{Binding Path=NO_TELP_KARYAWAN}" />
-                     <DatePicker Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="datemskk" VerticalAlignment="Top" Width="120" SelectedDate="{Binding Path=TGL_MASUK_KARYAWAN}" />
+                     <GroupBox Header="Manajemen Data" Height="320" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxK" VerticalAlignment="Top" Width="280">
+                        <Grid>
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,20,0,0" Name="textnipk" VerticalAlignment="Top" Width="140" Text="{Binding Path=NIP_KARYAWAN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,60,0,0" Name="textnamk" VerticalAlignment="Top" Width="140" Text="{Binding Path=NAMA_KARYAWAN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,100,0,0" Name="textalmtk" VerticalAlignment="Top" Width="140" Text="{Binding Path=ALAMAT_KARYAWAN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,140,0,0" Name="texttelpk" VerticalAlignment="Top" Width="140" Text="{Binding Path=NO_TELP_KARYAWAN}" />
+                           <DatePicker Height="23" HorizontalAlignment="Left" Margin="120,180,0,0" Name="datemskk" VerticalAlignment="Top" Width="140" SelectedDate="{Binding Path=TGL_MASUK_KARYAWAN}" />
+                           <Label Content="NIP Karyawan" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnipk" VerticalAlignment="Top" />
+                           <Label Content="Nama Karyawan" Height="28" HorizontalAlignment="Left" Margin="6,60,0,0" Name="labelnamk" VerticalAlignment="Top" />
+                           <Label Content="Alamat Karyawan" Height="28" HorizontalAlignment="Left" Margin="6,100,0,0" Name="labelalak" VerticalAlignment="Top" />
+                           <Label Content="Telepon Karyawan" Height="28" HorizontalAlignment="Left" Margin="6,140,0,0" Name="labeltelk" VerticalAlignment="Top" />
+                           <Label Content="Tanggal Masuk" Height="28" HorizontalAlignment="Left" Margin="6,180,0,0" Name="labeltglk" VerticalAlignment="Top" />
+                           <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="6,234,0,0" Name="simpanbtnk" VerticalAlignment="Top" Width="75" Click="simpanbtnk_Click" />
+                           <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="97,234,0,0" Name="bersihbtnk" VerticalAlignment="Top" Width="75" Click="bersihbtnk_Click" />
+                           <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="187,234,0,0" Name="batalbtnk" VerticalAlignment="Top" Width="75" Click="batalbtnk_Click" />
+                           <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="6,269,0,0" Name="tambahbtnk" VerticalAlignment="Top" Width="75" Click="tambahbtnk_Click" />
+                           <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="97,269,0,0" Name="ubahbtnk" VerticalAlignment="Top" Width="75" Click="ubahbtnk_Click" />
+                           <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="187,269,0,0" Name="hapusbtnk" VerticalAlignment="Top" Width="75" Click="hapusbtnk_Click" />
+                        </Grid>
+                     </GroupBox>
                   </StackPanel>
                </StackPanel>
-               <Label Content="NIP Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,40,0,0" Name="labelnipk" VerticalAlignment="Top" />
-               <Label Content="Nama Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,80,0,0" Name="labelnamk" VerticalAlignment="Top" />
-               <Label Content="Alamat Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,122,0,0" Name="labelalak" VerticalAlignment="Top" />
-               <Label Content="Telepon Karyawan" Height="28" HorizontalAlignment="Left" Margin="600,164,0,0" Name="labeltelk" VerticalAlignment="Top" />
-               <Label Content="Tanggal Masuk" Height="28" HorizontalAlignment="Left" Margin="600,209,0,0" Name="labeltglk" VerticalAlignment="Top" />
-               <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="590,260,0,0" Name="simpanbtnk" VerticalAlignment="Top" Width="75" Click="simpanbtnk_Click" />
-               <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="680,260,0,0" Name="bersihbtnk" VerticalAlignment="Top" Width="75" Click="bersihbtnk_Click" />
-               <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="770,260,0,0" Name="batalbtnk" VerticalAlignment="Top" Width="75" Click="batalbtnk_Click" />
-               <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="590,320,0,0" Name="tambahbtnk" VerticalAlignment="Top" Width="75" Click="tambahbtnk_Click" />
-               <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="680,320,0,0" Name="ubahbtnk" VerticalAlignment="Top" Width="75" Click="ubahbtnk_Click" />
-               <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="770,320,0,0" Name="hapusbtnk" VerticalAlignment="Top" Width="75" Click="hapusbtnk_Click" />
                <Button Height="22" HorizontalAlignment="Left" Margin="556,14,0,0" Name="refreshbtnk" VerticalAlignment="Top" Width="22" Click="refreshbtnk_Click" >
                   <Image Source="refresh.png" />
                </Button>
@@ -67,6 +94,7 @@
          </TabItem>
          <TabItem Header="Dokter" Name="tabItemD" Height="30" Width="80">
             <Grid>
+               <Label Content="Tabel Data Dokter" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labeltbld" VerticalAlignment="Top" FontSize="14" />
                <StackPanel Name="spMainD" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridD, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridD" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridD_SelectionChanged">
                      <DataGrid.Columns>
@@ -78,24 +106,28 @@
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel>
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,40,0,0" Name="textnipd" VerticalAlignment="Top" Width="120" Text="{Binding Path=NIP_DOKTER}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textnamd" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_DOKTER}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textalmtd" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_DOKTER}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textkeld" VerticalAlignment="Top" Width="120" Text="{Binding Path=JENISKELAMIN_DOKTER}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="texttelpd" VerticalAlignment="Top" Width="120" Text="{Binding Path=TELP_DOKTER}" />
+                     <GroupBox Header="Manajemen Data" Height="320" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxD" VerticalAlignment="Top" Width="280">
+                        <Grid>
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,20,0,0" Name="textnipd" VerticalAlignment="Top" Width="140" Text="{Binding Path=NIP_DOKTER}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,60,0,0" Name="textnamd" VerticalAlignment="Top" Width="140" Text="{Binding Path=NAMA_DOKTER}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,100,0,0" Name="textalmtd" VerticalAlignment="Top" Width="140" Text="{Binding Path=ALAMAT_DOKTER}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,140,0,0" Name="textkeld" VerticalAlignment="Top" Width="140" Text="{Binding Path=JENISKELAMIN_DOKTER}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,180,0,0" Name="texttelpd" VerticalAlignment="Top" Width="140" Text="{Binding Path=TELP_DOKTER}" />
+                           <Label Content="NIP Dokter" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnipd" VerticalAlignment="Top" />
+                           <Label Content="Nama Dokter" Height="28" HorizontalAlignment="Left" Margin="6,60,0,0" Name="labelnamd" VerticalAlignment="Top" />
+                           <Label Content="Alamat Dokter" Height="28" HorizontalAlignment="Left" Margin="6,100,0,0" Name="labelalad" VerticalAlignment="Top" />
+                           <Label Content="Kelamin Dokter" Height="28" HorizontalAlignment="Left" Margin="6,140,0,0" Name="labelkeld" VerticalAlignment="Top" />
+                           <Label Content="Telepon Dokter" Height="28" HorizontalAlignment="Left" Margin="6,180,0,0" Name="labelteld" VerticalAlignment="Top" />
+                           <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="6,234,0,0" Name="simpanbtnd" VerticalAlignment="Top" Width="75" Click="simpanbtnd_Click" />
+                           <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="97,234,0,0" Name="bersihbtnd" VerticalAlignment="Top" Width="75" Click="bersihbtnd_Click" />
+                           <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="187,234,0,0" Name="batalbtnd" VerticalAlignment="Top" Width="75" Click="batalbtnd_Click" />
+                           <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="6,269,0,0" Name="tambahbtnd" VerticalAlignment="Top" Width="75" Click="tambahbtnd_Click" />
+                           <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="97,269,0,0" Name="ubahbtnd" VerticalAlignment="Top" Width="75" Click="ubahbtnd_Click" />
+                           <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="187,269,0,0" Name="hapusbtnd" VerticalAlignment="Top" Width="75" Click="hapusbtnd_Click" />
+                        </Grid>
+                     </GroupBox>
                   </StackPanel>
                </StackPanel>
-               <Label Content="NIP Dokter" Height="28" HorizontalAlignment="Left" Margin="600,40,0,0" Name="labelnipd" VerticalAlignment="Top" />
-               <Label Content="Nama Dokter" Height="28" HorizontalAlignment="Left" Margin="600,80,0,0" Name="labelnamd" VerticalAlignment="Top" />
-               <Label Content="Alamat Dokter" Height="28" HorizontalAlignment="Left" Margin="600,122,0,0" Name="labelalad" VerticalAlignment="Top" />
-               <Label Content="Kelamin Dokter" Height="28" HorizontalAlignment="Left" Margin="600,164,0,0" Name="labelkeld" VerticalAlignment="Top" />
-               <Label Content="Telepon Dokter" Height="28" HorizontalAlignment="Left" Margin="600,209,0,0" Name="labelteld" VerticalAlignment="Top" />
-               <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="590,260,0,0" Name="simpanbtnd" VerticalAlignment="Top" Width="75" Click="simpanbtnd_Click" />
-               <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="680,260,0,0" Name="bersihbtnd" VerticalAlignment="Top" Width="75" Click="bersihbtnd_Click" />
-               <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="770,260,0,0" Name="batalbtnd" VerticalAlignment="Top" Width="75" Click="batalbtnd_Click" />
-               <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="590,320,0,0" Name="tambahbtnd" VerticalAlignment="Top" Width="75" Click="tambahbtnd_Click" />
-               <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="680,320,0,0" Name="ubahbtnd" VerticalAlignment="Top" Width="75" Click="ubahbtnd_Click" />
-               <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="770,320,0,0" Name="hapusbtnd" VerticalAlignment="Top" Width="75" Click="hapusbtnd_Click" />
                <Button Height="22" HorizontalAlignment="Left" Margin="556,14,0,0" Name="refreshbtnd" VerticalAlignment="Top" Width="22" Click="refreshbtnd_Click" >
                   <Image Source="refresh.png" />
                </Button>
@@ -103,6 +135,7 @@
          </TabItem>
          <TabItem Header="Perawat" Name="tabItemP" Height="30" Width="80">
             <Grid>
+               <Label Content="Tabel Data Perawat" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labeltblp" VerticalAlignment="Top" FontSize="14" />
                <StackPanel Name="spMainP" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridP, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridP" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridP_SelectionChanged">
                      <DataGrid.Columns>
@@ -114,24 +147,28 @@
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel>
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,40,0,0" Name="textnipp" VerticalAlignment="Top" Width="120" Text="{Binding Path=NIP_PERAWAT}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textnamp" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_PERAWAT}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textalmtp" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_PERAWAT}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textkelp" VerticalAlignment="Top" Width="120" Text="{Binding Path=JENISKELAMIN_PERAWAT}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="texttelpp" VerticalAlignment="Top" Width="120" Text="{Binding Path=TELP_PERAWAT}" />
+                     <GroupBox Header="Manajemen Data" Height="320" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxP" VerticalAlignment="Top" Width="280">
+                        <Grid>
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,20,0,0" Name="textnipp" VerticalAlignment="Top" Width="140" Text="{Binding Path=NIP_PERAWAT}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,60,0,0" Name="textnamp" VerticalAlignment="Top" Width="140" Text="{Binding Path=NAMA_PERAWAT}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,100,0,0" Name="textalmtp" VerticalAlignment="Top" Width="140" Text="{Binding Path=ALAMAT_PERAWAT}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,140,0,0" Name="textkelp" VerticalAlignment="Top" Width="140" Text="{Binding Path=JENISKELAMIN_PERAWAT}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,180,0,0" Name="texttelpp" VerticalAlignment="Top" Width="140" Text="{Binding Path=TELP_PERAWAT}" />
+                           <Label Content="NIP Perawat" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnipp" VerticalAlignment="Top" />
+                           <Label Content="Nama Perawat" Height="28" HorizontalAlignment="Left" Margin="6,60,0,0" Name="labelnamp" VerticalAlignment="Top" />
+                           <Label Content="Alamat Perawat" Height="28" HorizontalAlignment="Left" Margin="6,100,0,0" Name="labelalap" VerticalAlignment="Top" />
+                           <Label Content="Kelamin Perawat" Height="28" HorizontalAlignment="Left" Margin="6,140,0,0" Name="labelkelp" VerticalAlignment="Top" />
+                           <Label Content="Telepon Perawat" Height="28" HorizontalAlignment="Left" Margin="6,180,0,0" Name="labeltelpp" VerticalAlignment="Top" />
+                           <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="6,234,0,0" Name="simpanbtnp" VerticalAlignment="Top" Width="75" Click="simpanbtnp_Click" />
+                           <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="97,234,0,0" Name="bersihbtnp" VerticalAlignment="Top" Width="75" Click="bersihbtnp_Click" />
+                           <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="187,234,0,0" Name="batalbtnp" VerticalAlignment="Top" Width="75" Click="batalbtnp_Click" />
+                           <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="6,269,0,0" Name="tambahbtnp" VerticalAlignment="Top" Width="75" Click="tambahbtnp_Click" />
+                           <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="97,269,0,0" Name="ubahbtnp" VerticalAlignment="Top" Width="75" Click="ubahbtnp_Click" />
+                           <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="187,269,0,0" Name="hapusbtnp" VerticalAlignment="Top" Width="75" Click="hapusbtnp_Click" />
+                        </Grid>
+                     </GroupBox>
                   </StackPanel>
                </StackPanel>
-               <Label Content="NIP Perawat" Height="28" HorizontalAlignment="Left" Margin="600,40,0,0" Name="labelnipp" VerticalAlignment="Top" />
-               <Label Content="Nama Perawat" Height="28" HorizontalAlignment="Left" Margin="600,80,0,0" Name="labelnamp" VerticalAlignment="Top" />
-               <Label Content="Alamat Perawat" Height="28" HorizontalAlignment="Left" Margin="600,122,0,0" Name="labelalap" VerticalAlignment="Top" />
-               <Label Content="Kelamin Perawat" Height="28" HorizontalAlignment="Left" Margin="600,164,0,0" Name="labelkelp" VerticalAlignment="Top" />
-               <Label Content="Telepon Perawat" Height="28" HorizontalAlignment="Left" Margin="600,209,0,0" Name="labeltelpp" VerticalAlignment="Top" />
-               <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="590,260,0,0" Name="simpanbtnp" VerticalAlignment="Top" Width="75" Click="simpanbtnp_Click" />
-               <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="680,260,0,0" Name="bersihbtnp" VerticalAlignment="Top" Width="75" Click="bersihbtnp_Click" />
-               <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="770,260,0,0" Name="batalbtnp" VerticalAlignment="Top" Width="75" Click="batalbtnp_Click" />
-               <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="590,320,0,0" Name="tambahbtnp" VerticalAlignment="Top" Width="75" Click="tambahbtnp_Click" />
-               <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="680,320,0,0" Name="ubahbtnp" VerticalAlignment="Top" Width="75" Click="ubahbtnp_Click" />
-               <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="770,320,0,0" Name="hapusbtnp" VerticalAlignment="Top" Width="75" Click="hapusbtnp_Click" />
                <Button Height="22" HorizontalAlignment="Left" Margin="556,14,0,0" Name="refreshbtnp" VerticalAlignment="Top" Width="22" Click="refreshbtnp_Click" >
                   <Image Source="refresh.png" />
                </Button>
@@ -139,6 +176,7 @@
          </TabItem>
          <TabItem Header="Pasien" Name="tabItemS" Height="30" Width="80">
             <Grid>
+               <Label Content="Tabel Data Pasien" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labeltbls" VerticalAlignment="Top" FontSize="14" />
                <StackPanel Name="spMainS" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridS, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridS" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridS_SelectionChanged">
                      <DataGrid.Columns>
@@ -151,26 +189,30 @@
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel>
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,40,0,0" Name="textnos" VerticalAlignment="Top" Width="120" Text="{Binding Path=NO_PASIEN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textnams" VerticalAlignment="Top" Width="120" Text="{Binding Path=NAMA_PASIEN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textalmts" VerticalAlignment="Top" Width="120" Text="{Binding Path=ALAMAT_PASIEN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="textkels" VerticalAlignment="Top" Width="120" Text="{Binding Path=KELAMIN_PASIEN}" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="texttelps" VerticalAlignment="Top" Width="120" Text="{Binding Path=TELP_PASIEN}" />
-                     <DatePicker Height="23" HorizontalAlignment="Left" Margin="160,20,0,0" Name="datelhrs" VerticalAlignment="Top" Width="120" SelectedDate="{Binding Path=LAHIR_PASIEN}" />
+                     <GroupBox Header="Manajemen Data" Height="360" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxS" VerticalAlignment="Top" Width="280">
+                        <Grid>
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,20,0,0" Name="textnos" VerticalAlignment="Top" Width="140" Text="{Binding Path=NO_PASIEN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,60,0,0" Name="textnams" VerticalAlignment="Top" Width="140" Text="{Binding Path=NAMA_PASIEN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,100,0,0" Name="textalmts" VerticalAlignment="Top" Width="140" Text="{Binding Path=ALAMAT_PASIEN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,140,0,0" Name="textkels" VerticalAlignment="Top" Width="140" Text="{Binding Path=KELAMIN_PASIEN}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,180,0,0" Name="texttelps" VerticalAlignment="Top" Width="140" Text="{Binding Path=TELP_PASIEN}" />
+                           <DatePicker Height="23" HorizontalAlignment="Left" Margin="120,220,0,0" Name="datelhrs" VerticalAlignment="Top" Width="140" SelectedDate="{Binding Path=LAHIR_PASIEN}" />
+                           <Label Content="NIP Pasien" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnos" VerticalAlignment="Top" />
+                           <Label Content="Nama Pasien" Height="28" HorizontalAlignment="Left" Margin="6,60,0,0" Name="labelnams" VerticalAlignment="Top" />
+                           <Label Content="Alamat Pasien" Height="28" HorizontalAlignment="Left" Margin="6,100,0,0" Name="labelalas" VerticalAlignment="Top" />
+                           <Label Content="Kelamin Pasien" Height="28" HorizontalAlignment="Left" Margin="6,140,0,0" Name="labelkels" VerticalAlignment="Top" />
+                           <Label Content="Telepon Pasien" Height="28" HorizontalAlignment="Left" Margin="6,180,0,0" Name="labeltelps" VerticalAlignment="Top" />
+                           <Label Content="Tanggal Lahir" Height="28" HorizontalAlignment="Left" Margin="6,220,0,0" Name="labellhrs" VerticalAlignment="Top" />
+                           <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="6,273,0,0" Name="simpanbtns" VerticalAlignment="Top" Width="75" Click="simpanbtns_Click" />
+                           <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="97,273,0,0" Name="bersihbtns" VerticalAlignment="Top" Width="75" Click="bersihbtns_Click" />
+                           <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="187,273,0,0" Name="batalbtns" VerticalAlignment="Top" Width="75" Click="batalbtns_Click" />
+                           <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="6,308,0,0" Name="tambahbtns" VerticalAlignment="Top" Width="75" Click="tambahbtns_Click" />
+                           <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="97,308,0,0" Name="ubahbtns" VerticalAlignment="Top" Width="75" Click="ubahbtns_Click" />
+                           <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="187,308,0,0" Name="hapusbtns" VerticalAlignment="Top" Width="75" Click="hapusbtns_Click" />
+                        </Grid>
+                     </GroupBox>
                   </StackPanel>
                </StackPanel>
-               <Label Content="NIP Pasien" Height="28" HorizontalAlignment="Left" Margin="600,40,0,0" Name="labelnos" VerticalAlignment="Top" />
-               <Label Content="Nama Pasien" Height="28" HorizontalAlignment="Left" Margin="600,80,0,0" Name="labelnams" VerticalAlignment="Top" />
-               <Label Content="Alamat Pasien" Height="28" HorizontalAlignment="Left" Margin="600,122,0,0" Name="labelalas" VerticalAlignment="Top" />
-               <Label Content="Kelamin Pasien" Height="28" HorizontalAlignment="Left" Margin="600,164,0,0" Name="labelkels" VerticalAlignment="Top" />
-               <Label Content="Telepon Pasien" Height="28" HorizontalAlignment="Left" Margin="600,209,0,0" Name="labeltelps" VerticalAlignment="Top" />
-               <Label Content="Tanggal Lahir" Height="28" HorizontalAlignment="Left" Margin="600,249,0,0" Name="labellhrs" VerticalAlignment="Top" />
-               <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="590,308,0,0" Name="simpanbtns" VerticalAlignment="Top" Width="75" Click="simpanbtns_Click" />
-               <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="680,308,0,0" Name="bersihbtns" VerticalAlignment="Top" Width="75" Click="bersihbtns_Click" />
-               <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="770,308,0,0" Name="batalbtns" VerticalAlignment="Top" Width="75" Click="batalbtns_Click" />
-               <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="590,368,0,0" Name="tambahbtns" VerticalAlignment="Top" Width="75" Click="tambahbtns_Click" />
-               <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="680,368,0,0" Name="ubahbtns" VerticalAlignment="Top" Width="75" Click="ubahbtns_Click" />
-               <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="770,368,0,0" Name="hapusbtns" VerticalAlignment="Top" Width="75" Click="hapusbtns_Click" />
                <Button Height="22" HorizontalAlignment="Left" Margin="556,14,0,0" Name="refreshbtns" VerticalAlignment="Top" Width="22" Click="refreshbtns_Click" >
                   <Image Source="refresh.png" />
                </Button>
