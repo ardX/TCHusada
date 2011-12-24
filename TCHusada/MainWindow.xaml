@@ -1,4 +1,5 @@
-﻿<Window x:Class="TCHusada.MainWindow"
+﻿<!-- ardX's code -->
+<Window x:Class="TCHusada.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Name="utama"
