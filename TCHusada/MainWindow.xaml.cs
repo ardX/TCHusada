@@ -50,8 +50,8 @@ namespace TCHusada
          {
             if (checkPass(txtUserName.Text, passwordBox1.Password))
             {
-               //do something
-               MessageBox.Show("Berhasil masuk");
+               siapa.anda = txtUserName.Text;//simpan siapa yang login
+               //MessageBox.Show("Berhasil masuk");
                string pilih = txtUserName.Text;
                switch (pilih[0])
                {

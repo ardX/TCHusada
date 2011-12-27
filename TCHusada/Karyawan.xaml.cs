@@ -73,6 +73,10 @@ namespace TCHusada
          dataview(load_data("pasien"), dataGridS);
          status_boxs(false);
          tombol_es(true);
+
+         load_saya();
+         status_boxtt(false);
+         tombol_ett(true);
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -760,5 +764,89 @@ namespace TCHusada
       /// <summary>
       /// batas bawah tab PASIEN
       /// </summary>
+      /// 
+
+      private void status_boxtt(bool status)//fungsi kopas global
+      {
+         textBoxniptt.IsEnabled = false;
+         textBoxnamtt.IsEnabled = status;
+         textBoxalatt.IsEnabled = status;
+         textBoxtlptt.IsEnabled = status;
+         datemsktt.IsEnabled = status;
+      }
+
+      private void tombol_ett(bool status)//fungsi kopas global
+      {
+         ubahbtntt.IsEnabled = status;
+         simpanbtntt.IsEnabled = !(status);
+         bersihbtntt.IsEnabled = !(status);
+         batalbtntt.IsEnabled = !(status);
+      }
+
+      private void clear_boxtt()//fungsi kopas global
+      {
+         //textBoxniptt.Text = "";
+         textBoxnamtt.Text = "";
+         textBoxalatt.Text = "";
+         textBoxtlptt.Text = "";
+         datemsktt.Text = "";
+      }
+
+      private void load_saya()
+      {
+         //MessageBox.Show(siapa.anda);
+         cn.Open();
+         string sql = "select * from karyawan where NIP_KARYAWAN = '" + siapa.anda + "'";
+         OracleDataReader reader;
+         OracleCommand cmd = new OracleCommand(sql, cn);
+         reader = cmd.ExecuteReader();
+         if (reader.Read())
+         {
+            textBoxniptt.Text = reader.GetString(0);
+            textBoxnamtt.Text = reader.GetString(1);
+            textBoxalatt.Text = reader.GetString(2);
+            textBoxtlptt.Text = reader.GetString(3);
+            datemsktt.SelectedDate = reader.GetDateTime(4);
+         }
+         reader.Close();
+         cn.Close();
+      }
+
+      private void ubahbtntt_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_ett(false);
+         status_boxtt(true);
+      }
+
+      private void simpanbtntt_Click(object sender, RoutedEventArgs e)
+      {
+         string sql = "update KARYAWAN set "
+                         + " NAMA_KARYAWAN = '" + textBoxnamtt.Text + "',"
+                         + " ALAMAT_KARYAWAN= '" + textBoxalatt.Text + "',"
+                         + " NO_TELP_KARYAWAN = '" + textBoxtlptt.Text + "',"
+                         + " TGL_MASUK_KARYAWAN = '" + datemsktt.Text + "'"
+                         + " where NIP_KARYAWAN = '" + textBoxniptt.Text + "'";
+         if (Execute(sql))
+         {
+            MessageBox.Show("Data telah diupdate");
+         }
+         //method
+         tombol_ett(true);
+         status_boxtt(false);
+      }
+
+      private void bersihbtntt_Click(object sender, RoutedEventArgs e)
+      {
+         clear_boxtt();
+      }
+
+      private void batalbtntt_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_ett(true);
+         status_boxtt(false);
+         load_saya();
+      }
+
+      
    }
 }

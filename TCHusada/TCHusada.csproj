@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="siapa.cs" />
     <Page Include="Dokter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

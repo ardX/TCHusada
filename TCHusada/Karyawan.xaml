@@ -42,11 +42,11 @@
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,70,0,0" Name="textBoxnamtt" VerticalAlignment="Top" Width="200" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,110,0,0" Name="textBoxalatt" VerticalAlignment="Top" Width="200" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,150,0,0" Name="textBoxtlptt" VerticalAlignment="Top" Width="200" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,190,0,0" Name="textBoxtgltt" VerticalAlignment="Top" Width="200" />
-                     <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="6,278,0,0" Name="ubahbtntt" VerticalAlignment="Top" Width="75" />
-                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="101,278,0,0" Name="simpanbtntt" VerticalAlignment="Top" Width="75" />
-                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="200,278,0,0" Name="bersihbtntt" VerticalAlignment="Top" Width="75" />
-                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="298,278,0,0" Name="batalbtntt" VerticalAlignment="Top" Width="75" />
+                     <DatePicker Height="23" HorizontalAlignment="Left" Margin="133,190,0,0" Name="datemsktt" VerticalAlignment="Top" Width="200" />
+                     <Button Content="Ubah" Height="23" HorizontalAlignment="Left" Margin="6,278,0,0" Name="ubahbtntt" VerticalAlignment="Top" Width="75" Click="ubahbtntt_Click" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="101,278,0,0" Name="simpanbtntt" VerticalAlignment="Top" Width="75" Click="simpanbtntt_Click" />
+                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="200,278,0,0" Name="bersihbtntt" VerticalAlignment="Top" Width="75" Click="bersihbtntt_Click" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="298,278,0,0" Name="batalbtntt" VerticalAlignment="Top" Width="75" Click="batalbtntt_Click" />
                   </Grid>
                </GroupBox>
             </Grid>
