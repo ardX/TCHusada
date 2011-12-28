@@ -249,6 +249,7 @@ namespace TCHusada
          tombol_ek(true);
          bolehK = true;
          pilihK = 0;
+         textnipk.Text = "";
          dataGridK.SelectedIndex = ind;
       }
 
@@ -399,6 +400,7 @@ namespace TCHusada
          tombol_ed(true);
          bolehD = true;
          pilihD = 0;
+         textnipd.Text = "";
          dataGridD.SelectedIndex = ind;
       }
 
@@ -550,6 +552,7 @@ namespace TCHusada
          tombol_ep(true);
          bolehP = true;
          pilihP = 0;
+         textnipp.Text = "";
          dataGridP.SelectedIndex = ind;
       }
 
@@ -705,6 +708,7 @@ namespace TCHusada
          tombol_es(true);
          bolehS = true;
          pilihS = 0;
+         textnos.Text = "";
          dataGridS.SelectedIndex = ind;
       }
 
