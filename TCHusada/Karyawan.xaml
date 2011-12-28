@@ -29,7 +29,7 @@
       <Label Content="Karyawan" Height="28" HorizontalAlignment="Left" Margin="505,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" />
       <Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
       <TabControl Height="509" HorizontalAlignment="Left" Margin="58,92,0,0" Name="tabControl1" VerticalAlignment="Top" Width="966" TabStripPlacement="Left">
-         <TabItem Header="Saya" Name="tabItemSaya" Height="30" Width="80">
+         <TabItem Header="Profil" Name="tabItemSaya" Height="30" Width="80">
             <Grid>
                <GroupBox Header="Tentang Saya" Height="478" HorizontalAlignment="Left" Margin="28,0,0,0" Name="groupBoxTT" VerticalAlignment="Top" Width="429">
                   <Grid>

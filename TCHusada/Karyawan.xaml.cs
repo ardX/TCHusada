@@ -194,8 +194,7 @@ namespace TCHusada
          if (pilihK == 1)
          {
             error = false;
-            string sql = "insert into KARYAWAN values ("
-                          + "'" + textnipk.Text + "',"
+            string sql = "insert into KARYAWAN values (seqkar.nextval,"
                           + "'" + textnamk.Text + "',"
                           + "'" + textalmtk.Text + "',"
                           + "'" + texttelpk.Text + "',"
@@ -261,6 +260,7 @@ namespace TCHusada
          status_boxk(true);
          tombol_ek(false);
          pilihK = 1;
+         textnipk.Text = "AUTONUMBER"; textnipk.IsEnabled = false;
       }
 
       private void ubahbtnk_Click(object sender, RoutedEventArgs e)
@@ -344,8 +344,7 @@ namespace TCHusada
          if (pilihD == 1)
          {
             error = false;
-            string sql = "insert into DOKTER values ("
-                          + "'" + textnipd.Text + "',"
+            string sql = "insert into DOKTER values (seqdok.nextval,"
                           + "'" + textnamd.Text + "',"
                           + "'" + textalmtd.Text + "',"
                           + "'" + textkeld.Text + "',"
@@ -411,6 +410,7 @@ namespace TCHusada
          status_boxd(true);
          tombol_ed(false);
          pilihD = 1;
+         textnipd.Text = "AUTONUMBER"; textnipd.IsEnabled = false;
       }
 
       private void ubahbtnd_Click(object sender, RoutedEventArgs e)
@@ -495,8 +495,7 @@ namespace TCHusada
          if (pilihP == 1)
          {
             error = false;
-            string sql = "insert into PERAWAT values ("
-                          + "'" + textnipp.Text + "',"
+            string sql = "insert into PERAWAT values (seqper.nextval,"
                           + "'" + textnamp.Text + "',"
                           + "'" + textalmtp.Text + "',"
                           + "'" + textkelp.Text + "',"
@@ -562,6 +561,7 @@ namespace TCHusada
          status_boxp(true);
          tombol_ep(false);
          pilihP = 1;
+         textnipp.Text = "AUTONUMBER"; textnipp.IsEnabled = false;
       }
 
       private void ubahbtnp_Click(object sender, RoutedEventArgs e)
@@ -648,8 +648,7 @@ namespace TCHusada
          if (pilihS == 1)
          {
             error = false;
-            string sql = "insert into PASIEN values ("
-                          + "'" + textnos.Text + "',"
+            string sql = "insert into PASIEN values (seqpas.nextval,"
                           + "'" + textnams.Text + "',"
                           + "'" + textalmts.Text + "',"
                           + "'" + textkels.Text + "',"
@@ -717,6 +716,7 @@ namespace TCHusada
          status_boxs(true);
          tombol_es(false);
          pilihS = 1;
+         textnos.Text = "AUTONUMBER"; textnos.IsEnabled = false;
       }
 
       private void ubahbtns_Click(object sender, RoutedEventArgs e)

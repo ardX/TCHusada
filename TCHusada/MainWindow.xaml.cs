@@ -58,21 +58,21 @@ namespace TCHusada
                   case '5':
                      switch (pilih[1])
                      {
-                        case '1':
+                        case '3':
                            //dokter
                            MessageBox.Show("Dokter");
                            Dokter d = new Dokter();
                            d.Show();
                            this.Hide();
                            break;
-                        case '2':
+                        case '1':
                            //perawat
                            MessageBox.Show("Perawat");
                            Perawat p = new Perawat();
                            p.Show();
                            this.Hide();
                            break;
-                        case '3':
+                        case '4':
                            //petugas
                            MessageBox.Show("Karyawan");
                            Karyawan k = new Karyawan();
