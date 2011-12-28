@@ -155,6 +155,25 @@ namespace TCHusada
          dg.ColumnWidth = DataGridLength.Auto;
       }
 
+      private string getmaxnomor(string kolom, string tabel)
+      {
+         string metu = "";
+         cn.Open();
+         string sql = "select max(" + kolom + ") from " + tabel;
+         OracleDataReader reader;
+         OracleCommand cmd = new OracleCommand(sql, cn);
+         reader = cmd.ExecuteReader();
+         if (reader.Read())
+         {
+            metu = reader.GetString(0);
+         }
+         ulong metuu = UInt64.Parse(metu) + 1;
+         metu = metuu+"";
+         reader.Close();
+         cn.Close();
+         return metu;
+      }
+
       /// <summary>
       /// batas bawah fungsi global
       /// </summary>
@@ -261,7 +280,8 @@ namespace TCHusada
          status_boxk(true);
          tombol_ek(false);
          pilihK = 1;
-         textnipk.Text = "AUTONUMBER"; textnipk.IsEnabled = false;
+         //textnipk.Text = "AUTONUMBER"; textnipk.IsEnabled = false;
+         textnipk.Text = getmaxnomor("NIP_KARYAWAN", "KARYAWAN"); textnipk.IsEnabled = false;
       }
 
       private void ubahbtnk_Click(object sender, RoutedEventArgs e)
@@ -412,7 +432,8 @@ namespace TCHusada
          status_boxd(true);
          tombol_ed(false);
          pilihD = 1;
-         textnipd.Text = "AUTONUMBER"; textnipd.IsEnabled = false;
+         //textnipd.Text = "AUTONUMBER"; textnipd.IsEnabled = false;
+         textnipd.Text = getmaxnomor("NIP_DOKTER", "DOKTER"); textnipd.IsEnabled = false;
       }
 
       private void ubahbtnd_Click(object sender, RoutedEventArgs e)
@@ -564,7 +585,8 @@ namespace TCHusada
          status_boxp(true);
          tombol_ep(false);
          pilihP = 1;
-         textnipp.Text = "AUTONUMBER"; textnipp.IsEnabled = false;
+         //textnipp.Text = "AUTONUMBER"; textnipp.IsEnabled = false;
+         textnipp.Text = getmaxnomor("NIP_PERAWAT", "PERAWAT"); textnipp.IsEnabled = false;
       }
 
       private void ubahbtnp_Click(object sender, RoutedEventArgs e)
@@ -720,7 +742,8 @@ namespace TCHusada
          status_boxs(true);
          tombol_es(false);
          pilihS = 1;
-         textnos.Text = "AUTONUMBER"; textnos.IsEnabled = false;
+         //textnos.Text = "AUTONUMBER"; textnos.IsEnabled = false;
+         textnos.Text = getmaxnomor("NO_PASIEN", "PASIEN"); textnos.IsEnabled = false;
       }
 
       private void ubahbtns_Click(object sender, RoutedEventArgs e)
