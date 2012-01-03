@@ -21,3 +21,6 @@ C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Deb
 C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Karyawan.g.cs
 C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Pasien.g.cs
 C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Perawat.g.cs
+C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\bin\Debug\TCHusada.exe.config
+C:\Users\MSI\documents\visual studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Report1.baml
+C:\Users\MSI\documents\visual studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Report1.g.cs

@@ -52,6 +52,7 @@ namespace TCHusada
             label6.Content = "" + DateTime.Now.Hour.ToString("d2") + ":"
             + DateTime.Now.Minute.ToString("d2");
          });
+         labellogin.Content = siapa.anda;
          load_kabeh();
         
       }
@@ -874,6 +875,11 @@ namespace TCHusada
          load_saya();
       }
 
+      private void tesreportbtn_Click(object sender, RoutedEventArgs e)
+      {
+         Report1 r = new Report1();
+         r.Show();
+      }
       
    }
 }

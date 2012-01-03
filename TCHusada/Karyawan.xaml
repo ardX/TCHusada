@@ -24,6 +24,7 @@
    <Grid>
       <Image Name="imgBackground" Stretch="Fill" Source="ipatkecil.png" Margin="0,0,0,0" />
       <Label Content="00:00" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="520,21,0,0" Name="label6" VerticalAlignment="Top" />
+      <Label Content="User" Height="28" HorizontalAlignment="Left" Margin="145,21,0,0" Name="labellogin" VerticalAlignment="Top" />
       <Image Height="31" HorizontalAlignment="Left" Margin="1031,54,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="30" Source="/TCHusada;component/bol.png" MouseDown="image1_MouseDown" Cursor="Hand" ToolTip="Keluar dari aplikasi" />
       <Label Content="Logout" Height="28" HorizontalAlignment="Left" Margin="67,53,0,0" Name="tblogout" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Kembali ke menu login" MouseDown="tblogout_MouseDown" />
       <Label Content="Karyawan" Height="28" HorizontalAlignment="Left" Margin="505,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" />
@@ -49,6 +50,7 @@
                      <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="298,278,0,0" Name="batalbtntt" VerticalAlignment="Top" Width="75" Click="batalbtntt_Click" />
                   </Grid>
                </GroupBox>
+               <Button Content="Report" Height="23" HorizontalAlignment="Left" Margin="561,78,0,0" Name="tesreportbtn" VerticalAlignment="Top" Width="75" Click="tesreportbtn_Click" />
             </Grid>
          </TabItem>
          <TabItem Header="Karyawan" Name="tabItemK" Height="30" Width="80">
@@ -218,6 +220,6 @@
                </Button>
             </Grid>
          </TabItem>
-      </TabControl>
-         </Grid>
+   </TabControl>
+  </Grid>
 </Window>
