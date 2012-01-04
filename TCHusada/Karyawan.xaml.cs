@@ -337,7 +337,7 @@ namespace TCHusada
          textnipd.IsEnabled = status;
          textnamd.IsEnabled = status;
          textalmtd.IsEnabled = status;
-         textkeld.IsEnabled = status;
+         combokeld.IsEnabled = status;
          texttelpd.IsEnabled = status;
       }
 
@@ -355,7 +355,7 @@ namespace TCHusada
       {
          textnamd.Text = "";
          textalmtd.Text = "";
-         textkeld.Text = "";
+         combokeld.Text = "";
          texttelpd.Text = "";
       }
 
@@ -369,7 +369,7 @@ namespace TCHusada
             string sql = "insert into DOKTER values (seqdok.nextval,"
                           + "'" + textnamd.Text + "',"
                           + "'" + textalmtd.Text + "',"
-                          + "'" + textkeld.Text + "',"
+                          + "'" + combokeld.Text + "',"
                           + "'" + texttelpd.Text + "')";
             if (Execute(sql))
             {
@@ -386,7 +386,7 @@ namespace TCHusada
             string sql = "update DOKTER set "
                          + " NAMA_DOKTER = '" + textnamd.Text + "',"
                          + " ALAMAT_DOKTER= '" + textalmtd.Text + "',"
-                         + " JENISKELAMIN_DOKTER = '" + textkeld.Text + "',"
+                         + " JENISKELAMIN_DOKTER = '" + combokeld.Text + "',"
                          + " TELP_DOKTER = '" + texttelpd.Text + "'"
                          + " where NIP_DOKTER = '" + textnipd.Text + "'";
             if (Execute(sql))
@@ -416,6 +416,7 @@ namespace TCHusada
       private void batalbtnd_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridD.SelectedIndex;
+         combokeld.SelectedIndex = -1;
          dataview(load_data("dokter"), dataGridD);
          status_boxd(false);
          tombol_ed(true);
@@ -490,7 +491,7 @@ namespace TCHusada
          textnipp.IsEnabled = status;
          textnamp.IsEnabled = status;
          textalmtp.IsEnabled = status;
-         textkelp.IsEnabled = status;
+         combokelp.IsEnabled = status;
          texttelpp.IsEnabled = status;
       }
 
@@ -508,7 +509,7 @@ namespace TCHusada
       {
          textnamp.Text = "";
          textalmtp.Text = "";
-         textkelp.Text = "";
+         combokelp.Text = "";
          texttelpp.Text = "";
       }
 
@@ -522,7 +523,7 @@ namespace TCHusada
             string sql = "insert into PERAWAT values (seqper.nextval,"
                           + "'" + textnamp.Text + "',"
                           + "'" + textalmtp.Text + "',"
-                          + "'" + textkelp.Text + "',"
+                          + "'" + combokelp.Text + "',"
                           + "'" + texttelpp.Text + "')";
             if (Execute(sql))
             {
@@ -539,7 +540,7 @@ namespace TCHusada
             string sql = "update PERAWAT set "
                          + " NAMA_PERAWAT = '" + textnamp.Text + "',"
                          + " ALAMAT_PERAWAT= '" + textalmtp.Text + "',"
-                         + " JENISKELAMIN_PERAWAT = '" + textkelp.Text + "',"
+                         + " JENISKELAMIN_PERAWAT = '" + combokelp.Text + "',"
                          + " TELP_PERAWAT = '" + texttelpp.Text + "'"
                          + " where NIP_PERAWAT = '" + textnipp.Text + "'";
             if (Execute(sql))
@@ -569,6 +570,7 @@ namespace TCHusada
       private void batalbtnp_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridP.SelectedIndex;
+         combokelp.SelectedIndex = -1;
          dataview(load_data("PERAWAT"), dataGridP);
          status_boxp(false);
          tombol_ep(true);
@@ -643,7 +645,7 @@ namespace TCHusada
          textnos.IsEnabled = status;
          textnams.IsEnabled = status;
          textalmts.IsEnabled = status;
-         textkels.IsEnabled = status;
+         combokels.IsEnabled = status;
          texttelps.IsEnabled = status;
          datelhrs.IsEnabled = status;
       }
@@ -662,7 +664,7 @@ namespace TCHusada
       {
          textnams.Text = "";
          textalmts.Text = "";
-         textkels.Text = "";
+         combokels.Text = "";
          texttelps.Text = "";
          datelhrs.Text = "";
       }
@@ -677,7 +679,7 @@ namespace TCHusada
             string sql = "insert into PASIEN values (seqpas.nextval,"
                           + "'" + textnams.Text + "',"
                           + "'" + textalmts.Text + "',"
-                          + "'" + textkels.Text + "',"
+                          + "'" + combokels.Text + "',"
                     + "'" + texttelps.Text + "',"
                           + "'" + datelhrs.Text + "')";
             if (Execute(sql))
@@ -695,7 +697,7 @@ namespace TCHusada
             string sql = "update PASIEN set "
                          + " NAMA_PASIEN = '" + textnams.Text + "',"
                          + " ALAMAT_PASIEN= '" + textalmts.Text + "',"
-                         + " KELAMIN_PASIEN = '" + textkels.Text + "',"
+                         + " KELAMIN_PASIEN = '" + combokels.Text + "',"
                    + " TELP_PASIEN = '" + texttelps.Text + "',"
                          + " LAHIR_PASIEN = '" + datelhrs.Text + "'"
                          + " where NO_PASIEN = '" + textnos.Text + "'";
@@ -726,6 +728,7 @@ namespace TCHusada
       private void batalbtns_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridS.SelectedIndex;
+         combokels.SelectedIndex = -1;
          dataview(load_data("PASIEN"), dataGridS);
          status_boxs(false);
          tombol_es(true);
