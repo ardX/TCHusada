@@ -24,68 +24,45 @@ namespace TCHusada
    /// </summary>
    public partial class MainWindow : Window
    {
-      OracleConnection cn = new OracleConnection("Data Source=(DESCRIPTION="
-             + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))"
-             + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));"
-             + "User Id=basdat; Password=basdat;");
-
-      DispatcherTimer timer;
       public MainWindow()
       {
          InitializeComponent();
-         timer = new DispatcherTimer();
-         timer.Interval = TimeSpan.FromSeconds(1.0);
-         timer.Start();
-         timer.Tick += new EventHandler(delegate(object s, EventArgs a)
-                           {
-                              label6.Content = "" + DateTime.Now.Hour.ToString("d2") + ":"
-                              + DateTime.Now.Minute.ToString("d2");
-                           });
+         labeljam.Content = jam.berapa();
       }
 
       public void masuk()
       {
-         //login
          if (!(txtUserName.Text == "" || passwordBox1.Password == ""))
          {
-            if (checkPass(txtUserName.Text, passwordBox1.Password))
+            if (F.checkPass(txtUserName.Text, passwordBox1.Password))
             {
-               siapa.anda = txtUserName.Text;//simpan siapa yang login
-               //MessageBox.Show("Berhasil masuk");
+               siapa.anda = txtUserName.Text;
                string pilih = txtUserName.Text;
-               switch (pilih[0])
+               switch (pilih[1])
                {
-                  case '5':
-                     switch (pilih[1])
-                     {
-                        case '3':
-                           //dokter
-                           MessageBox.Show("Dokter");
-                           Dokter d = new Dokter();
-                           d.Show();
-                           this.Hide();
-                           break;
-                        case '1':
-                           //perawat
-                           MessageBox.Show("Perawat");
-                           Perawat p = new Perawat();
-                           p.Show();
-                           this.Hide();
-                           break;
-                        case '4':
-                           //petugas
-                           MessageBox.Show("Karyawan");
-                           Karyawan k = new Karyawan();
-                           k.Show();
-                           this.Hide();
-                           break;
-                     }
+                  case '3':
+                     //MessageBox.Show("Dokter");
+                     Dokter d = new Dokter();
+                     d.Show();
+                     this.Hide();
+                     break;
+                  case '1':
+                     //MessageBox.Show("Perawat");
+                     Perawat p = new Perawat();
+                     p.Show();
+                     this.Hide();
+                     break;
+                  case '4':
+                     //MessageBox.Show("Karyawan");
+                     Karyawan k = new Karyawan();
+                     k.Show();
+                     this.Hide();
                      break;
                   case '2':
-                     //Pasien
-                     MessageBox.Show("Pasien");
-                     break;
-                  default:
+                     //MessageBox.Show("Pasien");
+                     Pasien s = new Pasien();
+                     s.Show();
+                     this.Hide();
                      break;
                }
             }
@@ -96,106 +73,6 @@ namespace TCHusada
          else if (passwordBox1.Password == "" && !(txtUserName.Text == ""))
             MessageBox.Show("password kosong");
          else MessageBox.Show("username & password kosong");
-      }
-
-      //fungsi pass enkripsi
-      public void addPass(string user, string pass)
-      {
-         string sql = "insert into pengguna values ("
-                          + "'" + user + "',"
-                          + "'" + HashCode(pass) + "')";
-         if (Execute(sql))
-            MessageBox.Show("Data telah ditambahkan");
-
-         //file
-         /*
-         if (!checkPass(txtUserName.Text, passwordBox1.Password)) //cek udah ada belum
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"usrpss.db", true))
-            {
-               file.WriteLine(HashCode(user + pass));
-            }
-          */
-      }
-
-      public bool checkPass(string user, string pass)
-      {
-         //db
-         cn.Open();
-         string sql = "select pass from pengguna where username = '" + user + "'";
-         OracleDataReader reader;
-         OracleCommand cmd = new OracleCommand(sql, cn);
-         reader = cmd.ExecuteReader();
-         string cek = "";
-         if(reader.Read())
-            cek = reader.GetString(0);
-         reader.Close();
-         cn.Close();
-         if (HashCode(pass) == cek)
-            return true;
-         return false;
-
-         //file
-         /*
-         string[] lines = System.IO.File.ReadAllLines(@"usrpss.db");
-         foreach (string line in lines)
-         {
-            if (HashCode(user + pass) == line)
-               return true;
-         }
-         return false;
-         */
-      }
-
-      // disimpan dalam bentuk hashcode
-      public static string HashCode(string str)
-      {
-         string rethash = "";
-         try
-         {
-            System.Security.Cryptography.SHA1 hash = System.Security.Cryptography.SHA1.Create();
-            System.Text.ASCIIEncoding encoder = new System.Text.ASCIIEncoding();
-            byte[] combined = encoder.GetBytes(str);
-            hash.ComputeHash(combined);
-            rethash = Convert.ToBase64String(hash.Hash);
-         }
-         catch (Exception ex)
-         {
-            string strerr = "Error in HashCode : " + ex.Message;
-         }
-         return rethash;
-      }
-
-      public int ExecuteNonQuery(string sql)
-      {
-         try
-         {
-            int affected;
-            OracleTransaction mytransaction = cn.BeginTransaction();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandText = sql;
-            affected = cmd.ExecuteNonQuery();
-            mytransaction.Commit();
-            return affected;
-         }
-         catch (Exception ex)
-         {
-            MessageBox.Show(ex.Message);
-         }
-         return -1;
-      }
-
-      private bool Execute(string sql)
-      {
-         int affected;
-         cn.Open();
-         if (cn != null)
-         {
-            affected = ExecuteNonQuery(sql);
-            cn.Close();
-            if (affected < 1) return false;
-            return true;
-         }
-         return false;
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -266,8 +143,7 @@ namespace TCHusada
 
       private void button1_Click(object sender, RoutedEventArgs e)
       {
-         addPass(txtUserName.Text, passwordBox1.Password);
-         MessageBox.Show("masuk");
+         F.addPass(txtUserName.Text, passwordBox1.Password);
       }
 
       private void label1_MouseDown(object sender, MouseButtonEventArgs e)

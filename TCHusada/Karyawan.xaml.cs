@@ -23,14 +23,6 @@ namespace TCHusada
    /// </summary>
    public partial class Karyawan : Window
    {
-      OracleConnection cn = new OracleConnection("Data Source=(DESCRIPTION="
-             + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))"
-             + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));"
-             + "User Id=basdat; Password=basdat;");
-      OracleDataAdapter dr = new OracleDataAdapter();
-      OracleCommandBuilder cmd = new OracleCommandBuilder();
-
-      DispatcherTimer timer;
       bool bolehK = true;
       int pilihK = 0;
       bool bolehD = true;
@@ -43,41 +35,35 @@ namespace TCHusada
       public Karyawan()
       {
          InitializeComponent();
-
-         timer = new DispatcherTimer();
-         timer.Interval = TimeSpan.FromSeconds(1.0);
-         timer.Start();
-         timer.Tick += new EventHandler(delegate(object s, EventArgs a)
-         {
-            label6.Content = "" + DateTime.Now.Hour.ToString("d2") + ":"
-            + DateTime.Now.Minute.ToString("d2");
-         });
+         labeljam.Content = jam.berapa();
          labellogin.Content = siapa.anda;
          load_kabeh();
-        
       }
 
       public void load_kabeh()
       {
-         dataview(load_data("karyawan"), dataGridK);
+         F.dataview(F.load_data("karyawan"), dataGridK);
          status_boxk(false);
          tombol_ek(true);
 
-         dataview(load_data("dokter"), dataGridD);
+         F.dataview(F.load_data("dokter"), dataGridD);
          status_boxd(false);
          tombol_ed(true);
 
-         dataview(load_data("perawat"), dataGridP);
+         F.dataview(F.load_data("perawat"), dataGridP);
          status_boxp(false);
          tombol_ep(true);
 
-         dataview(load_data("pasien"), dataGridS);
+         F.dataview(F.load_data("pasien"), dataGridS);
          status_boxs(false);
          tombol_es(true);
 
          load_saya();
          status_boxtt(false);
          tombol_ett(true);
+
+         tombol_gntp(true);
+         status_gntp(false);
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -108,72 +94,6 @@ namespace TCHusada
          this.Close();
       }
 
-      public int ExecuteNonQuery(string sql)
-      {
-         try
-         {
-            int affected;
-            OracleTransaction mytransaction = cn.BeginTransaction();
-            OracleCommand cmd = cn.CreateCommand();
-            cmd.CommandText = sql;
-            affected = cmd.ExecuteNonQuery();
-            mytransaction.Commit();
-            return affected;
-         }
-         catch (Exception ex)
-         {
-            MessageBox.Show(ex.Message);
-         }
-         return -1;
-      }
-
-      private bool Execute(string sql)
-      {
-         int affected;
-         cn.Open();
-         if(cn != null)
-         {
-            affected = ExecuteNonQuery(sql);
-            cn.Close();
-            if (affected < 1) return false;
-            return true;
-         }
-         return false;
-      }
-
-      private DataSet load_data(string tbl)//fungsi modif global
-      {
-         DataSet ds = new DataSet();
-         dr = new OracleDataAdapter("select * from " + tbl, cn);
-         cmd = new OracleCommandBuilder(dr);
-         dr.Fill(ds);
-         return ds;
-      }
-
-      private void dataview(DataSet sd, DataGrid dg)//fungsi modif global
-      {
-         dg.ItemsSource = sd.Tables[0].DefaultView;
-         dg.ColumnWidth = DataGridLength.Auto;
-      }
-
-      private string getmaxnomor(string kolom, string tabel)
-      {
-         string metu = "";
-         cn.Open();
-         string sql = "select max(" + kolom + ") from " + tabel;
-         OracleDataReader reader;
-         OracleCommand cmd = new OracleCommand(sql, cn);
-         reader = cmd.ExecuteReader();
-         if (reader.Read())
-         {
-            metu = reader.GetString(0);
-         }
-         ulong metuu = UInt64.Parse(metu) + 1;
-         metu = metuu+"";
-         reader.Close();
-         cn.Close();
-         return metu;
-      }
 
       /// <summary>
       /// batas bawah fungsi global
@@ -219,7 +139,7 @@ namespace TCHusada
                           + "'" + textalmtk.Text + "',"
                           + "'" + texttelpk.Text + "',"
                           + "'" + datemskk.Text + "')";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridK.Items.Count;
@@ -237,7 +157,7 @@ namespace TCHusada
                          + " NO_TELP_KARYAWAN = '" + texttelpk.Text + "',"
                          + " TGL_MASUK_KARYAWAN = '" + datemskk.Text + "'"
                          + " where NIP_KARYAWAN = '" + textnipk.Text + "'";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah diupdate");
                ind = dataGridK.SelectedIndex;
@@ -250,7 +170,7 @@ namespace TCHusada
             tombol_ek(true);
             bolehK = true;
             pilihK = 0;
-            dataview(load_data("karyawan"), dataGridK);
+            F.dataview(F.load_data("karyawan"), dataGridK);
             dataGridK.SelectedIndex = ind;
          }
       }
@@ -264,7 +184,7 @@ namespace TCHusada
       private void batalbtnk_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridK.SelectedIndex;
-         dataview(load_data("karyawan"), dataGridK);
+         F.dataview(F.load_data("karyawan"), dataGridK);
          status_boxk(false);
          tombol_ek(true);
          bolehK = true;
@@ -282,7 +202,7 @@ namespace TCHusada
          tombol_ek(false);
          pilihK = 1;
          //textnipk.Text = "AUTONUMBER"; textnipk.IsEnabled = false;
-         textnipk.Text = getmaxnomor("NIP_KARYAWAN", "KARYAWAN"); textnipk.IsEnabled = false;
+         textnipk.Text = F.getmaxnomor("NIP_KARYAWAN", "KARYAWAN"); textnipk.IsEnabled = false;
       }
 
       private void ubahbtnk_Click(object sender, RoutedEventArgs e)
@@ -305,9 +225,9 @@ namespace TCHusada
             if (MessageBox.Show("Hapus entry \"" + textnipk.Text + "\" dari tabel ?", "Delete " + textnipk.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                string sql = "delete from KARYAWAN where NIP_KARYAWAN = " + textnipk.Text;
-               if (Execute(sql))
+               if (F.Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(load_data("karyawan"), dataGridK);
+               F.dataview(F.load_data("karyawan"), dataGridK);
                dataGridK.UnselectAll();
             }
          }
@@ -317,7 +237,7 @@ namespace TCHusada
       private void refreshbtnk_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridK.SelectedIndex;
-         dataview(load_data("karyawan"), dataGridK);
+         F.dataview(F.load_data("karyawan"), dataGridK);
          dataGridK.SelectedIndex = ind;
       }
 
@@ -371,7 +291,7 @@ namespace TCHusada
                           + "'" + textalmtd.Text + "',"
                           + "'" + combokeld.Text + "',"
                           + "'" + texttelpd.Text + "')";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridD.Items.Count;
@@ -389,7 +309,7 @@ namespace TCHusada
                          + " JENISKELAMIN_DOKTER = '" + combokeld.Text + "',"
                          + " TELP_DOKTER = '" + texttelpd.Text + "'"
                          + " where NIP_DOKTER = '" + textnipd.Text + "'";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah diupdate");
                ind = dataGridD.SelectedIndex;
@@ -402,7 +322,7 @@ namespace TCHusada
             tombol_ed(true);
             bolehD = true;
             pilihD = 0;
-            dataview(load_data("dokter"), dataGridD);
+            F.dataview(F.load_data("dokter"), dataGridD);
             dataGridD.SelectedIndex = ind;
          }
       }
@@ -417,7 +337,7 @@ namespace TCHusada
       {
          int ind = dataGridD.SelectedIndex;
          combokeld.SelectedIndex = -1;
-         dataview(load_data("dokter"), dataGridD);
+         F.dataview(F.load_data("dokter"), dataGridD);
          status_boxd(false);
          tombol_ed(true);
          bolehD = true;
@@ -435,7 +355,7 @@ namespace TCHusada
          tombol_ed(false);
          pilihD = 1;
          //textnipd.Text = "AUTONUMBER"; textnipd.IsEnabled = false;
-         textnipd.Text = getmaxnomor("NIP_DOKTER", "DOKTER"); textnipd.IsEnabled = false;
+         textnipd.Text = F.getmaxnomor("NIP_DOKTER", "DOKTER"); textnipd.IsEnabled = false;
       }
 
       private void ubahbtnd_Click(object sender, RoutedEventArgs e)
@@ -458,9 +378,9 @@ namespace TCHusada
             if (MessageBox.Show("Hapus entry \"" + textnipd.Text + "\" dari tabel ?", "Delete " + textnipd.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                string sql = "delete from dokter where NIP_DOKTER = " + textnipd.Text;
-               if (Execute(sql))
+               if (F.Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(load_data("dokter"), dataGridD);
+               F.dataview(F.load_data("dokter"), dataGridD);
                dataGridD.UnselectAll();
             }
          }
@@ -470,7 +390,7 @@ namespace TCHusada
       private void refreshbtnd_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridD.SelectedIndex;
-         dataview(load_data("dokter"), dataGridD);
+         F.dataview(F.load_data("dokter"), dataGridD);
          dataGridD.SelectedIndex = ind;
       }
 
@@ -525,7 +445,7 @@ namespace TCHusada
                           + "'" + textalmtp.Text + "',"
                           + "'" + combokelp.Text + "',"
                           + "'" + texttelpp.Text + "')";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridP.Items.Count;
@@ -543,7 +463,7 @@ namespace TCHusada
                          + " JENISKELAMIN_PERAWAT = '" + combokelp.Text + "',"
                          + " TELP_PERAWAT = '" + texttelpp.Text + "'"
                          + " where NIP_PERAWAT = '" + textnipp.Text + "'";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah diupdate");
                ind = dataGridP.SelectedIndex;
@@ -556,7 +476,7 @@ namespace TCHusada
             tombol_ep(true);
             bolehP = true;
             pilihP = 0;
-            dataview(load_data("PERAWAT"), dataGridP);
+            F.dataview(F.load_data("PERAWAT"), dataGridP);
             dataGridP.SelectedIndex = ind;
          }
       }
@@ -571,7 +491,7 @@ namespace TCHusada
       {
          int ind = dataGridP.SelectedIndex;
          combokelp.SelectedIndex = -1;
-         dataview(load_data("PERAWAT"), dataGridP);
+         F.dataview(F.load_data("PERAWAT"), dataGridP);
          status_boxp(false);
          tombol_ep(true);
          bolehP = true;
@@ -589,7 +509,7 @@ namespace TCHusada
          tombol_ep(false);
          pilihP = 1;
          //textnipp.Text = "AUTONUMBER"; textnipp.IsEnabled = false;
-         textnipp.Text = getmaxnomor("NIP_PERAWAT", "PERAWAT"); textnipp.IsEnabled = false;
+         textnipp.Text = F.getmaxnomor("NIP_PERAWAT", "PERAWAT"); textnipp.IsEnabled = false;
       }
 
       private void ubahbtnp_Click(object sender, RoutedEventArgs e)
@@ -612,9 +532,9 @@ namespace TCHusada
             if (MessageBox.Show("Hapus entry \"" + textnipp.Text + "\" dari tabel ?", "Delete " + textnipp.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                string sql = "delete from PERAWAT where NIP_PERAWAT = " + textnipp.Text;
-               if (Execute(sql))
+               if (F.Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(load_data("PERAWAT"), dataGridP);
+               F.dataview(F.load_data("PERAWAT"), dataGridP);
                dataGridP.UnselectAll();
             }
          }
@@ -624,7 +544,7 @@ namespace TCHusada
       private void refreshbtnp_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridP.SelectedIndex;
-         dataview(load_data("PERAWAT"), dataGridP);
+         F.dataview(F.load_data("PERAWAT"), dataGridP);
          dataGridP.SelectedIndex = ind;
       }
 
@@ -682,7 +602,7 @@ namespace TCHusada
                           + "'" + combokels.Text + "',"
                     + "'" + texttelps.Text + "',"
                           + "'" + datelhrs.Text + "')";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridS.Items.Count;
@@ -701,7 +621,7 @@ namespace TCHusada
                    + " TELP_PASIEN = '" + texttelps.Text + "',"
                          + " LAHIR_PASIEN = '" + datelhrs.Text + "'"
                          + " where NO_PASIEN = '" + textnos.Text + "'";
-            if (Execute(sql))
+            if (F.Execute(sql))
             {
                MessageBox.Show("Data telah diupdate");
                ind = dataGridS.SelectedIndex;
@@ -714,7 +634,7 @@ namespace TCHusada
             tombol_es(true);
             bolehS = true;
             pilihS = 0;
-            dataview(load_data("PASIEN"), dataGridS);
+            F.dataview(F.load_data("PASIEN"), dataGridS);
             dataGridS.SelectedIndex = ind;
          }
       }
@@ -729,7 +649,7 @@ namespace TCHusada
       {
          int ind = dataGridS.SelectedIndex;
          combokels.SelectedIndex = -1;
-         dataview(load_data("PASIEN"), dataGridS);
+         F.dataview(F.load_data("PASIEN"), dataGridS);
          status_boxs(false);
          tombol_es(true);
          bolehS = true;
@@ -747,7 +667,7 @@ namespace TCHusada
          tombol_es(false);
          pilihS = 1;
          //textnos.Text = "AUTONUMBER"; textnos.IsEnabled = false;
-         textnos.Text = getmaxnomor("NO_PASIEN", "PASIEN"); textnos.IsEnabled = false;
+         textnos.Text = F.getmaxnomor("NO_PASIEN", "PASIEN"); textnos.IsEnabled = false;
       }
 
       private void ubahbtns_Click(object sender, RoutedEventArgs e)
@@ -770,9 +690,9 @@ namespace TCHusada
             if (MessageBox.Show("Hapus entry \"" + textnos.Text + "\" dari tabel ?", "Delete " + textnos.Text, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                string sql = "delete from PASIEN where NO_PASIEN = " + textnos.Text;
-               if (Execute(sql))
+               if (F.Execute(sql))
                   MessageBox.Show("Data telah dihapus");
-               dataview(load_data("PASIEN"), dataGridS);
+               F.dataview(F.load_data("PASIEN"), dataGridS);
                dataGridS.UnselectAll();
             }
          }
@@ -782,7 +702,7 @@ namespace TCHusada
       private void refreshbtns_Click(object sender, RoutedEventArgs e)
       {
          int ind = dataGridS.SelectedIndex;
-         dataview(load_data("PASIEN"), dataGridS);
+         F.dataview(F.load_data("PASIEN"), dataGridS);
          dataGridS.SelectedIndex = ind;
       }
 
@@ -826,10 +746,10 @@ namespace TCHusada
       private void load_saya()
       {
          //MessageBox.Show(siapa.anda);
-         cn.Open();
+         F.cn.Open();
          string sql = "select * from karyawan where NIP_KARYAWAN = '" + siapa.anda + "'";
          OracleDataReader reader;
-         OracleCommand cmd = new OracleCommand(sql, cn);
+         OracleCommand cmd = new OracleCommand(sql, F.cn);
          reader = cmd.ExecuteReader();
          if (reader.Read())
          {
@@ -840,7 +760,7 @@ namespace TCHusada
             datemsktt.SelectedDate = reader.GetDateTime(4);
          }
          reader.Close();
-         cn.Close();
+         F.cn.Close();
       }
 
       private void ubahbtntt_Click(object sender, RoutedEventArgs e)
@@ -857,7 +777,7 @@ namespace TCHusada
                          + " NO_TELP_KARYAWAN = '" + textBoxtlptt.Text + "',"
                          + " TGL_MASUK_KARYAWAN = '" + datemsktt.Text + "'"
                          + " where NIP_KARYAWAN = '" + textBoxniptt.Text + "'";
-         if (Execute(sql))
+         if (F.Execute(sql))
          {
             MessageBox.Show("Data telah diupdate");
          }
@@ -882,6 +802,45 @@ namespace TCHusada
       {
          Report1 r = new Report1();
          r.Show();
+      }
+
+      private void tombol_gntp(bool status)
+      {
+         gantibtn.IsEnabled = status;
+         simpnbtn.IsEnabled = !(status);
+         batlbtn.IsEnabled = !(status);
+      }
+
+      private void status_gntp(bool status)
+      {
+         passwordLama.IsEnabled = status;
+         passwordBaru.IsEnabled = status;
+         passwordBaru2.IsEnabled = status;
+      }
+
+      private void clear_gntp()
+      {
+         passwordLama.Password = "";
+         passwordBaru.Password = "";
+         passwordBaru2.Password = "";
+      }
+
+      private void simpnbtn_Click(object sender, RoutedEventArgs e)
+      {
+         F.GantiPass(siapa.anda, passwordLama.Password, passwordBaru.Password, passwordBaru2.Password);
+      }
+
+      private void gantibtn_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_gntp(false);
+         status_gntp(true);
+      }
+
+      private void batlbtn_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_gntp(true);
+         status_gntp(false);
+         clear_gntp();
       }
       
    }

@@ -45,7 +45,7 @@
       <PasswordBox Height="37" HorizontalAlignment="Right" Margin="0,353,45,0" Name="passwordBox1" VerticalAlignment="Top" Width="252" FontSize="18" Password="Password" GotFocus="passwordBox1_GotFocus" GotMouseCapture="passwordBox1_GotMouseCapture" KeyDown="passwordBox1_KeyDown" ToolTip="Masukkan password anda" />
       <Label Content="Login" FontSize="18" FontWeight="Bold" Foreground="White" Height="45" HorizontalContentAlignment="Center" Margin="43,470,38,0" Name="label5" VerticalAlignment="Top" Cursor="Hand" MouseDown="label5_MouseDown" ToolTip="Masuk" />
       <Button Content="Add" Height="23" HorizontalAlignment="Right" Margin="0,226,45,0" Name="button1" VerticalAlignment="Top" Width="38" ClickMode="Press" Click="button1_Click" />
-      <Label Content="00:00" Height="28" HorizontalAlignment="Left" Margin="150,80,0,0" Name="label6" VerticalAlignment="Top" FontWeight="Bold" />
+      <Label Content="00:00" Height="28" HorizontalAlignment="Left" Margin="150,80,0,0" Name="labeljam" VerticalAlignment="Top" FontWeight="Bold" />
       <Button Content="tes" Height="23" HorizontalAlignment="Left" Margin="191,226,0,0" Name="button2" VerticalAlignment="Top" Width="39" Click="button2_Click" />
    </Grid>
 </Window>

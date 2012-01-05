@@ -27,7 +27,7 @@
 
    <Grid>
       <Image Name="imgBackground" Stretch="Fill" Source="ipatkecil.png" Margin="0,0,0,0" />
-      <Label Content="00:00" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="520,21,0,0" Name="label6" VerticalAlignment="Top" />
+      <Label Content="00:00" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="520,21,0,0" Name="labeljam" VerticalAlignment="Top" />
       <Label Content="User" Height="28" HorizontalAlignment="Left" Margin="145,21,0,0" Name="labellogin" VerticalAlignment="Top" />
       <Image Height="31" HorizontalAlignment="Left" Margin="1031,54,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="30" Source="/TCHusada;component/bol.png" MouseDown="image1_MouseDown" Cursor="Hand" ToolTip="Keluar dari aplikasi" />
       <Label Content="Logout" Height="28" HorizontalAlignment="Left" Margin="67,53,0,0" Name="tblogout" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Kembali ke menu login" MouseDown="tblogout_MouseDown" />
@@ -54,7 +54,20 @@
                      <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="298,278,0,0" Name="batalbtntt" VerticalAlignment="Top" Width="75" Click="batalbtntt_Click" />
                   </Grid>
                </GroupBox>
-               <Button Content="Report" Height="23" HorizontalAlignment="Left" Margin="561,78,0,0" Name="tesreportbtn" VerticalAlignment="Top" Width="75" Click="tesreportbtn_Click" />
+               <Button Content="Report" Height="23" HorizontalAlignment="Left" Margin="486,284,0,0" Name="tesreportbtn" VerticalAlignment="Top" Width="75" Click="tesreportbtn_Click" />
+               <GroupBox Header="Ganti Password" Height="223" HorizontalAlignment="Left" Margin="477,0,0,0" Name="groupgntp" VerticalAlignment="Top" Width="289">
+                  <Grid>
+                     <Button Content="Ganti" Height="23" HorizontalAlignment="Left" Margin="15,150,0,0" Name="gantibtn" VerticalAlignment="Top" Width="75" Click="gantibtn_Click" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="102,150,0,0" Name="simpnbtn" VerticalAlignment="Top" Width="75" Click="simpnbtn_Click" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="187,150,0,0" Name="batlbtn" VerticalAlignment="Top" Width="75" Click="batlbtn_Click" />
+                     <Label Content="Password Lama" Height="28" HorizontalAlignment="Left" Margin="6,15,0,0" Name="pwdlama" VerticalAlignment="Top" Width="100" />
+                     <Label Content="Password Baru" Height="28" HorizontalAlignment="Left" Margin="6,55,0,0" Name="pwdbaru" VerticalAlignment="Top" Width="100" />
+                     <Label Content="Ulangi" Height="28" HorizontalAlignment="Left" Margin="6,95,0,0" Name="pwdlagi" VerticalAlignment="Top" Width="61" />
+                     <PasswordBox Height="23" HorizontalAlignment="Left" Margin="112,20,0,0" Name="passwordLama" VerticalAlignment="Top" Width="150" />
+                     <PasswordBox Height="23" HorizontalAlignment="Left" Margin="112,60,0,0" Name="passwordBaru" VerticalAlignment="Top" Width="150" />
+                     <PasswordBox Height="23" HorizontalAlignment="Left" Margin="112,100,0,0" Name="passwordBaru2" VerticalAlignment="Top" Width="150" />
+                  </Grid>
+               </GroupBox>
             </Grid>
          </TabItem>
          <TabItem Header="Karyawan" Name="tabItemK" Height="30" Width="80">
