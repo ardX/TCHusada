@@ -166,7 +166,7 @@ namespace TCHusada
 
       public static string getmaxnomor(string kolom, string tabel)
       {
-         string metu = "";
+         string metu = "0";
          cn.Open();
          string sql = "select max(" + kolom + ") from " + tabel;
          OracleDataReader reader;
@@ -174,7 +174,8 @@ namespace TCHusada
          reader = cmd.ExecuteReader();
          if (reader.Read())
          {
-            metu = reader.GetString(0);
+            if (!reader.IsDBNull(0))
+               metu = reader.GetString(0);
          }
          ulong metuu = UInt64.Parse(metu) + 1;
          metu = metuu + "";

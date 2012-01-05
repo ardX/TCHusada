@@ -237,6 +237,57 @@
                </Button>
             </Grid>
          </TabItem>
-   </TabControl>
+         <TabItem Header="Adm UGD" Name="tabItemUGD" Height="30" Width="80">
+            <Grid>
+               <GroupBox Header="Administrasi UGD" Height="478" HorizontalAlignment="Left" Margin="28,0,0,0" Name="groupBoxUGD" VerticalAlignment="Top" Width="800">
+                  <Grid>
+                     <Label Content="No Transaksi UGD" Height="28" HorizontalAlignment="Left" Margin="20,30,0,0" Name="labelnougd" VerticalAlignment="Top" />
+                     <Label Content="No Pasien" Height="28" HorizontalAlignment="Left" Margin="20,65,0,0" Name="labelnopass" VerticalAlignment="Top" />
+                     <Label Content="Tanggal Periksa" Height="28" HorizontalAlignment="Left" Margin="20,105,0,0" Name="labeltangperugd" VerticalAlignment="Top" />
+                     <Label Content="Keluhan" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelkeluhanugd" VerticalAlignment="Top" />
+                     <Label Content="Biaya UGD" Height="28" HorizontalAlignment="Left" Margin="20,295,0,0" Name="labelbiayaugd" VerticalAlignment="Top" />
+                     <Label Content="Keterangan" Height="31" HorizontalAlignment="Left" Margin="20,343,0,0" Name="label1" VerticalAlignment="Top" Width="78" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxnougd" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,70,0,0" Name="textBoxnopass" VerticalAlignment="Top" Width="236" />
+                     <DatePicker Height="23" HorizontalAlignment="Left" Margin="133,106,0,0" Name="datetangugd" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="125" HorizontalAlignment="Left" Margin="133,150,0,0" Name="textBoxtkeluhanugd" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="27" HorizontalAlignment="Left" Margin="133,295,0,0" Name="textBoxbiayaugd" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="98" HorizontalAlignment="Left" Margin="133,343,0,0" Name="textketugd" VerticalAlignment="Top" Width="236" />
+                     <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="447,44,0,0" Name="tambahtransugd" VerticalAlignment="Top" Width="75" Click="tambahtransugd_Click" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="447,91,0,0" Name="simpantransugd" VerticalAlignment="Top" Width="75" Click="simpantransugd_Click" />
+                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="447,183,0,0" Name="bersihtransugd" VerticalAlignment="Top" Width="75" Click="bersihtransugd_Click" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="447,138,0,0" Name="bataltransugd" VerticalAlignment="Top" Width="75" Click="bataltransugd_Click" />
+
+                  </Grid>
+               </GroupBox>
+            </Grid>
+         </TabItem>
+         <TabItem Header="Adm Poli" Name="tabItemPoli" Height="30" Width="80">
+            <Grid>
+               <GroupBox Header="Administrasi Poliklinik" Height="478" HorizontalAlignment="Left" Margin="28,0,0,0" Name="groupBoxPoli" VerticalAlignment="Top" Width="800">
+                  <Grid>
+                     <Label Content="No Transaksi Poli" Height="28" HorizontalAlignment="Left" Margin="20,30,0,0" Name="labelnoPoli" VerticalAlignment="Top" />
+                     <Label Content="No Pasien" Height="28" HorizontalAlignment="Left" Margin="20,65,0,0" Name="labelnopassPoli" VerticalAlignment="Top" />
+                     <Label Content="ID Poliklinik" Height="31" HorizontalAlignment="Left" Margin="20,107,0,0" Name="labelid_poli" VerticalAlignment="Top" Width="73" />
+                     <Label Content="Tanggal Periksa" Height="28" HorizontalAlignment="Left" Margin="20,155,0,0" Name="labeltangperPoli" VerticalAlignment="Top" />
+                     <Label Content="Keluhan" Height="28" HorizontalAlignment="Left" Margin="20,203,0,0" Name="labelkeluhanpoli" VerticalAlignment="Top" />
+                     <Label Content="Biaya Poliklinik" Height="28" HorizontalAlignment="Left" Margin="20,309,0,0" Name="labelbiayapoli" VerticalAlignment="Top" />
+                     <Label Content="Keterangan" Height="31" HorizontalAlignment="Left" Margin="20,355,0,0" Name="labelketpoli" VerticalAlignment="Top" Width="78" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxnotranspoli" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,70,0,0" Name="textBoxnopasspoli" VerticalAlignment="Top" Width="236" />
+                     <DatePicker Height="23" HorizontalAlignment="Left" Margin="133,160,0,0" Name="datetangpoli" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="86" HorizontalAlignment="Left" Margin="133,205,0,0" Name="textBoxtkeluhanpoli" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="27" HorizontalAlignment="Left" Margin="133,309,0,0" Name="textBoxbiayapoli" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="63" HorizontalAlignment="Left" Margin="133,355,0,0" Name="textketpoli" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,109,0,0" Name="textBoxidpoli" VerticalAlignment="Top" Width="236" />
+                     <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="447,44,0,0" Name="tambahtranspoli" VerticalAlignment="Top" Width="75" Click="tambahtranspoli_Click" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="447,91,0,0" Name="simpantranspoli" VerticalAlignment="Top" Width="75" Click="simpantranspoli_Click" />
+                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="447,183,0,0" Name="bersihtranspoli" VerticalAlignment="Top" Width="75" Click="bersihtranspoli_Click" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="447,138,0,0" Name="bataltranspoli" VerticalAlignment="Top" Width="75" Click="bataltranspoli_Click" />
+                  </Grid>
+               </GroupBox>
+            </Grid>
+         </TabItem>
+      </TabControl>
   </Grid>
 </Window>

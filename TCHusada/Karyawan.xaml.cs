@@ -64,6 +64,12 @@ namespace TCHusada
 
          tombol_gntp(true);
          status_gntp(false);
+
+         tombol_trugd(true);
+         status_trugd(false);
+
+         tombol_trpoli(true);
+         status_trpoli(false);
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -842,6 +848,152 @@ namespace TCHusada
          status_gntp(false);
          clear_gntp();
       }
+
+      /// <summary>
+      /// batas bawah profil
+      /// </summary>
+      /// <param name="status"></param>
+
+      private void tombol_trugd(bool status)
+      {
+         tambahtransugd.IsEnabled = status;
+         simpantransugd.IsEnabled = !(status);
+         bersihtransugd.IsEnabled = !(status);
+         bataltransugd.IsEnabled = !(status);
+      } 
+
+      private void status_trugd(bool status)
+      {
+         textBoxnougd.IsEnabled = status;
+         textBoxnopass.IsEnabled = status;
+         datetangugd.IsEnabled = status;
+         textBoxtkeluhanugd.IsEnabled = status;
+         textBoxbiayaugd.IsEnabled = status;
+         textketugd.IsEnabled = status;
+      }
+
+      private void clear_trugd()
+      {
+         textBoxnopass.Text = "";
+         datetangugd.Text = "";
+         textBoxtkeluhanugd.Text = "";
+         textBoxbiayaugd.Text = "";
+         textketugd.Text = "";
+      }
+
+      private void tambahtransugd_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_trugd(false);
+         status_trugd(true);
+         clear_trugd();
+         textBoxnougd.Text = F.getmaxnomor("ID_ADM", "ADMINISTRASIUGD"); textBoxnougd.IsEnabled = false;
+      }
+
+      private void simpantransugd_Click(object sender, RoutedEventArgs e)
+      {
+         string sql = "insert into ADMINISTRASIUGD values (seqadugd.nextval,"
+                          + "'" + siapa.anda + "',"
+                          + "'" + textBoxnopass.Text + "',"
+                          + "'" + datetangugd.Text + "',"
+                          + "'" + textBoxtkeluhanugd.Text + "',"
+                          + "'" + textBoxbiayaugd.Text + "',"
+                          + "'" + textketugd.Text + "')";
+         if (F.Execute(sql))
+         {
+            MessageBox.Show("Data telah ditambahkan");
+            tombol_trugd(true);
+            status_trugd(false);
+         }
+      }
+
+      private void bataltransugd_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_trugd(true);
+         status_trugd(false);
+         clear_trugd();
+      }
+
+      private void bersihtransugd_Click(object sender, RoutedEventArgs e)
+      {
+         clear_trugd();
+      }
+
+      /// <summary>
+      /// batas bawah ugd
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+
+
+      private void tombol_trpoli(bool status)
+      {
+         tambahtranspoli.IsEnabled = status;
+         simpantranspoli.IsEnabled = !(status);
+         bersihtranspoli.IsEnabled = !(status);
+         bataltranspoli.IsEnabled = !(status);
+      }
+
+      private void status_trpoli(bool status)
+      {
+         textBoxnotranspoli.IsEnabled = status;
+         textBoxnopasspoli.IsEnabled = status;
+         datetangpoli.IsEnabled = status;
+         textBoxtkeluhanpoli.IsEnabled = status;
+         textBoxbiayapoli.IsEnabled = status;
+         textketpoli.IsEnabled = status;
+         textBoxidpoli.IsEnabled = status;
+      }
+
+      private void clear_trpoli()
+      {
+         textBoxnopasspoli.Text = "";
+         datetangpoli.Text = "";
+         textBoxtkeluhanpoli.Text = "";
+         textBoxbiayapoli.Text = "";
+         textketpoli.Text = "";
+         textBoxidpoli.Text = "";
+      }
+
+      private void tambahtranspoli_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_trpoli(false);
+         status_trpoli(true);
+         clear_trpoli();
+         textBoxnotranspoli.Text = F.getmaxnomor("ID_ADM2", "ADMINISTRASIPOLI"); textBoxnotranspoli.IsEnabled = false;
       
+      }
+
+      private void simpantranspoli_Click(object sender, RoutedEventArgs e)
+      {
+         string sql = "insert into ADMINISTRASIPOLI values (seqadpoli.nextval,"
+                          + "'" + textBoxnopasspoli.Text + "',"
+                          + "'" + siapa.anda + "',"
+                          + "'" + textBoxidpoli.Text + "',"
+                          + "'" + datetangpoli.Text + "',"
+                          + "'" + textBoxtkeluhanpoli.Text + "',"
+                          + "'" + textBoxbiayapoli.Text + "',"
+                          + "'" + textketpoli.Text + "')";
+         if (F.Execute(sql))
+         {
+            MessageBox.Show("Data telah ditambahkan");
+            tombol_trpoli(true);
+            status_trpoli(false);
+         }
+      }
+
+      private void bataltranspoli_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_trpoli(true);
+         status_trpoli(false);
+         clear_trpoli();
+      }
+
+      private void bersihtranspoli_Click(object sender, RoutedEventArgs e)
+      {
+         clear_trpoli();
+      }
+
+      
+
    }
 }
