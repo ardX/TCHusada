@@ -184,7 +184,6 @@ namespace TCHusada
       private void bersihbtnk_Click(object sender, RoutedEventArgs e)
       {
          clear_boxk();
-         bolehK = true;
       }
 
       private void batalbtnk_Click(object sender, RoutedEventArgs e)
@@ -336,7 +335,6 @@ namespace TCHusada
       private void bersihbtnd_Click(object sender, RoutedEventArgs e)
       {
          clear_boxd();
-         bolehD = true;
       }
 
       private void batalbtnd_Click(object sender, RoutedEventArgs e)
@@ -348,7 +346,7 @@ namespace TCHusada
          tombol_ed(true);
          bolehD = true;
          pilihD = 0;
-         textnipd.Text = "";
+         //textnipd.Text = "";
          dataGridD.SelectedIndex = ind;
       }
 
@@ -490,7 +488,6 @@ namespace TCHusada
       private void bersihbtnp_Click(object sender, RoutedEventArgs e)
       {
          clear_boxp();
-         bolehP = true;
       }
 
       private void batalbtnp_Click(object sender, RoutedEventArgs e)
@@ -648,7 +645,6 @@ namespace TCHusada
       private void bersihbtns_Click(object sender, RoutedEventArgs e)
       {
          clear_boxs();
-         bolehS = true;
       }
 
       private void batalbtns_Click(object sender, RoutedEventArgs e)
@@ -767,6 +763,7 @@ namespace TCHusada
          }
          reader.Close();
          F.cn.Close();
+         labelpengguna.Content = "Selamat datang " + textBoxnamtt.Text;
       }
 
       private void ubahbtntt_Click(object sender, RoutedEventArgs e)

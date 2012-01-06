@@ -31,8 +31,7 @@
       <Label Content="User" Height="28" HorizontalAlignment="Left" Margin="145,21,0,0" Name="labellogin" VerticalAlignment="Top" />
       <Image Height="31" HorizontalAlignment="Left" Margin="1031,54,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="30" Source="/TCHusada;component/bol.png" MouseDown="image1_MouseDown" Cursor="Hand" ToolTip="Keluar dari aplikasi" />
       <Label Content="Logout" Height="28" HorizontalAlignment="Left" Margin="67,53,0,0" Name="tblogout" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Kembali ke menu login" MouseDown="tblogout_MouseDown" />
-      <Label Content="Karyawan" Height="28" HorizontalAlignment="Left" Margin="505,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" />
-      <Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
+      <Label Content="Karyawan" HorizontalContentAlignment="Center" Height="28" HorizontalAlignment="Left" Margin="285,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" Width="511" /><Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
       <TabControl Height="509" HorizontalAlignment="Left" Margin="58,92,0,0" Name="tabControl1" VerticalAlignment="Top" Width="966" TabStripPlacement="Left">
          <TabItem Header="Profil" Name="tabItemSaya" Height="30" Width="80">
             <Grid>

@@ -147,7 +147,7 @@ namespace TCHusada
          return false;
       }
 
-      public static DataSet load_data(string tbl)//fungsi modif global
+      public static DataSet load_data(string tbl)
       {
          OracleDataAdapter dr = new OracleDataAdapter();
          OracleCommandBuilder cmd = new OracleCommandBuilder();
@@ -158,7 +158,18 @@ namespace TCHusada
          return ds;
       }
 
-      public static void dataview(DataSet sd, DataGrid dg)//fungsi modif global
+      public static DataSet load_data_cust(string tbl, string col)
+      {
+         OracleDataAdapter dr = new OracleDataAdapter();
+         OracleCommandBuilder cmd = new OracleCommandBuilder();
+         DataSet ds = new DataSet();
+         dr = new OracleDataAdapter("select " + col + " from " + tbl, cn);
+         cmd = new OracleCommandBuilder(dr);
+         dr.Fill(ds);
+         return ds;
+      }
+
+      public static void dataview(DataSet sd, DataGrid dg)
       {
          dg.ItemsSource = sd.Tables[0].DefaultView;
          dg.ColumnWidth = DataGridLength.Auto;
@@ -178,6 +189,29 @@ namespace TCHusada
                metu = reader.GetString(0);
          }
          ulong metuu = UInt64.Parse(metu) + 1;
+         metu = metuu + "";
+         reader.Close();
+         cn.Close();
+         return metu;
+      }
+
+      public static string getsumresep(string idresep)
+      {
+         string metu = "0";
+         ulong metuu = 0;
+         cn.Open();
+         string sql = "select o.merk_obat from detail_resep d, obat o where d.nomor_obat = o.nomor_obat and id_resep = '" + idresep + "'";
+         OracleDataReader reader;
+         OracleCommand cmd = new OracleCommand(sql, cn);
+         reader = cmd.ExecuteReader();
+         while (reader.Read())
+         {
+            if (!reader.IsDBNull(0))
+            {
+               metu = reader.GetString(0);
+               metuu += UInt64.Parse(metu);
+            }
+         }
          metu = metuu + "";
          reader.Close();
          cn.Close();

@@ -100,6 +100,7 @@ namespace TCHusada
          }
          reader.Close();
          F.cn.Close();
+         labelpengguna.Content = "Selamat datang " + textBoxnamtt.Text;
       }
 
       private void tesreportbtn_Click(object sender, RoutedEventArgs e)
@@ -132,6 +133,9 @@ namespace TCHusada
       private void simpnbtn_Click(object sender, RoutedEventArgs e)
       {
          F.GantiPass(siapa.anda, passwordLama.Password, passwordBaru.Password, passwordBaru2.Password);
+         tombol_gntp(true);
+         status_gntp(false);
+         clear_gntp();
       }
 
       private void gantibtn_Click(object sender, RoutedEventArgs e)
