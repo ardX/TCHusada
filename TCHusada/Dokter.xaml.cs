@@ -254,7 +254,7 @@ namespace TCHusada
          clear_boxrm();
          status_boxrm(true);
          tombol_erm(false);
-         textidrm.Text = F.getmaxnomor("maxpasien"); textidrm.IsEnabled = false;
+         textidrm.Text = F.getmaxnomor("maxpasien");
       }
 
       private void simpanrm_Click(object sender, RoutedEventArgs e)
@@ -349,6 +349,7 @@ namespace TCHusada
       {
          groupBoxresep.IsEnabled = status;
          applyresep.IsEnabled = status;
+         batalresep.IsEnabled = status;
          tambahresep.IsEnabled = !(status);
       }
 
@@ -358,15 +359,23 @@ namespace TCHusada
          simpanresep.IsEnabled = status;
       }
 
+      private void klir()
+      {
+         textidresep.Text = "";
+         textidriwayatres.Text = "";
+         texthargatotres.Text = "";
+         load_detail_obat("00");
+      }
+
       private void tambahresep_Click(object sender, RoutedEventArgs e)
       {
          tambahtbl(true);
+         textidresep.Text = F.getmaxnomor("maxresep");
       }
 
       private void applyresep_Click(object sender, RoutedEventArgs e)
       {
-         string sql = "insert into RESEP values ("
-                          + "'" + textidresep.Text + "',"
+         string sql = "insert into RESEP values (seqresep.nextval,"
                           + "'" + textidriwayatres.Text + "',"
                           + "'" + siapa.anda + "',"
                           + "'" + texthargatotres.Text + "')";
@@ -378,7 +387,16 @@ namespace TCHusada
             tambahresep.IsEnabled = false;
 
             load_detail_obat(textidresep.Text);
+            F.setmaxnomor("maxresep", "seqresep");
          }
+      }
+
+
+      private void batalresep_Click(object sender, RoutedEventArgs e)
+      {
+         tambahtbl(false);
+         tambahresep.IsEnabled = true;
+         klir();
       }
 
       private void simpanresep_Click(object sender, RoutedEventArgs e)
@@ -390,9 +408,9 @@ namespace TCHusada
          {
             MessageBox.Show("Data telah diupdate");
          }
-
          teraptbl(false);
          tambahresep.IsEnabled = true;
+         klir();
       }
 
       private void tambahobat_Click(object sender, RoutedEventArgs e)
@@ -448,5 +466,6 @@ namespace TCHusada
       {
          load_jadwalD();
       }
+
    }
 }

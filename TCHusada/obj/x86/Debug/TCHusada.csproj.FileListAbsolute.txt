@@ -26,3 +26,5 @@ C:\Users\MSI\documents\visual studio 2010\Projects\TCHusada\TCHusada\obj\x86\Deb
 C:\Users\MSI\documents\visual studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Report1.g.cs
 C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\TCHusada_MarkupCompile.lref
+C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Admin.g.cs
+C:\Users\MSI\Documents\Visual Studio 2010\Projects\TCHusada\TCHusada\obj\x86\Debug\Admin.baml

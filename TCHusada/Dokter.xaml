@@ -91,7 +91,7 @@
                   <StackPanel>
                      <GroupBox Header="Entry Rekam Medis Pasien" Height="320" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxRM" VerticalAlignment="Top" Width="280">
                         <Grid>
-                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,20,0,0" Name="textidrm" VerticalAlignment="Top" Width="140" Text="{Binding Path=ID_RIWAYAT}" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="120,20,0,0" Name="textidrm" VerticalAlignment="Top" Width="140" Text="{Binding Path=ID_RIWAYAT}" IsReadOnly="True"/>
                            <TextBox Height="23" HorizontalAlignment="Left" Margin="120,60,0,0" Name="textnopasrm" VerticalAlignment="Top" Width="140" Text="{Binding Path=NO_PASIEN}" />
                            <TextBox Height="23" HorizontalAlignment="Left" Margin="120,100,0,0" Name="textpenyrm" VerticalAlignment="Top" Width="140" Text="{Binding Path=PENYAKIT}" />
                            <DatePicker Height="23" HorizontalAlignment="Left" Margin="120,140,0,0" Name="datemasrm" VerticalAlignment="Top" Width="140" SelectedDate="{Binding Path=TGL_MASUK}"/>
@@ -133,7 +133,7 @@
                      <Label Content="Harga Total" Height="28" HorizontalAlignment="Left" Margin="22,113,0,0" Name="label3" VerticalAlignment="Top" Width="130" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="118,31,0,0" Name="textidresep" VerticalAlignment="Top" Width="196" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="118,73,0,0" Name="textidriwayatres" VerticalAlignment="Top" Width="196" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="texthargatotres" VerticalAlignment="Top" Width="196" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="texthargatotres" VerticalAlignment="Top" Width="196" IsReadOnly="True"/>
                      </Grid>
                </GroupBox>
                <GroupBox Header="Detail Obat" Height="261" HorizontalAlignment="Left" Margin="20,215,0,0" Name="groupBoxdetil" VerticalAlignment="Top" Width="351">
@@ -164,7 +164,8 @@
                      </Grid>
                </GroupBox>
                   <Button Content="Terapkan" Height="23" HorizontalAlignment="Left" Margin="390,90,0,0" Name="applyresep" VerticalAlignment="Top" Width="113" Click="applyresep_Click" />
-                  <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="390,135,0,0" Name="simpanresep" VerticalAlignment="Top" Width="113" Click="simpanresep_Click" />
+                  <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="390,180,0,0" Name="simpanresep" VerticalAlignment="Top" Width="113" Click="simpanresep_Click" />
+                  <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="390,131,0,0" Name="batalresep" VerticalAlignment="Top" Width="113" Click="batalresep_Click" />
                </Grid>
             </StackPanel>
          </TabItem>

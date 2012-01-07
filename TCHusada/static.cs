@@ -248,5 +248,22 @@ namespace TCHusada
          else MessageBox.Show("password kosong");
       }
 
+      public static void MasukPass(string user, string passL, string passB, string passB2)
+      {
+         if (!(passB == "" || passB2 == ""))
+         {
+            if (passB == passB2)
+            {
+               addPass(user, passB);
+            }
+            else MessageBox.Show("Password Baru tidak sama", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Warning);
+         }
+         else if (passB == "" )
+            MessageBox.Show("Password Baru kosong");
+         else if (passB2 == "" && !(passB == ""))
+            MessageBox.Show("konfirmasi password kosong");
+         else MessageBox.Show("password kosong");
+      }
+
    }
 }

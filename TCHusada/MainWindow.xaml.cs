@@ -64,6 +64,12 @@ namespace TCHusada
                      s.Show();
                      this.Hide();
                      break;
+                  case 'd':
+                     //MessageBox.Show("Pasien");
+                     Admin a = new Admin();
+                     a.Show();
+                     this.Hide();
+                     break;
                }
             }
             else MessageBox.Show("Username dan Password tidak cocok", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Warning);
