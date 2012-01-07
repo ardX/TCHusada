@@ -43,12 +43,16 @@ namespace TCHusada
          F.dataview(F.load_data("RIWAYATPASIEN"), dataGridRM);
          status_boxrm(false);
          tombol_erm(true);
+         tombolcust(true);
 
          load_obat();
 
          teraptbl(false);
          tambahtbl(false);
          tambahresep.IsEnabled = true;
+
+         load_jadwalD();
+         load_jadwalP();
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -250,7 +254,7 @@ namespace TCHusada
          clear_boxrm();
          status_boxrm(true);
          tombol_erm(false);
-         textidrm.Text = F.getmaxnomor("ID_RIWAYAT", "RIWAYATPASIEN"); textidrm.IsEnabled = false;
+         textidrm.Text = F.getmaxnomor("maxpasien"); textidrm.IsEnabled = false;
       }
 
       private void simpanrm_Click(object sender, RoutedEventArgs e)
@@ -270,6 +274,7 @@ namespace TCHusada
             bolehRM = true;
             F.dataview(F.load_data("RIWAYATPASIEN"), dataGridRM);
             dataGridRM.SelectedIndex = ind;
+            F.setmaxnomor("maxpasien", "seqrm");
          }
       }
 
@@ -302,6 +307,28 @@ namespace TCHusada
             dataGridRM.UnselectAll();
       }
 
+      private void tombolcust(bool status)
+      {
+         tampilcust.IsEnabled = status;
+         nopasscust.IsEnabled = status;
+         kembalicust.IsEnabled = !(status);
+      }
+
+      private void tampilcust_Click(object sender, RoutedEventArgs e)
+      {
+         if (nopasscust.Text != "")
+         {
+            F.dataview(F.load_data_cust("RIWAYATPASIEN where no_pasien = " + nopasscust.Text, "*"), dataGridRM);
+            tombolcust(false);
+         }
+      }
+
+      private void kembalicust_Click(object sender, RoutedEventArgs e)
+      {
+         F.dataview(F.load_data("RIWAYATPASIEN"), dataGridRM);
+         tombolcust(true);
+      }
+
       /// <summary>
       /// batas bawah rekam
       /// </summary>
@@ -328,7 +355,6 @@ namespace TCHusada
       private void teraptbl(bool status)
       {
          groupBoxdetil.IsEnabled = status;
-         cektotalresep.IsEnabled = status;
          simpanresep.IsEnabled = status;
       }
 
@@ -355,11 +381,6 @@ namespace TCHusada
          }
       }
 
-      private void cektotalresep_Click(object sender, RoutedEventArgs e)
-      {
-         texthargatotres.Text = F.getsumresep(textidresep.Text);
-      }
-
       private void simpanresep_Click(object sender, RoutedEventArgs e)
       {
          string sql = "update RESEP set "
@@ -381,8 +402,9 @@ namespace TCHusada
                           + "'" + textidresep.Text + "')";
          if (F.Execute(sql))
          {
-            MessageBox.Show("Data telah ditambahkan");
+            //MessageBox.Show("Data telah ditambahkan");
             load_detail_obat(textidresep.Text);
+            texthargatotres.Text = F.getsumresep(textidresep.Text);
          }
       }
 
@@ -396,11 +418,35 @@ namespace TCHusada
                if (F.Execute(sql))
                   MessageBox.Show("Data telah dihapus");
                load_detail_obat(textidresep.Text);
+               texthargatotres.Text = F.getsumresep(textidresep.Text);
             }
          }
          else MessageBox.Show("Tidak ada data yang dipilih", "Perhatian", MessageBoxButton.OK, MessageBoxImage.Warning);
 
       }
 
+      /// <summary>
+      /// batas bawah resep
+      /// </summary>
+
+      private void load_jadwalD()
+      {
+         F.dataview(F.load_data("JADWALDOKTER"), dataGridjadwaldok);
+      }
+
+      private void load_jadwalP()
+      {
+         F.dataview(F.load_data("JADWALPERAWAT"), dataGridjadwalper);
+      }
+
+      private void jdwldoksya_Click(object sender, RoutedEventArgs e)
+      {
+         F.dataview(F.load_data_cust("JADWALDOKTER where NIP_DOKTER =" + siapa.anda, "*"), dataGridjadwaldok);
+      }
+
+      private void jdwldoksmua_Click(object sender, RoutedEventArgs e)
+      {
+         load_jadwalD();
+      }
    }
 }

@@ -175,11 +175,11 @@ namespace TCHusada
          dg.ColumnWidth = DataGridLength.Auto;
       }
 
-      public static string getmaxnomor(string kolom, string tabel)
+      public static string getmaxnomor(string var)
       {
          string metu = "0";
          cn.Open();
-         string sql = "select max(" + kolom + ") from " + tabel;
+         string sql = "select val from maxval where var = '" + var+"'";
          OracleDataReader reader;
          OracleCommand cmd = new OracleCommand(sql, cn);
          reader = cmd.ExecuteReader();
@@ -192,24 +192,31 @@ namespace TCHusada
          metu = metuu + "";
          reader.Close();
          cn.Close();
+         if (metu == "1")
+            return "AUTONUMBER";
          return metu;
+      }
+
+      public static void setmaxnomor(string var, string val)
+      {
+         string sql = "update maxval set VAL = " + val + ".CURRVAL where VAR = '" + var + "'";
+         Execute(sql);
       }
 
       public static string getsumresep(string idresep)
       {
          string metu = "0";
-         ulong metuu = 0;
+         decimal metuu = 0;
          cn.Open();
-         string sql = "select o.merk_obat from detail_resep d, obat o where d.nomor_obat = o.nomor_obat and id_resep = '" + idresep + "'";
+         string sql = "select sum(o.merk_obat) from detail_resep d, obat o where d.nomor_obat = o.nomor_obat and id_resep = '" + idresep + "'";
          OracleDataReader reader;
          OracleCommand cmd = new OracleCommand(sql, cn);
          reader = cmd.ExecuteReader();
-         while (reader.Read())
+         if (reader.Read())
          {
             if (!reader.IsDBNull(0))
             {
-               metu = reader.GetString(0);
-               metuu += UInt64.Parse(metu);
+               metuu = reader.GetDecimal(0);
             }
          }
          metu = metuu + "";

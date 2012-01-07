@@ -149,6 +149,7 @@ namespace TCHusada
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridK.Items.Count;
+               F.setmaxnomor("maxkaryawan", "seqkar");
             }
             else error = true;
             
@@ -207,7 +208,7 @@ namespace TCHusada
          tombol_ek(false);
          pilihK = 1;
          //textnipk.Text = "AUTONUMBER"; textnipk.IsEnabled = false;
-         textnipk.Text = F.getmaxnomor("NIP_KARYAWAN", "KARYAWAN"); textnipk.IsEnabled = false;
+         textnipk.Text = F.getmaxnomor("maxkaryawan"); textnipk.IsEnabled = false;
       }
 
       private void ubahbtnk_Click(object sender, RoutedEventArgs e)
@@ -300,6 +301,7 @@ namespace TCHusada
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridD.Items.Count;
+               F.setmaxnomor("maxdokter", "seqdok");
             }
             else error = true;
 
@@ -346,7 +348,7 @@ namespace TCHusada
          tombol_ed(true);
          bolehD = true;
          pilihD = 0;
-         //textnipd.Text = "";
+         textnipd.Text = "";
          dataGridD.SelectedIndex = ind;
       }
 
@@ -359,7 +361,7 @@ namespace TCHusada
          tombol_ed(false);
          pilihD = 1;
          //textnipd.Text = "AUTONUMBER"; textnipd.IsEnabled = false;
-         textnipd.Text = F.getmaxnomor("NIP_DOKTER", "DOKTER"); textnipd.IsEnabled = false;
+         textnipd.Text = F.getmaxnomor("maxdokter"); textnipd.IsEnabled = false;
       }
 
       private void ubahbtnd_Click(object sender, RoutedEventArgs e)
@@ -453,6 +455,7 @@ namespace TCHusada
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridP.Items.Count;
+               F.setmaxnomor("maxperawat", "seqper");
             }
             else error = true;
 
@@ -512,7 +515,7 @@ namespace TCHusada
          tombol_ep(false);
          pilihP = 1;
          //textnipp.Text = "AUTONUMBER"; textnipp.IsEnabled = false;
-         textnipp.Text = F.getmaxnomor("NIP_PERAWAT", "PERAWAT"); textnipp.IsEnabled = false;
+         textnipp.Text = F.getmaxnomor("maxperawat"); textnipp.IsEnabled = false;
       }
 
       private void ubahbtnp_Click(object sender, RoutedEventArgs e)
@@ -609,6 +612,7 @@ namespace TCHusada
             {
                MessageBox.Show("Data telah ditambahkan");
                ind = dataGridS.Items.Count;
+               F.setmaxnomor("maxpasien","seqpas");
             }
             else error = true;
 
@@ -669,7 +673,7 @@ namespace TCHusada
          tombol_es(false);
          pilihS = 1;
          //textnos.Text = "AUTONUMBER"; textnos.IsEnabled = false;
-         textnos.Text = F.getmaxnomor("NO_PASIEN", "PASIEN"); textnos.IsEnabled = false;
+         textnos.Text = F.getmaxnomor("maxpasien"); textnos.IsEnabled = false;
       }
 
       private void ubahbtns_Click(object sender, RoutedEventArgs e)
@@ -883,7 +887,7 @@ namespace TCHusada
          tombol_trugd(false);
          status_trugd(true);
          clear_trugd();
-         textBoxnougd.Text = F.getmaxnomor("ID_ADM", "ADMINISTRASIUGD"); textBoxnougd.IsEnabled = false;
+         textBoxnougd.Text = F.getmaxnomor("maxadmugd"); textBoxnougd.IsEnabled = false;
       }
 
       private void simpantransugd_Click(object sender, RoutedEventArgs e)
@@ -900,6 +904,7 @@ namespace TCHusada
             MessageBox.Show("Data telah ditambahkan");
             tombol_trugd(true);
             status_trugd(false);
+            F.setmaxnomor("maxadmugd", "seqadugd");
          }
       }
 
@@ -956,7 +961,7 @@ namespace TCHusada
          tombol_trpoli(false);
          status_trpoli(true);
          clear_trpoli();
-         textBoxnotranspoli.Text = F.getmaxnomor("ID_ADM2", "ADMINISTRASIPOLI"); textBoxnotranspoli.IsEnabled = false;
+         textBoxnotranspoli.Text = F.getmaxnomor("maxadmpoli"); textBoxnotranspoli.IsEnabled = false;
       
       }
 
@@ -975,6 +980,7 @@ namespace TCHusada
             MessageBox.Show("Data telah ditambahkan");
             tombol_trpoli(true);
             status_trpoli(false);
+            F.setmaxnomor("maxadmpoli", "seqadpoli");
          }
       }
 

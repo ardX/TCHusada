@@ -15,7 +15,7 @@
          <BeginStoryboard>
             <Storyboard Name="FormFade">
                <DoubleAnimation  Name="FormFadeAnimation"
-                                            Storyboard.TargetName="kary"
+                                            Storyboard.TargetName="dokter"
                                             Storyboard.TargetProperty="(Window.Opacity)"
                                             From="0.0" To="1.0" Duration="0:0:1"
                                             AutoReverse="False" RepeatBehavior="1x"
@@ -107,6 +107,14 @@
                            <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="6,269,0,0" Name="tambahrm" VerticalAlignment="Top" Width="75" Click="tambahrm_Click" />
                         </Grid>
                      </GroupBox>
+                     <GroupBox Header="Rekam Medis Tiap Pasien" Height="121" Name="groupBox1" Width="280" Margin="5,0,0,0">
+                        <Grid>
+                           <Button Content="Tampilkan" Height="23" HorizontalAlignment="Left" Margin="62,60,0,0" Name="tampilcust" VerticalAlignment="Top" Width="77" Click="tampilcust_Click" />
+                           <Button Content="Kembali" Height="23" HorizontalAlignment="Left" Margin="161,60,0,0" Name="kembalicust" VerticalAlignment="Top" Width="71" Click="kembalicust_Click" />
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="96,18,0,0" Name="nopasscust" VerticalAlignment="Top" Width="147" />
+                           <Label Content="No Pasien" Height="28" Margin="13,16,0,0" Name="labelnopass" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67" />
+                        </Grid>
+                     </GroupBox>
                   </StackPanel>
                </StackPanel>
                <Button Height="22" HorizontalAlignment="Left" Margin="556,14,0,0" Name="refreshrm" VerticalAlignment="Top" Width="22" Click="refreshrm_Click">
@@ -156,29 +164,33 @@
                      </Grid>
                </GroupBox>
                   <Button Content="Terapkan" Height="23" HorizontalAlignment="Left" Margin="390,90,0,0" Name="applyresep" VerticalAlignment="Top" Width="113" Click="applyresep_Click" />
-                  <Button Content="Cek Harga Total" Height="23" HorizontalAlignment="Left" Margin="390,375,0,0" Name="cektotalresep" VerticalAlignment="Top" Width="113" Click="cektotalresep_Click" />
-                  <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="390,430,0,0" Name="simpanresep" VerticalAlignment="Top" Width="113" Click="simpanresep_Click" />
+                  <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="390,135,0,0" Name="simpanresep" VerticalAlignment="Top" Width="113" Click="simpanresep_Click" />
                </Grid>
             </StackPanel>
          </TabItem>
          <TabItem Header="Jadwal" Name="tabItemJadwalD" Height="30" Width="85">
             <Grid Width="968">
                <Label Content="Tabel Jadwal Dokter" Height="30" HorizontalAlignment="Left" Margin="110,17,0,0" Name="labeljadwaldok" VerticalAlignment="Top" FontSize="12" Width="150" />
-               <DataGrid AutoGenerateColumns="False" Height="440" Margin="10,53,558,6" Name="dataGridjadwaldok" IsReadOnly="True" SelectionMode="Single" >
+               <DataGrid AutoGenerateColumns="False" Height="440" Margin="11,47,535,12" Name="dataGridjadwaldok" IsReadOnly="True" SelectionMode="Single" >
                   <DataGrid.Columns>
-                     <DataGridTextColumn Header="ID Jadwal" Width="150" Binding="{Binding Path=ID_JADWAL}" />
-                     <DataGridTextColumn Header="Hari" Width="150" Binding="{Binding Path=HARI_MASUK_DOKTER}" />
-                     <DataGridTextColumn Header="Jam" Width="120" Binding="{Binding Path=JAM_MASUKD, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALD}" />
+                     <DataGridTextColumn Header="NIP Dokter" Width="80" Binding="{Binding Path=NIP_DOKTER}" />
+                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI_DOKTER}" />
+                     <DataGridTextColumn Header="Jam" Width="80" Binding="{Binding Path=JAM_TES, StringFormat=hh:mm}" />
                   </DataGrid.Columns>
                </DataGrid>
                <Label Content="Tabel Jadwal Perawat" Height="30" HorizontalAlignment="Left" Margin="612,17,0,0" Name="labeljadwalper" VerticalAlignment="Top" FontSize="12" Width="150" />
-               <DataGrid AutoGenerateColumns="False" Height="440" Margin="489,53,129,6" Name="dataGridjadwalper" IsReadOnly="True" SelectionMode="Single">
+               <DataGrid AutoGenerateColumns="False" Height="440" Margin="453,47,111,12" Name="dataGridjadwalper" IsReadOnly="True" SelectionMode="Single">
                   <DataGrid.Columns>
-                     <DataGridTextColumn Header="ID Jadwal Perawat" Width="150" Binding="{Binding Path=ID_JADWALp}" />
-                     <DataGridTextColumn Header="Hari" Width="150" Binding="{Binding Path=HARI_MASUK}" />
-                     <DataGridTextColumn Header="Jam" Width="120" Binding="{Binding Path=JAMMASUK_PERAWAT, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALP}" />
+                     <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT}" />
+                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI}" />
+                     <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARI_MASUK}" />
+                     <DataGridTextColumn Header="Jam" Width="70" Binding="{Binding Path=JAM_TESP, StringFormat=hh:mm}" />
                   </DataGrid.Columns>
                </DataGrid>
+               <Button Content="Jadwal Saya" Height="23" HorizontalAlignment="Left" Margin="285,17,0,0" Name="jdwldoksya" VerticalAlignment="Top" Width="70" Click="jdwldoksya_Click" />
+               <Button Content="Semua" Height="23" HorizontalAlignment="Left" Margin="373,17,0,0" Name="jdwldoksmua" VerticalAlignment="Top" Width="60" Click="jdwldoksmua_Click" />
             </Grid>
          </TabItem>
       </TabControl>
