@@ -33,7 +33,7 @@
       <Label Content="Perawat" HorizontalContentAlignment="Center" Height="28" HorizontalAlignment="Left" Margin="285,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" Width="511" />
       <Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
       <TabControl Height="509" HorizontalAlignment="Left" Margin="58,92,0,0" Name="tabControl1" VerticalAlignment="Top" Width="966" TabStripPlacement="Left">
-         <TabItem Header="Profil" Name="tabItemSayaper" Height="30" Width="85">
+         <TabItem Header="Profil" Name="tabItemSayaper" Height="30" Width="80">
             <Grid>
                <GroupBox Header="Profil Perawat" Height="337" HorizontalAlignment="Left" Margin="28,0,0,0" Name="groupBoxTT" VerticalAlignment="Top" Width="429">
                   <Grid>
@@ -82,18 +82,44 @@
                      <Label Content="ID Laboratorim" Height="28" HorizontalAlignment="Left" Margin="20,105,0,0" Name="labeltangidlab" VerticalAlignment="Top" />
                      <Label Content="Tanggal Periksa" Height="28" HorizontalAlignment="Left" Margin="20,150,0,0" Name="labeltanglab" VerticalAlignment="Top" />
                      <Label Content="Biaya Laboratorium" Height="28" HorizontalAlignment="Left" Margin="20,184,0,0" Name="labelbiayaugd" VerticalAlignment="Top" />
-                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxnolab" VerticalAlignment="Top" Width="236" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxnolab" VerticalAlignment="Top" Width="236" IsReadOnly="False" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,70,0,0" Name="textBoxnopass" VerticalAlignment="Top" Width="236" />
                      <DatePicker Height="23" HorizontalAlignment="Left" Margin="133,150,0,0" Name="datetanglab" VerticalAlignment="Top" Width="236" />
                      <TextBox Height="26" HorizontalAlignment="Left" Margin="133,107,0,0" Name="textBoxtidlab" VerticalAlignment="Top" Width="236" />
                      <TextBox Height="27" HorizontalAlignment="Left" Margin="133,186,0,0" Name="textBoxbiayalab" VerticalAlignment="Top" Width="236" />
-                     <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="447,44,0,0" Name="tambahtranslab" VerticalAlignment="Top" Width="75" />
-                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="447,91,0,0" Name="simpantranslab" VerticalAlignment="Top" Width="75"/>
-                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="447,183,0,0" Name="bersihtranslab" VerticalAlignment="Top" Width="75" />
-                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="447,138,0,0" Name="bataltranslab" VerticalAlignment="Top" Width="75" />
-
+                     <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="447,44,0,0" Name="tambahtranslab" VerticalAlignment="Top" Width="75" Click="tambahtranslab_Click" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="447,91,0,0" Name="simpantranslab" VerticalAlignment="Top" Width="75" Click="simpantranslab_Click" />
+                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="447,183,0,0" Name="bersihtranslab" VerticalAlignment="Top" Width="75" Click="bersihtranslab_Click" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="447,138,0,0" Name="bataltranslab" VerticalAlignment="Top" Width="75" Click="bataltranslab_Click" />
                   </Grid>
                </GroupBox>
+            </Grid>
+         </TabItem>
+         <TabItem Header="Data Lab" Name="tabItemLab" Height="30" Width="80">
+            <Grid>
+               <Label Content="Tabel Data Laboratorium" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labellabdat" VerticalAlignment="Top" FontSize="14" />
+               <StackPanel Name="spMainper" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridS, Path=SelectedItem}">
+                  <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridPer" Width="560" IsReadOnly="True" SelectionMode="Single">
+                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="No. Adm. Lab." Width="100" Binding="{Binding Path=ID_ADM_LAB}" />
+                        <DataGridTextColumn Header="No. Pasien" Width="90" Binding="{Binding Path=NO_PASIEN}" />
+                        <DataGridTextColumn Header="ID Laboratorium" Width="100" Binding="{Binding Path=ID_LABORATORIUM}" />
+                        <DataGridTextColumn Header="Tanggal Lab" Width="100" Binding="{Binding Path=TGL_LAB, StringFormat=dd/MM/yyyy}" />
+                        <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_LAB}" />
+                        <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT }" />
+                     </DataGrid.Columns>
+                  </DataGrid>
+                  <StackPanel Height="475">
+                     <GroupBox Header="Cari Data Laboratorium" Height="159" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxlab" VerticalAlignment="Top" Width="280">
+                        <Grid Height="124">
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="90,20,0,0" Name="textnoadmlab" VerticalAlignment="Top" Width="170" Text="{Binding Path=NO_PASIEN}" />
+                           <Label Content="No Transaksi" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnotranslab" VerticalAlignment="Top" />
+                           <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="90,63,0,0" Name="caributlab" VerticalAlignment="Top" Width="75" Click="caributlab_Click" />
+                           <Button Content="Kembali" Height="23" Margin="185,63,8,0" Name="kembalibutlab" VerticalAlignment="Top" Click="kembalibutlab_Click" />
+                        </Grid>
+                     </GroupBox>
+                  </StackPanel>
+               </StackPanel>
             </Grid>
          </TabItem>
          <TabItem Header="Pasien" Name="tabItemS" Height="30" Width="80">
@@ -114,66 +140,36 @@
                      <GroupBox Header="Cari Pasien" Height="159" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxS" VerticalAlignment="Top" Width="280">
                         <Grid Height="124">
                            <TextBox Height="23" HorizontalAlignment="Left" Margin="72,20,0,0" Name="textnos" VerticalAlignment="Top" Width="188" Text="{Binding Path=NO_PASIEN}" />
-
                            <Label Content="No Pasien" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnos" VerticalAlignment="Top" />
-
-                           <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="94,63,0,0" Name="caributpass" VerticalAlignment="Top" Width="75"  />
-
+                           <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="72,63,0,0" Name="caributpass" VerticalAlignment="Top" Width="75" Click="caributpass_Click" />
+                           <Button Content="Kembali" Height="23" HorizontalAlignment="Left" Margin="185,63,0,0" Name="kembalibutpass" VerticalAlignment="Top" Width="75" Click="kembalibutpass_Click" />
                         </Grid>
                      </GroupBox>
                   </StackPanel>
                </StackPanel>
-
             </Grid>
          </TabItem>
-         <TabItem Header="Jadwal" Name="tabItemJadwalD" Height="30" Width="85">
+         <TabItem Header="Jadwal" Name="tabItemJadwalD" Height="30" Width="80">
             <Grid Width="968">
                <Label Content="Tabel Jadwal Dokter" Height="30" HorizontalAlignment="Left" Margin="110,17,0,0" Name="labeljadwaldok" VerticalAlignment="Top" FontSize="12" Width="150" />
-               <DataGrid AutoGenerateColumns="False" Height="440" Margin="10,53,558,6" Name="dataGridjadwaldok" IsReadOnly="True" SelectionMode="Single" >
+               <DataGrid AutoGenerateColumns="False" Height="440" Margin="11,47,535,12" Name="dataGridjadwaldok" IsReadOnly="True" SelectionMode="Single" >
                   <DataGrid.Columns>
-                     <DataGridTextColumn Header="ID Jadwal" Width="150" Binding="{Binding Path=ID_JADWAL}" />
-                     <DataGridTextColumn Header="Hari" Width="150" Binding="{Binding Path=HARI_MASUK_DOKTER}" />
-                     <DataGridTextColumn Header="Jam" Width="120" Binding="{Binding Path=JAM_MASUKD, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALD}" />
+                     <DataGridTextColumn Header="NIP Dokter" Width="80" Binding="{Binding Path=NIP_DOKTER}" />
+                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI_DOKTER}" />
+                     <DataGridTextColumn Header="Jam" Width="80" Binding="{Binding Path=JAM_TES, StringFormat=hh:mm}" />
                   </DataGrid.Columns>
                </DataGrid>
                <Label Content="Tabel Jadwal Perawat" Height="30" HorizontalAlignment="Left" Margin="612,17,0,0" Name="labeljadwalper" VerticalAlignment="Top" FontSize="12" Width="150" />
-               <DataGrid AutoGenerateColumns="False" Height="440" Margin="489,53,129,6" Name="dataGridjadwalper" IsReadOnly="True" SelectionMode="Single">
+               <DataGrid AutoGenerateColumns="False" Height="440" Margin="453,47,111,12" Name="dataGridjadwalper" IsReadOnly="True" SelectionMode="Single">
                   <DataGrid.Columns>
-                     <DataGridTextColumn Header="ID Jadwal Perawat" Width="150" Binding="{Binding Path=ID_JADWALp}" />
-                     <DataGridTextColumn Header="Hari" Width="150" Binding="{Binding Path=HARI_MASUK}" />
-                     <DataGridTextColumn Header="Jam" Width="120" Binding="{Binding Path=JAMMASUK_PERAWAT, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALP}" />
+                     <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT}" />
+                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI}" />
+                     <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARI_MASUK}" />
+                     <DataGridTextColumn Header="Jam" Width="70" Binding="{Binding Path=JAM_TESP, StringFormat=hh:mm}" />
                   </DataGrid.Columns>
                </DataGrid>
-            </Grid>
-         </TabItem>
-         <TabItem Header="Data Lab" Name="tabItemLab" Height="30" Width="80">
-            <Grid>
-               <Label Content="Tabel Data Laboratorium" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labellabdat" VerticalAlignment="Top" FontSize="14" />
-               <StackPanel Name="spMainper" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridS, Path=SelectedItem}">
-                  <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridPer" Width="560" IsReadOnly="True" SelectionMode="Single">
-                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="No. Adm. Lab." Width="100" Binding="{Binding Path=ID_ADM_LAB}" />
-                        <DataGridTextColumn Header="No. Pasien" Width="90" Binding="{Binding Path=NO_PASIEN}" />
-                        <DataGridTextColumn Header="ID Laboratorium" Width="100" Binding="{Binding Path=ID_LABORATORIUM}" />
-                        <DataGridTextColumn Header="Tanggal Lab" Width="100" Binding="{Binding Path=TGL_LAB, StringFormat=dd/MM/yyyy}" />
-                        <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_LAB}" />
-                        <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT }" />
-                     </DataGrid.Columns>
-                  </DataGrid>
-                  <StackPanel Height="475">
-                     <GroupBox Header="Cari Data Laboratorium" Height="159" HorizontalAlignment="Left" Margin="5,40,0,0" Name="groupBoxlab" VerticalAlignment="Top" Width="280">
-                        <Grid Height="124">
-                           <TextBox Height="23" HorizontalAlignment="Left" Margin="72,20,0,0" Name="textnoadmlab" VerticalAlignment="Top" Width="188" Text="{Binding Path=NO_PASIEN}" />
-
-                           <Label Content="No Transaksi" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnotranslab" VerticalAlignment="Top" />
-
-                           <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="94,63,0,0" Name="caributlab" VerticalAlignment="Top" Width="75" />
-
-                        </Grid>
-                     </GroupBox>
-                  </StackPanel>
-               </StackPanel>
-
             </Grid>
          </TabItem>
       </TabControl>

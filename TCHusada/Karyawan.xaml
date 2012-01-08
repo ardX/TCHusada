@@ -122,7 +122,7 @@
          <TabItem Header="Data UGD" Name="tabItemUGD1" Height="30" Width="80">
             <Grid>
                <Label Content="Tabel Data UGD" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labellabdatugd" VerticalAlignment="Top" FontSize="14" />
-                  <DataGrid AutoGenerateColumns="False" Margin="6,30,12,102" Name="dataGridPer" IsReadOnly="True" SelectionMode="Single">
+                  <DataGrid AutoGenerateColumns="False" Margin="6,30,12,102" Name="dataGridUGD" IsReadOnly="True" SelectionMode="Single">
                      <DataGrid.Columns>
                         <DataGridTextColumn Header="No. Adm. UGD" Width="100" Binding="{Binding Path=ID_ADM}" />
                         <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}" />
@@ -133,12 +133,13 @@
                         <DataGridTextColumn Header="Keterangan" Width="80" Binding="{Binding Path=KETERANGAN_UGD }" />
                      </DataGrid.Columns>
                   </DataGrid>
-                    <GroupBox Header="Cari Data UGD" Margin="6,402,484,6" Name="groupBoxlab">
+                    <GroupBox Header="Cari Data UGD" Margin="6,402,408,6" Name="groupBoxlab">
                         <Grid>
-                           <TextBox Height="23" HorizontalAlignment="Left" Margin="85,20,0,0" Name="textnoadmlab" VerticalAlignment="Top" Width="136" />
-                           <Label Content="No Transaksi" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnotranslab" VerticalAlignment="Top" />
-                           <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="250,20,0,0" Name="caributlab" VerticalAlignment="Top" Width="75" />
-                        </Grid>
+                           <TextBox Height="23" HorizontalAlignment="Left" Margin="85,20,0,0" Name="textnoadmugd" VerticalAlignment="Top" Width="136" />
+                           <Label Content="No Transaksi" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnotransugd" VerticalAlignment="Top" />
+                     <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="250,20,0,0" Name="caributugd" VerticalAlignment="Top" Width="75" Click="caributugd_Click" />
+                     <Button Content="Kembali" Height="23" HorizontalAlignment="Left" Margin="348,19,0,0" Name="kembalibutugd" VerticalAlignment="Top" Width="75" Click="kembalibutugd_Click" />
+                  </Grid>
                      </GroupBox>
             </Grid>
          </TabItem>
@@ -150,19 +151,20 @@
                         <DataGridTextColumn Header="No. Adm. Poli" Width="100" Binding="{Binding Path=ID_ADM2}" />
                         <DataGridTextColumn Header="No Pasien" Width="100" Binding="{Binding Path=NO_PASIEN}" />
                         <DataGridTextColumn Header="NIP Karyawan" Width="100" Binding="{Binding Path=NIP_KARYAWAN}" />
-                        <DataGridTextColumn Header="ID Poli" Width="50" Binding="{Binding Path=ID_POLIKLINIK}" />
+                        <DataGridTextColumn Header="ID Poli" Width="50" Binding="{Binding Path=ID_POLI}" />
                         <DataGridTextColumn Header="Tanggal Periksa" Width="100" Binding="{Binding Path=TGL_PERIKSA_POLI, StringFormat=dd/MM/yyyy}" />
                         <DataGridTextColumn Header="Keluhan" Width="80" Binding="{Binding Path=KELUHAN_POLI}" />
                         <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_POLI}" />
                         <DataGridTextColumn Header="Keterangan" Width="80" Binding="{Binding Path=KETERANGAN_POLI }" />
                      </DataGrid.Columns>
                   </DataGrid>
-               <GroupBox Header="Cari Data Poliklinik" Margin="6,402,484,6" Name="groupBoxpoli">
+               <GroupBox Header="Cari Data Poliklinik" Margin="6,402,408,6" Name="groupBoxpoli">
                         <Grid>
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="85,20,0,0" Name="textnoadmpoli" VerticalAlignment="Top" Width="136" />
                            <Label Content="No Transaksi" Height="28" HorizontalAlignment="Left" Margin="6,20,0,0" Name="labelnotranspoli" VerticalAlignment="Top" />
-                     <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="250,20,0,0" Name="caributpoli" VerticalAlignment="Top" Width="75"  />
-                        </Grid>
+                     <Button Content="Cari" Height="23" HorizontalAlignment="Left" Margin="250,20,0,0" Name="caributpoli" VerticalAlignment="Top" Width="75" Click="caributpoli_Click" />
+                     <Button Content="Kembali" Height="23" HorizontalAlignment="Left" Margin="348,19,0,0" Name="kembalibutpoli" VerticalAlignment="Top" Width="75" Click="kembalibutpoli_Click" />
+                  </Grid>
                      </GroupBox>
             </Grid>
          </TabItem>

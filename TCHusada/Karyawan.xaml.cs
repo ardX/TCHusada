@@ -45,6 +45,9 @@ namespace TCHusada
 
          tombol_trpoli(true);
          status_trpoli(false);
+
+         load_dataUGD();
+         load_dataPoli();
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -250,7 +253,7 @@ namespace TCHusada
 
       private void simpantransugd_Click(object sender, RoutedEventArgs e)
       {
-         string sql = "insert into ADMINISTRASIUGD values (seqadugd.nextval,"
+         string sql = "insert into ADMINISTRASIUGD values (seqadmugd.nextval,"
                           + "'" + siapa.anda + "',"
                           + "'" + textBoxnopass.Text + "',"
                           + "'" + datetangugd.Text + "',"
@@ -262,7 +265,7 @@ namespace TCHusada
             MessageBox.Show("Data telah ditambahkan");
             tombol_trugd(true);
             status_trugd(false);
-            F.setmaxnomor("maxadmugd", "seqadugd");
+            F.setmaxnomor("maxadmugd", "seqadmugd");
          }
       }
 
@@ -325,7 +328,7 @@ namespace TCHusada
 
       private void simpantranspoli_Click(object sender, RoutedEventArgs e)
       {
-         string sql = "insert into ADMINISTRASIPOLI values (seqadpoli.nextval,"
+         string sql = "insert into ADMINISTRASIPOLI values (seqadmpoli.nextval,"
                           + "'" + textBoxnopasspoli.Text + "',"
                           + "'" + siapa.anda + "',"
                           + "'" + textBoxidpoli.Text + "',"
@@ -338,7 +341,7 @@ namespace TCHusada
             MessageBox.Show("Data telah ditambahkan");
             tombol_trpoli(true);
             status_trpoli(false);
-            F.setmaxnomor("maxadmpoli", "seqadpoli");
+            F.setmaxnomor("maxadmpoli", "seqadmpoli");
          }
       }
 
@@ -354,7 +357,64 @@ namespace TCHusada
          clear_trpoli();
       }
 
-      
+
+      /// <summary>
+      /// 
+      /// </summary>
+
+      private void tombolcustUGD(bool status)
+      {
+         textnoadmugd.IsEnabled = status;
+         caributugd.IsEnabled = status;
+         kembalibutugd.IsEnabled = !(status);
+      }
+
+      private void tombolcustPoli(bool status)
+      {
+         textnoadmpoli.IsEnabled = status;
+         caributpoli.IsEnabled = status;
+         kembalibutpoli.IsEnabled = !(status);
+      }
+
+      private void load_dataUGD()
+      {
+         F.dataview(F.load_data("ADMINISTRASIUGD"), dataGridUGD);
+      }
+
+      private void load_dataPoli()
+      {
+         F.dataview(F.load_data("ADMINISTRASIPOLI"), dataGridPoli);
+      }
+
+      private void caributugd_Click(object sender, RoutedEventArgs e)
+      {
+         if (textnoadmugd.Text != "")
+         {
+            F.dataview(F.load_data_cust("ADMINISTRASIUGD where ID_ADM = " + textnoadmugd.Text, "*"), dataGridUGD);
+            tombolcustUGD(false);
+         }
+      }
+
+      private void kembalibutugd_Click(object sender, RoutedEventArgs e)
+      {
+         load_dataUGD();
+         tombolcustUGD(true);
+      }
+
+      private void caributpoli_Click(object sender, RoutedEventArgs e)
+      {
+         if (textnoadmpoli.Text != "")
+         {
+            F.dataview(F.load_data_cust("ADMINISTRASIPOLI where ID_ADM2 = " + textnoadmpoli.Text, "*"), dataGridPoli);
+            tombolcustPoli(false);
+         }
+      }
+
+      private void kembalibutpoli_Click(object sender, RoutedEventArgs e)
+      {
+         load_dataPoli();
+         tombolcustPoli(true);
+      }
 
    }
 }
