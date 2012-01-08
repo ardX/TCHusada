@@ -83,7 +83,7 @@
                         <DataGridTextColumn Header="ID Riwayat" Width="70" Binding="{Binding Path=ID_RIWAYAT}" />
                         <DataGridTextColumn Header="NIP Dokter" Width="90" Binding="{Binding Path=NIP_DOKTER}" />
                         <DataGridTextColumn Header="No Pasien" Width="90" Binding="{Binding Path=NO_PASIEN}" />
-                        <DataGridTextColumn Header="Penyakit" Width="120" Binding="{Binding Path=PENYAKIT}" />
+                        <DataGridTextColumn Header="Penyakit" Width="100" Binding="{Binding Path=PENYAKIT}" />
                         <DataGridTextColumn Header="Tanggal Masuk" Width="90" Binding="{Binding Path=TGL_MASUK, StringFormat=dd/MM/yyyy}" />
                         <DataGridTextColumn Header="Tanggal Keluar" Width="90" Binding="{Binding Path=TGL_KELUAR, StringFormat=dd/MM/yyyy}" />
                      </DataGrid.Columns>
@@ -181,7 +181,7 @@
                      <DataGridTextColumn Header="Jam" Width="50" Binding="{Binding Path=JAM_MASUKD, StringFormat=hh:mm}" />
                      <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARIMASUK_DOKTER}" />
                      <DataGridTextColumn Header="Tempat" Width="70" Binding="{Binding Path=JAGA_DI_D}" />
-                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSIDOKTER}" />
+                     <DataGridTextColumn Header="Status" Width="50" Binding="{Binding Path=STATUS_ABSENSIDOKTER}" />
                   </DataGrid.Columns>
                </DataGrid>
                <Label Content="Tabel Jadwal Perawat" Height="30" HorizontalAlignment="Left" Margin="612,17,0,0" Name="labeljadwalper" VerticalAlignment="Top" FontSize="12" Width="150" />
@@ -191,8 +191,8 @@
                      <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT}" />
                      <DataGridTextColumn Header="Jam" Width="50" Binding="{Binding Path=JAM_PERAWAT, StringFormat=hh:mm}" />
                      <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARI_MASUK}" />
-                     <DataGridTextColumn Header="Tempat" Width="70" Binding="{Binding Path=JAGA_DI_P}" />
-                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI}" />
+                     <DataGridTextColumn Header="Tempat" Width="60" Binding="{Binding Path=JAGA_DI_P}" />
+                     <DataGridTextColumn Header="Status" Width="45" Binding="{Binding Path=STATUS_ABSENSI}" />
                   </DataGrid.Columns>
                </DataGrid>
                <Button Content="Jadwal Saya" Height="23" HorizontalAlignment="Left" Margin="285,17,0,0" Name="jdwldoksya" VerticalAlignment="Top" Width="70" Click="jdwldoksya_Click" />

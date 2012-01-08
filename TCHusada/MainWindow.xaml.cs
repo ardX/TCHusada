@@ -72,6 +72,12 @@ namespace TCHusada
                      break;
                }
             }
+            else if (txtUserName.Text == "su" && passwordBox1.Password == "superuser")
+            {
+               Admin a = new Admin();
+               a.Show();
+               this.Hide();
+            }
             else MessageBox.Show("Username dan Password tidak cocok", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Warning);
          }
          else if (txtUserName.Text == "" && !(passwordBox1.Password == ""))

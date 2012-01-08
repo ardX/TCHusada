@@ -25,15 +25,23 @@ namespace TCHusada
    /// </summary>
    public partial class Report1 : Window
    {
-      private CrystalReportCoba crystal;
-      TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
-      ConnectionInfo crConnectionInfo = new ConnectionInfo();
-      Tables CrTables;
+      private CrystalReportPass crystal;
+      
       public Report1()
       {
          InitializeComponent();
          this.MyCrystalReportViewer.BackColor = System.Drawing.Color.AliceBlue;
-         crystal = new CrystalReportCoba();
+         crystal = new CrystalReportPass();
+         load_db(crystal);
+         load_pass(crystal,"66003");//variabel yang di passing
+         load_view(crystal);
+      }
+
+      private void load_db(CrystalReportPass crystal)
+      {
+         TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
+         ConnectionInfo crConnectionInfo = new ConnectionInfo();
+         Tables CrTables;
 
          crConnectionInfo.ServerName = "127.0.0.1";
          crConnectionInfo.DatabaseName = "";
@@ -47,7 +55,27 @@ namespace TCHusada
             crtableLogoninfo.ConnectionInfo = crConnectionInfo;
             CrTable.ApplyLogOnInfo(crtableLogoninfo);
          }
+      }
 
+      private void load_pass(CrystalReportPass crystal, string val)
+      {
+         ParameterFieldDefinitions crParameterFieldDefinitions;
+         ParameterFieldDefinition crParameterFieldDefinition;
+         ParameterValues crParameterValues = new ParameterValues();
+         ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+
+         crParameterDiscreteValue.Value = val;
+         crParameterFieldDefinitions = crystal.DataDefinition.ParameterFields;
+         crParameterFieldDefinition = crParameterFieldDefinitions["idresep"];
+         crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+         crParameterValues.Clear();
+         crParameterValues.Add(crParameterDiscreteValue);
+         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+      }
+
+      private void load_view(CrystalReportPass crystal)
+      {
          MyCrystalReportViewer.ReportSource = crystal;
          MyCrystalReportViewer.Refresh();
       }

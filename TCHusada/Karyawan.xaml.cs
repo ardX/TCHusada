@@ -51,6 +51,8 @@ namespace TCHusada
 
          load_dataUGD();
          load_dataPoli();
+         tombolcustUGD(true);
+         tombolcustPoli(true);
       }
 
       protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

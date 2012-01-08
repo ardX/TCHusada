@@ -29,6 +29,7 @@
       <Image Name="imgBackground" Stretch="Fill" Source="ipatkecil.png" Margin="0,0,0,0" />
       <Label Content="00:00" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="520,21,0,0" Name="labeljam" VerticalAlignment="Top" />
       <Label Content="User" Height="28" HorizontalAlignment="Left" Margin="145,21,0,0" Name="labellogin" VerticalAlignment="Top" />
+      <Image Height="31" HorizontalAlignment="Left" Margin="1031,54,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="30" Source="/TCHusada;component/bol.png" MouseDown="image1_MouseDown" Cursor="Hand" ToolTip="Keluar dari aplikasi" />
       <Label Content="Logout" Height="28" HorizontalAlignment="Left" Margin="67,53,0,0" Name="tblogout" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Kembali ke menu login" MouseDown="tblogout_MouseDown" />
       <Label Content="Perawat" HorizontalContentAlignment="Center" Height="28" HorizontalAlignment="Left" Margin="285,52,0,0" Name="labelpengguna" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" Width="511" />
       <Label Content="Exit" Height="28" HorizontalAlignment="Left" Margin="976,55,0,0" Name="tblexit" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Cursor="Hand" ToolTip="Keluar dari aplikasi" MouseDown="tblexit_MouseDown" />
@@ -101,8 +102,8 @@
                <StackPanel Name="spMainper" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridS, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridPer" Width="560" IsReadOnly="True" SelectionMode="Single">
                      <DataGrid.Columns>
-                        <DataGridTextColumn Header="No. Adm. Lab." Width="100" Binding="{Binding Path=ID_ADM_LAB}" />
-                        <DataGridTextColumn Header="No. Pasien" Width="90" Binding="{Binding Path=NO_PASIEN}" />
+                        <DataGridTextColumn Header="No. Adm. Lab." Width="90" Binding="{Binding Path=ID_ADM_LAB}" />
+                        <DataGridTextColumn Header="No. Pasien" Width="80" Binding="{Binding Path=NO_PASIEN}" />
                         <DataGridTextColumn Header="ID Laboratorium" Width="100" Binding="{Binding Path=ID_LABORATORIUM}" />
                         <DataGridTextColumn Header="Tanggal Lab" Width="100" Binding="{Binding Path=TGL_LAB, StringFormat=dd/MM/yyyy}" />
                         <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_LAB}" />
@@ -151,25 +152,30 @@
          </TabItem>
          <TabItem Header="Jadwal" Name="tabItemJadwalD" Height="30" Width="80">
             <Grid Width="968">
-               <Label Content="Tabel Jadwal Dokter" Height="30" HorizontalAlignment="Left" Margin="110,17,0,0" Name="labeljadwaldok" VerticalAlignment="Top" FontSize="12" Width="150" />
+               <Label Content="Tabel Jadwal Dokter" Height="30" HorizontalAlignment="Left" Margin="151,16,0,0" Name="labeljadwaldok" VerticalAlignment="Top" FontSize="12" Width="150" />
                <DataGrid AutoGenerateColumns="False" Height="440" Margin="11,47,535,12" Name="dataGridjadwaldok" IsReadOnly="True" SelectionMode="Single" >
                   <DataGrid.Columns>
                      <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALD}" />
                      <DataGridTextColumn Header="NIP Dokter" Width="80" Binding="{Binding Path=NIP_DOKTER}" />
-                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI_DOKTER}" />
-                     <DataGridTextColumn Header="Jam" Width="80" Binding="{Binding Path=JAM_TES, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="Jam" Width="50" Binding="{Binding Path=JAM_MASUKD, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARIMASUK_DOKTER}" />
+                     <DataGridTextColumn Header="Tempat" Width="70" Binding="{Binding Path=JAGA_DI_D}" />
+                     <DataGridTextColumn Header="Status" Width="50" Binding="{Binding Path=STATUS_ABSENSIDOKTER}" />
                   </DataGrid.Columns>
                </DataGrid>
-               <Label Content="Tabel Jadwal Perawat" Height="30" HorizontalAlignment="Left" Margin="612,17,0,0" Name="labeljadwalper" VerticalAlignment="Top" FontSize="12" Width="150" />
+               <Label Content="Tabel Jadwal Perawat" Height="30" HorizontalAlignment="Left" Margin="568,16,0,0" Name="labeljadwalper" VerticalAlignment="Top" FontSize="12" Width="150" />
                <DataGrid AutoGenerateColumns="False" Height="440" Margin="453,47,111,12" Name="dataGridjadwalper" IsReadOnly="True" SelectionMode="Single">
                   <DataGrid.Columns>
                      <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALP}" />
                      <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT}" />
-                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI}" />
+                     <DataGridTextColumn Header="Jam" Width="50" Binding="{Binding Path=JAM_PERAWAT, StringFormat=hh:mm}" />
                      <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARI_MASUK}" />
-                     <DataGridTextColumn Header="Jam" Width="70" Binding="{Binding Path=JAM_TESP, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="Tempat" Width="60" Binding="{Binding Path=JAGA_DI_P}" />
+                     <DataGridTextColumn Header="Status" Width="45" Binding="{Binding Path=STATUS_ABSENSI}" />
                   </DataGrid.Columns>
                </DataGrid>
+               <Button Content="Jadwal Saya" Height="23" HorizontalAlignment="Left" Margin="708,17,0,0" Name="jdwlpersya" VerticalAlignment="Top" Width="70" Click="jdwlpersya_Click" />
+               <Button Content="Semua" Height="23" HorizontalAlignment="Left" Margin="796,17,0,0" Name="jdwlpersmua" VerticalAlignment="Top" Width="60" Click="jdwlpersmua_Click" />
             </Grid>
          </TabItem>
       </TabControl>

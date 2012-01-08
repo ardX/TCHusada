@@ -146,7 +146,7 @@
                         <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}" />
                         <DataGridTextColumn Header="No Pasien" Width="100" Binding="{Binding Path=NO_PASIEN}" />
                         <DataGridTextColumn Header="Tanggal Periksa" Width="100" Binding="{Binding Path=TGL_PERIKSA_UGD, StringFormat=dd/MM/yyyy}" />
-                        <DataGridTextColumn Header="Keluhan" Width="80" Binding="{Binding Path=KELUHAN_UGD}" />
+                        <DataGridTextColumn Header="Keluhan" Width="130" Binding="{Binding Path=KELUHAN_UGD}" />
                         <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_UGD}" />
                         <DataGridTextColumn Header="Keterangan" Width="80" Binding="{Binding Path=KETERANGAN_UGD }" />
                      </DataGrid.Columns>
@@ -171,7 +171,7 @@
                         <DataGridTextColumn Header="NIP Karyawan" Width="100" Binding="{Binding Path=NIP_KARYAWAN}" />
                         <DataGridTextColumn Header="ID Poli" Width="50" Binding="{Binding Path=ID_POLI}" />
                         <DataGridTextColumn Header="Tanggal Periksa" Width="100" Binding="{Binding Path=TGL_PERIKSA_POLI, StringFormat=dd/MM/yyyy}" />
-                        <DataGridTextColumn Header="Keluhan" Width="80" Binding="{Binding Path=KELUHAN_POLI}" />
+                        <DataGridTextColumn Header="Keluhan" Width="130" Binding="{Binding Path=KELUHAN_POLI}" />
                         <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_POLI}" />
                         <DataGridTextColumn Header="Keterangan" Width="80" Binding="{Binding Path=KETERANGAN_POLI }" />
                      </DataGrid.Columns>

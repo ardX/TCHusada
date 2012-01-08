@@ -361,5 +361,15 @@ namespace TCHusada
       {
          F.dataview(F.load_data("JADWALPERAWAT"), dataGridjadwalper);
       }
+
+      private void jdwlpersya_Click(object sender, RoutedEventArgs e)
+      {
+         F.dataview(F.load_data_cust("JADWALPERAWAT where NIP_PERAWAT =" + siapa.anda, "*"), dataGridjadwalper);
+      }
+
+      private void jdwlpersmua_Click(object sender, RoutedEventArgs e)
+      {
+         load_jadwalP();
+      }
    }
 }
