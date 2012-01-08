@@ -337,7 +337,7 @@ namespace TCHusada
 
       private void load_detail_obat(string idrsp)
       {
-         F.dataview(F.load_data_cust("detail_resep d, obat o where d.nomor_obat = o.nomor_obat and  id_resep = '" + idrsp + "'", "d.nomor_obat, o.nama_obat, o.bentuk_obat, o.merk_obat"), dataGridDetil);
+         F.dataview(F.load_data_cust("detail_resep d, obat o where d.nomor_obat = o.nomor_obat and  id_resep = '" + idrsp + "'", "d.nomor_obat, o.nama_obat, o.bentuk_obat, o.harga_obat, d.dosis"), dataGridDetil);
       }
 
       private void load_obat()
@@ -417,7 +417,8 @@ namespace TCHusada
       {
          string sql = "insert into DETAIL_RESEP values ("
                           + "'" + textnoobatres.Text + "',"
-                          + "'" + textidresep.Text + "')";
+                          + "'" + textidresep.Text + "',"
+                          + "'" + textdosis.Text + "')";
          if (F.Execute(sql))
          {
             //MessageBox.Show("Data telah ditambahkan");

@@ -36,38 +36,38 @@ namespace TCHusada
          {
             if (F.checkPass(txtUserName.Text, passwordBox1.Password))
             {
+               if (txtUserName.Text == "admin")
+               {
+                  Admin a = new Admin();
+                  a.Show();
+                  this.Hide();
+               }
                siapa.anda = txtUserName.Text;
                string pilih = txtUserName.Text;
                switch (pilih[1])
                {
-                  case '3':
+                  case '1':
                      //MessageBox.Show("Dokter");
                      Dokter d = new Dokter();
                      d.Show();
                      this.Hide();
                      break;
-                  case '1':
+                  case '2':
                      //MessageBox.Show("Perawat");
                      Perawat p = new Perawat();
                      p.Show();
                      this.Hide();
                      break;
-                  case '4':
+                  case '3':
                      //MessageBox.Show("Karyawan");
                      Karyawan k = new Karyawan();
                      k.Show();
                      this.Hide();
                      break;
-                  case '2':
+                  case '4':
                      //MessageBox.Show("Pasien");
                      Pasien s = new Pasien();
                      s.Show();
-                     this.Hide();
-                     break;
-                  case 'd':
-                     //MessageBox.Show("Pasien");
-                     Admin a = new Admin();
-                     a.Show();
                      this.Hide();
                      break;
                }

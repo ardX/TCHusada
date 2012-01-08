@@ -42,9 +42,9 @@
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridK" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridK_SelectionChanged">
                      <DataGrid.Columns>
                         <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}" />
-                        <DataGridTextColumn Header="Nama Karyawan" Width="120" Binding="{Binding Path=NAMA_KARYAWAN}" />
-                        <DataGridTextColumn Header="Alamat Karyawan" Width="120" Binding="{Binding Path=ALAMAT_KARYAWAN}" />
-                        <DataGridTextColumn Header="Telepon Karyawan" Width="120" Binding="{Binding Path=NO_TELP_KARYAWAN}" />
+                        <DataGridTextColumn Header="Nama" Width="120" Binding="{Binding Path=NAMA_KARYAWAN}" />
+                        <DataGridTextColumn Header="Alamat" Width="120" Binding="{Binding Path=ALAMAT_KARYAWAN}" />
+                        <DataGridTextColumn Header="Telepon" Width="100" Binding="{Binding Path=NO_TELP_KARYAWAN}" />
                         <DataGridTextColumn Header="Tanggal Masuk" Width="100" Binding="{Binding Path=TGL_MASUK_KARYAWAN, StringFormat=dd/MM/yyyy}" />
                      </DataGrid.Columns>
                   </DataGrid>
@@ -83,10 +83,10 @@
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridD" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridD_SelectionChanged">
                      <DataGrid.Columns>
                         <DataGridTextColumn Header="NIP Dokter" Width="90" Binding="{Binding Path=NIP_DOKTER}" />
-                        <DataGridTextColumn Header="Nama Dokter" Width="120" Binding="{Binding Path=NAMA_DOKTER}" />
-                        <DataGridTextColumn Header="Alamat Dokter" Width="120" Binding="{Binding Path=ALAMAT_DOKTER}" />
-                        <DataGridTextColumn Header="Kelamin Dokter" Width="95" Binding="{Binding Path=JENISKELAMIN_DOKTER}" />
-                        <DataGridTextColumn Header="Telepon Dokter" Width="120" Binding="{Binding Path=TELP_DOKTER}" />
+                        <DataGridTextColumn Header="Nama" Width="120" Binding="{Binding Path=NAMA_DOKTER}" />
+                        <DataGridTextColumn Header="Alamat" Width="120" Binding="{Binding Path=ALAMAT_DOKTER}" />
+                        <DataGridTextColumn Header="Kelamin" Width="95" Binding="{Binding Path=JENISKELAMIN_DOKTER}" />
+                        <DataGridTextColumn Header="Telepon" Width="100" Binding="{Binding Path=TELP_DOKTER}" />
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel>
@@ -124,10 +124,10 @@
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridP" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridP_SelectionChanged">
                      <DataGrid.Columns>
                         <DataGridTextColumn Header="NIP Perawat" Width="90" Binding="{Binding Path=NIP_PERAWAT}" />
-                        <DataGridTextColumn Header="Nama Perawat" Width="120" Binding="{Binding Path=NAMA_PERAWAT}" />
-                        <DataGridTextColumn Header="Alamat Perawat" Width="120" Binding="{Binding Path=ALAMAT_PERAWAT}" />
-                        <DataGridTextColumn Header="Kelamin Perawat" Width="100" Binding="{Binding Path=JENISKELAMIN_PERAWAT}" />
-                        <DataGridTextColumn Header="Telepon Perawat" Width="120" Binding="{Binding Path=TELP_PERAWAT}" />
+                        <DataGridTextColumn Header="Nama" Width="120" Binding="{Binding Path=NAMA_PERAWAT}" />
+                        <DataGridTextColumn Header="Alamat" Width="120" Binding="{Binding Path=ALAMAT_PERAWAT}" />
+                        <DataGridTextColumn Header="Kelamin" Width="90" Binding="{Binding Path=JENISKELAMIN_PERAWAT}" />
+                        <DataGridTextColumn Header="Telepon" Width="100" Binding="{Binding Path=TELP_PERAWAT}" />
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel>
@@ -164,12 +164,12 @@
                <StackPanel Name="spMainS" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridS, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridS" Width="560" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dataGridS_SelectionChanged">
                      <DataGrid.Columns>
-                        <DataGridTextColumn Header="No Pasien" Width="70" Binding="{Binding Path=NO_PASIEN}" />
-                        <DataGridTextColumn Header="Nama Pasien" Width="120" Binding="{Binding Path=NAMA_PASIEN}" />
-                        <DataGridTextColumn Header="Alamat Pasien" Width="120" Binding="{Binding Path=ALAMAT_PASIEN}" />
-                        <DataGridTextColumn Header="Kelamin" Width="60" Binding="{Binding Path=KELAMIN_PASIEN}" />
-                        <DataGridTextColumn Header="Telepon Pasien" Width="89" Binding="{Binding Path=TELP_PASIEN}" />
-                        <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding Path=LAHIR_PASIEN, StringFormat=dd/MM/yyyy}" />
+                        <DataGridTextColumn Header="No Pasien" Width="75" Binding="{Binding Path=NO_PASIEN}" />
+                        <DataGridTextColumn Header="Nama" Width="110" Binding="{Binding Path=NAMA_PASIEN}" />
+                        <DataGridTextColumn Header="Alamat" Width="120" Binding="{Binding Path=ALAMAT_PASIEN}" />
+                        <DataGridTextColumn Header="Kelamin" Width="60" Binding="{Binding Path=JENISKELAMIN_PASIEN}" />
+                        <DataGridTextColumn Header="Telepon" Width="89" Binding="{Binding Path=TELP_PASIEN}" />
+                        <DataGridTextColumn Header="Lahir" Width="75" Binding="{Binding Path=LAHIR_PASIEN, StringFormat=dd/MM/yyyy}" />
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel>

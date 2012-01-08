@@ -42,6 +42,9 @@ namespace TCHusada
 
          tombol_trugd(true);
          status_trugd(false);
+         tombol_trpsk(true);
+         status_trpsk(false);
+         groupBoxUGD.IsEnabled = false;
 
          tombol_trpoli(true);
          status_trpoli(false);
@@ -216,6 +219,70 @@ namespace TCHusada
       /// </summary>
       /// <param name="status"></param>
 
+      private void tombol_trpsk(bool status)
+      {
+         tambahpskugd.IsEnabled = status;
+         simpanpskugd.IsEnabled = !(status);
+         bersihpskugd.IsEnabled = !(status);
+         batalpskugd.IsEnabled = !(status);
+      }
+
+      private void status_trpsk(bool status)
+      {
+         textBoxnoper.IsEnabled = status;
+         textBoxdokugd.IsEnabled = status;
+         textBoxkamarugd.IsEnabled = status;
+         textBoxnopasugd.IsEnabled = status;
+         textBoxjamugd.IsEnabled = status;
+      }
+
+      private void clear_trpsk()
+      {
+         textBoxdokugd.Text = "";
+         textBoxkamarugd.Text = "";
+         textBoxnopasugd.Text = "";
+         textBoxjamugd.Text = "";
+      }
+
+      private void tambahpskugd_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_trpsk(false);
+         status_trpsk(true);
+         clear_trpsk();
+         textBoxnoper.Text = F.getmaxnomor("maxpskugd"); 
+      }
+
+      private void simpanpskugd_Click(object sender, RoutedEventArgs e)
+      {
+         string sql = "insert into ID_PEMERIKSAANUGD values (seqpskugd.nextval,"
+                          + "'" + textBoxdokugd.Text + "',"
+                          + "'" + textBoxkamarugd.Text + "',"
+                          + "'" + textBoxnopasugd.Text + "',"
+                          + "'" + textBoxjamugd.Text + "')";
+         if (F.Execute(sql))
+         {
+            MessageBox.Show("Data telah ditambahkan");
+            tombol_trpsk(true);
+            status_trpsk(false);
+            F.setmaxnomor("maxpskugd", "seqpskugd");
+            groupBoxUGD.IsEnabled = true;
+            groupBoxpsk.IsEnabled = true;
+         }
+      }
+
+      private void bersihpskugd_Click(object sender, RoutedEventArgs e)
+      {
+         clear_trpsk();
+      }
+
+      private void batalpskugd_Click(object sender, RoutedEventArgs e)
+      {
+         tombol_trpsk(true);
+         status_trpsk(false);
+         clear_trpsk();
+      }
+
+
       private void tombol_trugd(bool status)
       {
          tambahtransugd.IsEnabled = status;
@@ -266,6 +333,8 @@ namespace TCHusada
             tombol_trugd(true);
             status_trugd(false);
             F.setmaxnomor("maxadmugd", "seqadmugd");
+            groupBoxUGD.IsEnabled = false;
+            groupBoxpsk.IsEnabled = true;
          }
       }
 
@@ -415,6 +484,8 @@ namespace TCHusada
          load_dataPoli();
          tombolcustPoli(true);
       }
+
+      
 
    }
 }

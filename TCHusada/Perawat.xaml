@@ -40,7 +40,7 @@
                      <Label Content="NIP Perawat" Height="28" HorizontalAlignment="Left" Margin="20,30,0,0" Name="labelnipper" VerticalAlignment="Top" />
                      <Label Content="Nama Perawat" Height="28" HorizontalAlignment="Left" Margin="20,65,0,0" Name="labelnamper" VerticalAlignment="Top" />
                      <Label Content="Alamat Perawat" Height="28" HorizontalAlignment="Left" Margin="20,105,0,0" Name="labelalper" VerticalAlignment="Top" />
-                     <Label Content="Jenis Kelamin Perawat" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelklmper" VerticalAlignment="Top" />
+                     <Label Content="Jenis Kelamin" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelklmper" VerticalAlignment="Top" />
                      <Label Content="Telepon Perawat" Height="28" HorizontalAlignment="Left" Margin="20,185,0,0" Name="labeltlper" VerticalAlignment="Top" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="141,30,0,0" Name="textBoxniptt" VerticalAlignment="Top" Width="200" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="141,70,0,0" Name="textBoxnamtt" VerticalAlignment="Top" Width="200" />
@@ -128,12 +128,12 @@
                <StackPanel Name="spMainS" Orientation="Horizontal" HorizontalAlignment="Left" Width="864" DataContext="{Binding ElementName=dataGridS, Path=SelectedItem}">
                   <DataGrid AutoGenerateColumns="False" Height="440" Margin="20,20,0,0" Name="dataGridS" Width="560" IsReadOnly="True" SelectionMode="Single" >
                      <DataGrid.Columns>
-                        <DataGridTextColumn Header="No Pasien" Width="70" Binding="{Binding Path=NO_PASIEN}" />
+                        <DataGridTextColumn Header="No Pasien" Width="73" Binding="{Binding Path=NO_PASIEN}" />
                         <DataGridTextColumn Header="Nama Pasien" Width="120" Binding="{Binding Path=NAMA_PASIEN}" />
                         <DataGridTextColumn Header="Alamat Pasien" Width="120" Binding="{Binding Path=ALAMAT_PASIEN}" />
-                        <DataGridTextColumn Header="Kelamin" Width="60" Binding="{Binding Path=KELAMIN_PASIEN}" />
+                        <DataGridTextColumn Header="Kelamin" Width="55" Binding="{Binding Path=JENISKELAMIN_PASIEN}" />
                         <DataGridTextColumn Header="Telepon Pasien" Width="89" Binding="{Binding Path=TELP_PASIEN}" />
-                        <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding Path=LAHIR_PASIEN, StringFormat=dd/MM/yyyy}" />
+                        <DataGridTextColumn Header="Lahir" Width="70" Binding="{Binding Path=LAHIR_PASIEN, StringFormat=dd/MM/yyyy}" />
                      </DataGrid.Columns>
                   </DataGrid>
                   <StackPanel Height="475">

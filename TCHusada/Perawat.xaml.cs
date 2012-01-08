@@ -35,9 +35,13 @@ namespace TCHusada
       public void load_kabeh()
       {
          load_saya();
-         status_boxtt(true);
+         status_boxtt(false);
+         tombol_ett(true);
          tombol_gntp(true);
          status_gntp(false);
+         tombol_gntp(true);
+         status_gntp(false);
+
          tombol_trlab(true);
          status_trlab(false);
          load_datalab();

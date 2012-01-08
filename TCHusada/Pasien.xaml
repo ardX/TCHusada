@@ -41,7 +41,7 @@
                      <Label Content="Nomor Pasien" Height="28" HorizontalAlignment="Left" Margin="20,30,0,0" Name="labelniptt" VerticalAlignment="Top" />
                      <Label Content="Nama Pasien" Height="28" HorizontalAlignment="Left" Margin="20,65,0,0" Name="labelnamtt" VerticalAlignment="Top" />
                      <Label Content="Alamat Pasien" Height="28" HorizontalAlignment="Left" Margin="20,105,0,0" Name="labelalatt" VerticalAlignment="Top" />
-                     <Label Content="Kelamin Pasien" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelklmtt" VerticalAlignment="Top" />
+                     <Label Content="Jenis Kelamin" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelklmtt" VerticalAlignment="Top" />
                      <Label Content="Telepon Pasien" Height="28" HorizontalAlignment="Left" Margin="20,185,0,0" Name="labeltlptt" VerticalAlignment="Top" />
                      <Label Content="Tanggal Lahir" Height="28" HorizontalAlignment="Left" Margin="20,225,0,0" Name="labeltgltt" VerticalAlignment="Top" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxniptt" VerticalAlignment="Top" Width="200" />

@@ -91,6 +91,24 @@
                      <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="375,148,0,0" Name="bataltransugd" VerticalAlignment="Top" Width="75" Click="bataltransugd_Click" />
                   </Grid>
                </GroupBox>
+               <GroupBox Header="Pemeriksaan UGD" Height="319" HorizontalAlignment="Left" Margin="7,7,0,0" Name="groupBoxpsk" VerticalAlignment="Top" Width="362">
+                  <Grid>
+                     <Label Content="No Pemeriksaan" Height="28" HorizontalAlignment="Left" Margin="6,27,0,0" Name="labelnoper" VerticalAlignment="Top" />
+                     <Label Content="NIP Dokter" Height="28" HorizontalAlignment="Left" Margin="6,67,0,0" Name="labelnipdokugd" VerticalAlignment="Top" />
+                     <Label Content="ID Kamar UGD" Height="28" HorizontalAlignment="Left" Margin="6,108,0,0" Name="labelkamarugd" VerticalAlignment="Top" />
+                     <Label Content="No Pasien" Height="28" HorizontalAlignment="Left" Margin="6,152,0,0" Name="labelnopasperugd" VerticalAlignment="Top" />
+                     <Label Content="Jam Periksa UGD" Height="28" HorizontalAlignment="Left" Margin="6,192,0,0" Name="labeljamugd" VerticalAlignment="Top" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,27,0,0" Name="textBoxnoper" VerticalAlignment="Top" Width="182" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,67,0,0" Name="textBoxdokugd" VerticalAlignment="Top" Width="182" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,107,0,0" Name="textBoxkamarugd" VerticalAlignment="Top" Width="182" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,149,0,0" Name="textBoxnopasugd" VerticalAlignment="Top" Width="182" />
+                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,192,0,0" Name="textBoxjamugd" VerticalAlignment="Top" Width="182" />
+                     <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="6,244,0,0" Name="tambahpskugd" VerticalAlignment="Top" Width="75" Click="tambahpskugd_Click" />
+                     <Button Content="Simpan" Height="23" HorizontalAlignment="Left" Margin="87,244,0,0" Name="simpanpskugd" VerticalAlignment="Top" Width="75" Click="simpanpskugd_Click" />
+                     <Button Content="Bersihkan" Height="23" HorizontalAlignment="Left" Margin="176,244,0,0" Name="bersihpskugd" VerticalAlignment="Top" Width="75" Click="bersihpskugd_Click" />
+                     <Button Content="Batal" Height="23" HorizontalAlignment="Left" Margin="257,244,0,0" Name="batalpskugd" VerticalAlignment="Top" Width="75" Click="batalpskugd_Click" />
+                  </Grid>
+               </GroupBox>
             </Grid>
          </TabItem>
          <TabItem Header="Adm Poli" Name="tabItemPoli" Height="30" Width="80">

@@ -41,7 +41,7 @@
                      <Label Content="NIP Dokter" Height="28" HorizontalAlignment="Left" Margin="20,30,0,0" Name="labelniptt" VerticalAlignment="Top" />
                      <Label Content="Nama Dokter" Height="28" HorizontalAlignment="Left" Margin="20,65,0,0" Name="labelnamtt" VerticalAlignment="Top" />
                      <Label Content="Alamat Dokter" Height="28" HorizontalAlignment="Left" Margin="20,105,0,0" Name="labelalatt" VerticalAlignment="Top" />
-                     <Label Content="Kelamin Dokter" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelklmtt" VerticalAlignment="Top" />
+                     <Label Content="Jenis Kelamin" Height="28" HorizontalAlignment="Left" Margin="20,145,0,0" Name="labelklmtt" VerticalAlignment="Top" />
                      <Label Content="Telepon Dokter" Height="28" HorizontalAlignment="Left" Margin="20,185,0,0" Name="labeltlptt" VerticalAlignment="Top" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,30,0,0" Name="textBoxniptt" VerticalAlignment="Top" Width="200" />
                      <TextBox Height="23" HorizontalAlignment="Left" Margin="133,70,0,0" Name="textBoxnamtt" VerticalAlignment="Top" Width="200" />
@@ -139,16 +139,18 @@
                <GroupBox Header="Detail Obat" Height="261" HorizontalAlignment="Left" Margin="20,215,0,0" Name="groupBoxdetil" VerticalAlignment="Top" Width="351">
                   <Grid>
                      <Label Content="No Obat" Height="28" HorizontalAlignment="Left" Margin="22,13,0,0" Name="label4" VerticalAlignment="Top" Width="65" />
-                        <DataGrid AutoGenerateColumns="False" Height="161" HorizontalAlignment="Left" Margin="22,60,0,0" Name="dataGridDetil" VerticalAlignment="Top" Width="292" IsReadOnly="True" SelectionMode="Single" IsEnabled="False">
+                        <DataGrid AutoGenerateColumns="False" Height="131" HorizontalAlignment="Left" Margin="22,90,0,0" Name="dataGridDetil" VerticalAlignment="Top" Width="292" IsReadOnly="True" SelectionMode="Single" IsEnabled="False">
                         <DataGrid.Columns>
                            <DataGridTextColumn Header="Nomor" Width="60" Binding="{Binding Path=NOMOR_OBAT}"  />
                            <DataGridTextColumn Header="Nama Obat" Width="120" Binding="{Binding Path=NAMA_OBAT}"  />
-                           <DataGridTextColumn Header="Bentuk" Width="70" Binding="{Binding Path=BENTUK_OBAT}"  />
-                        </DataGrid.Columns>
+                           <DataGridTextColumn Header="Dosis" Width="70" Binding="{Binding Path=DOSIS}"  />
+                         </DataGrid.Columns>
                         </DataGrid>
-                        <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="191,15,0,0" Name="tambahobat" VerticalAlignment="Top" Width="50" Click="tambahobat_Click" />
+                        <Button Content="Tambah" Height="23" HorizontalAlignment="Left" Margin="194,31,0,0" Name="tambahobat" VerticalAlignment="Top" Width="50" Click="tambahobat_Click" />
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="84,15,0,0" Name="textnoobatres" VerticalAlignment="Top" Width="91" Text="{Binding Path=NOMOR_OBAT, Mode=OneWay}" />
-                        <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="264,15,0,0" Name="hapusobat" VerticalAlignment="Top" Width="50" Click="hapusobat_Click" />
+                        <Button Content="Hapus" Height="23" HorizontalAlignment="Left" Margin="264,31,0,0" Name="hapusobat" VerticalAlignment="Top" Width="50" Click="hapusobat_Click" />
+                        <Label Content="Dosis" Height="28" HorizontalAlignment="Left" Margin="22,45,0,0" Name="lbldosis" VerticalAlignment="Top" Width="65" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="84,47,0,0" Name="textdosis" VerticalAlignment="Top" Width="91" />
                      </Grid>
                </GroupBox>
                <GroupBox Header="List Obat" Height="474" HorizontalAlignment="Left" Margin="522,14,0,0" Name="groupBoxlst" VerticalAlignment="Top" Width="335">
@@ -158,7 +160,7 @@
                               <DataGridTextColumn Header="Nomor Obat" Width="60" Binding="{Binding Path=NOMOR_OBAT}" />
                                  <DataGridTextColumn Header="Nama Obat" Width="90" Binding="{Binding Path=NAMA_OBAT}"  />
                                  <DataGridTextColumn Header="Bentuk Obat" Width="70" Binding="{Binding Path=BENTUK_OBAT}"  />
-                                 <DataGridTextColumn Header="Merk Obat" Width="80" Binding="{Binding Path=MERK_OBAT}"  />
+                                 <DataGridTextColumn Header="Harga Obat" Width="80" Binding="{Binding Path=HARGA_OBAT}"  />
                               </DataGrid.Columns>
                            </DataGrid>
                      </Grid>
@@ -176,8 +178,10 @@
                   <DataGrid.Columns>
                      <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALD}" />
                      <DataGridTextColumn Header="NIP Dokter" Width="80" Binding="{Binding Path=NIP_DOKTER}" />
-                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI_DOKTER}" />
-                     <DataGridTextColumn Header="Jam" Width="80" Binding="{Binding Path=JAM_TES, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="Jam" Width="50" Binding="{Binding Path=JAM_MASUKD, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARIMASUK_DOKTER}" />
+                     <DataGridTextColumn Header="Tempat" Width="70" Binding="{Binding Path=JAGA_DI_D}" />
+                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSIDOKTER}" />
                   </DataGrid.Columns>
                </DataGrid>
                <Label Content="Tabel Jadwal Perawat" Height="30" HorizontalAlignment="Left" Margin="612,17,0,0" Name="labeljadwalper" VerticalAlignment="Top" FontSize="12" Width="150" />
@@ -185,9 +189,10 @@
                   <DataGrid.Columns>
                      <DataGridTextColumn Header="ID Jadwal" Width="70" Binding="{Binding Path=ID_JADWALP}" />
                      <DataGridTextColumn Header="NIP Perawat" Width="80" Binding="{Binding Path=NIP_PERAWAT}" />
-                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI}" />
+                     <DataGridTextColumn Header="Jam" Width="50" Binding="{Binding Path=JAM_PERAWAT, StringFormat=hh:mm}" />
                      <DataGridTextColumn Header="Hari" Width="70" Binding="{Binding Path=HARI_MASUK}" />
-                     <DataGridTextColumn Header="Jam" Width="70" Binding="{Binding Path=JAM_TESP, StringFormat=hh:mm}" />
+                     <DataGridTextColumn Header="Tempat" Width="70" Binding="{Binding Path=JAGA_DI_P}" />
+                     <DataGridTextColumn Header="Status" Width="70" Binding="{Binding Path=STATUS_ABSENSI}" />
                   </DataGrid.Columns>
                </DataGrid>
                <Button Content="Jadwal Saya" Height="23" HorizontalAlignment="Left" Margin="285,17,0,0" Name="jdwldoksya" VerticalAlignment="Top" Width="70" Click="jdwldoksya_Click" />

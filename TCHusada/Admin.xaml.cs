@@ -617,7 +617,7 @@ namespace TCHusada
             string sql = "update PASIEN set "
                          + " NAMA_PASIEN = '" + textnams.Text + "',"
                          + " ALAMAT_PASIEN= '" + textalmts.Text + "',"
-                         + " KELAMIN_PASIEN = '" + combokels.Text + "',"
+                         + " JENISKELAMIN_PASIEN = '" + combokels.Text + "',"
                    + " TELP_PASIEN = '" + texttelps.Text + "',"
                          + " LAHIR_PASIEN = '" + datelhrs.Text + "'"
                          + " where NO_PASIEN = '" + textnos.Text + "'";

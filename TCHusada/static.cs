@@ -208,7 +208,7 @@ namespace TCHusada
          string metu = "0";
          decimal metuu = 0;
          cn.Open();
-         string sql = "select sum(o.merk_obat) from detail_resep d, obat o where d.nomor_obat = o.nomor_obat and id_resep = '" + idresep + "'";
+         string sql = "select sum(o.harga_obat) from detail_resep d, obat o where d.nomor_obat = o.nomor_obat and id_resep = '" + idresep + "'";
          OracleDataReader reader;
          OracleCommand cmd = new OracleCommand(sql, cn);
          reader = cmd.ExecuteReader();
