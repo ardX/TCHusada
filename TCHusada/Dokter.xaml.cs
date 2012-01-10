@@ -254,7 +254,7 @@ namespace TCHusada
          clear_boxrm();
          status_boxrm(true);
          tombol_erm(false);
-         textidrm.Text = F.getmaxnomor("maxpasien");
+         textidrm.Text = F.getmaxnomor("maxriwayat");
       }
 
       private void simpanrm_Click(object sender, RoutedEventArgs e)
@@ -274,7 +274,7 @@ namespace TCHusada
             bolehRM = true;
             F.dataview(F.load_data("RIWAYATPASIEN"), dataGridRM);
             dataGridRM.SelectedIndex = ind;
-            F.setmaxnomor("maxpasien", "seqrm");
+            F.setmaxnomor("maxriwayat", "seqrm");
          }
       }
 

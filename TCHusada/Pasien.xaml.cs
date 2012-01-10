@@ -105,7 +105,7 @@ namespace TCHusada
 
       private void tesreportbtn_Click(object sender, RoutedEventArgs e)
       {
-         Report1 r = new Report1();
+         TransaksiUGD r = new TransaksiUGD();
          r.Show();
       }
 

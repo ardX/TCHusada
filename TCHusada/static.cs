@@ -203,6 +203,39 @@ namespace TCHusada
          Execute(sql);
       }
 
+      public static void fixmaxnomor(string var, string val)//fungsi gagal
+      {
+         string[] koma = new string[] { "ALTER SEQUENCE " + val + " increment by -1", "SELECT " + val + ".NEXTVAL from dual", "ALTER SEQUENCE " + val + " increment by 1", "update maxval set VAL = " + val + ".CURRVAL where VAR = '" + var + "'" };
+         cn.Open();
+         foreach (string sql in koma)
+         {
+            OracleCommand cmd = cn.CreateCommand();
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+         }
+         cn.Close();
+      }
+
+      public static void fixmaxnomornextval(string var, string val)
+      {
+         //MessageBox.Show("fu");
+         //OracleCommand koman3 = new OracleCommand("SELECT " + val + ".NEXTVAL from dual" + "; " + "ALTER SEQUENCE " + val + " increment by -1" + "; " + "SELECT " + val + ".NEXTVAL from dual" + "; " + "SELECT " + val + ".NEXTVAL from dual" + "; " + "ALTER SEQUENCE " + val + " increment by 1" + "; " + "update maxval set VAL = " + val + ".CURRVAL where VAR = '" + var + "'", cn);
+         //Execute("SELECT " + val + ".NEXTVAL from dual");
+         //fixmaxnomor(var, val);"SELECT " + val + ".NEXTVAL from dual",
+         string[] koma = new string[] {  "ALTER SEQUENCE " + val + " increment by -1", "SELECT " + val + ".NEXTVAL from dual", "ALTER SEQUENCE " + val + " increment by 1", "update maxval set VAL = " + val + ".CURRVAL where VAR = '" + var + "'" };
+         cn.Open();
+         foreach (string sql in koma)
+         {
+            OracleCommand cmd = cn.CreateCommand();
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            //MessageBox.Show(sql);
+         }
+         cn.Close();
+      }
+
       public static string getsumresep(string idresep)
       {
          string metu = "0";

@@ -28,6 +28,22 @@ namespace TCHusada
       {
          InitializeComponent();
          labeljam.Content = jam.berapa();
+         //fixloadmax();
+      }
+
+      private void fixloadmax()
+      {
+         F.fixmaxnomornextval("maxpskugd", "seqpskugd");
+         F.fixmaxnomornextval("maxadmugd", "seqadmugd");
+         F.fixmaxnomornextval("maxadmpoli", "seqadmpoli");
+         F.fixmaxnomornextval("maxriwayat", "seqrm");
+         F.fixmaxnomornextval("maxresep", "seqresep");
+         F.fixmaxnomornextval("maxkaryawan", "seqkar");
+         F.fixmaxnomornextval("maxdokter", "seqdok");
+         F.fixmaxnomornextval("maxperawat", "seqper");
+         F.fixmaxnomornextval("maxpasien", "seqpas");
+         F.fixmaxnomornextval("maxadmlab", "seqadmlab");
+
       }
 
       public void masuk()

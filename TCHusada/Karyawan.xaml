@@ -139,12 +139,13 @@
          </TabItem>
          <TabItem Header="Data UGD" Name="tabItemUGD1" Height="30" Width="80">
             <Grid>
-               <Label Content="Tabel Data UGD" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labellabdatugd" VerticalAlignment="Top" FontSize="14" />
+               <Label Content="Tabel Data UGD" Height="28" HorizontalAlignment="Left" Margin="340,0,0,0" Name="labellabdatugd" VerticalAlignment="Top" FontSize="14" />
                   <DataGrid AutoGenerateColumns="False" Margin="6,30,12,102" Name="dataGridUGD" IsReadOnly="True" SelectionMode="Single">
                      <DataGrid.Columns>
-                        <DataGridTextColumn Header="No. Adm. UGD" Width="100" Binding="{Binding Path=ID_ADM}" />
-                        <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}" />
-                        <DataGridTextColumn Header="No Pasien" Width="100" Binding="{Binding Path=NO_PASIEN}" />
+                     <DataGridTextColumn Header="No. Adm. UGD" Width="100" Binding="{Binding Path=ID_ADM}" />
+                     <DataGridTextColumn Header="No. Periksa" Width="90" Binding="{Binding Path=ID_PEMERIKSAANUGD}" />
+                     <DataGridTextColumn Header="NIP Karyawan" Width="90" Binding="{Binding Path=NIP_KARYAWAN}" />
+                     <DataGridTextColumn Header="No Pasien" Width="100" Binding="{Binding Path=NO_PASIEN}" />
                         <DataGridTextColumn Header="Tanggal Periksa" Width="100" Binding="{Binding Path=TGL_PERIKSA_UGD, StringFormat=dd/MM/yyyy}" />
                         <DataGridTextColumn Header="Keluhan" Width="130" Binding="{Binding Path=KELUHAN_UGD}" />
                         <DataGridTextColumn Header="Biaya" Width="80" Binding="{Binding Path=BIAYA_UGD}" />
@@ -163,7 +164,7 @@
          </TabItem>
          <TabItem Header="Data Poli" Name="tabItempoli" Height="30" Width="80">
             <Grid>
-               <Label Content="Tabel Data Poliklinik" Height="28" HorizontalAlignment="Left" Margin="228,6,0,0" Name="labellabdatpoli" VerticalAlignment="Top" FontSize="14" />
+               <Label Content="Tabel Data Poliklinik" Height="28" HorizontalAlignment="Left" Margin="331,0,0,0" Name="labellabdatpoli" VerticalAlignment="Top" FontSize="14" />
                <DataGrid AutoGenerateColumns="False" Margin="6,30,12,102" Name="dataGridPoli" IsReadOnly="True" SelectionMode="Single" >
                      <DataGrid.Columns>
                         <DataGridTextColumn Header="No. Adm. Poli" Width="100" Binding="{Binding Path=ID_ADM2}" />

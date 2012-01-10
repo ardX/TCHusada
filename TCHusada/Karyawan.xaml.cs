@@ -173,7 +173,7 @@ namespace TCHusada
 
       private void tesreportbtn_Click(object sender, RoutedEventArgs e)
       {
-         Report1 r = new Report1();
+         RujukanUGD r = new RujukanUGD();
          r.Show();
       }
 
@@ -256,11 +256,12 @@ namespace TCHusada
 
       private void simpanpskugd_Click(object sender, RoutedEventArgs e)
       {
-         string sql = "insert into ID_PEMERIKSAANUGD values (seqpskugd.nextval,"
+         string sql = "insert into PEMERIKSAANUGD values (seqpskugd.nextval,"
                           + "'" + textBoxdokugd.Text + "',"
                           + "'" + textBoxkamarugd.Text + "',"
                           + "'" + textBoxnopasugd.Text + "',"
                           + "'" + textBoxjamugd.Text + "')";
+         MessageBox.Show(sql);
          if (F.Execute(sql))
          {
             MessageBox.Show("Data telah ditambahkan");
@@ -323,6 +324,7 @@ namespace TCHusada
       private void simpantransugd_Click(object sender, RoutedEventArgs e)
       {
          string sql = "insert into ADMINISTRASIUGD values (seqadmugd.nextval,"
+                          + "'" + textBoxnoper.Text + "',"
                           + "'" + siapa.anda + "',"
                           + "'" + textBoxnopass.Text + "',"
                           + "'" + datetangugd.Text + "',"

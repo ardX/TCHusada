@@ -268,6 +268,7 @@ namespace TCHusada
             status_trlab(false);
             F.setmaxnomor("maxadmlab", "seqadmlab");
          }
+         else F.fixmaxnomornextval("maxadmlab", "seqadmlab");
       }
 
       private void bataltranslab_Click(object sender, RoutedEventArgs e)
